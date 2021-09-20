@@ -192,6 +192,11 @@ Route::middleware(['auth:web', 'preventBackHistory'])->name('admin.')->prefix('a
     Route::get('user/list', [UserController::class, 'list']);
     Route::delete('user/delete/{user}', [UserController::class, 'destroy']);
     Route::get('user/edit/{user}', [UserController::class, 'edit']);
+
+    Route::get('backup/run', function () {
+        Artisan::call('backup:run');
+        return redirect()->back();
+    });
 });
 
 Route::middleware(['auth:teacher', 'preventBackHistory'])->name('teacher.')->prefix('teacher/my/')->group(function () {

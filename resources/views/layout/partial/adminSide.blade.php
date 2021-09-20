@@ -85,10 +85,6 @@
                 <a class="nav-link" href="{{ route('admin.user') }}">
                     <i class="fas fa-users"></i><span>Manage Users</span></a>
             </li>
-            <li class="">
-                <a class="nav-link" href="#" id="#modalForBackUp">
-                    <i class="fas fa-database"></i><span>Back-up Database</span></a>
-            </li>
         </ul>
     </li>
 </ul>
