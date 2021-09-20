@@ -45,18 +45,18 @@ Route::middleware(['guest:web', 'guest:teacher', 'guest:student', 'preventBackHi
 //logout
 Route::post('logout', [AuthController::class, 'logout'])->name('auth.logout');
 //pre enrollment
-// Route::get('welcome', [FormController::class, 'welcome'])->name('welcome');
-// Route::get('done/{tracking}', [FormController::class, 'done'])->name('done');
-// Route::get('form', [FormController::class, 'form'])->name('form');
-// Route::post('form/save', [FormController::class, 'store']);
-// Route::get('form/check/lrn/{lrn}', [FormController::class, 'checkLRN']);
+Route::get('welcome', [FormController::class, 'welcome'])->name('welcome');
+Route::get('done/{tracking}', [FormController::class, 'done'])->name('done');
+Route::get('form', [FormController::class, 'form'])->name('form');
+Route::post('form/save', [FormController::class, 'store']);
+Route::get('form/check/lrn/{lrn}', [FormController::class, 'checkLRN']);
 
 
-Route::get('welcome', [FormSection::class, 'welcome'])->name('welcome');
-Route::get('done/{tracking}', [FormSection::class, 'done'])->name('done');
-Route::get('form', [FormSection::class, 'form'])->name('form');
-Route::post('form/save', [FormSection::class, 'store']);
-Route::get('form/check/lrn/{lrn}', [FormSection::class, 'checkLRN']);
+// Route::get('welcome', [FormSection::class, 'welcome'])->name('welcome');
+// Route::get('done/{tracking}', [FormSection::class, 'done'])->name('done');
+// Route::get('form', [FormSection::class, 'form'])->name('form');
+// Route::post('form/save', [FormSection::class, 'store']);
+// Route::get('form/check/lrn/{lrn}', [FormSection::class, 'checkLRN']);
 
 //appointment
 Route::get('appoint/register', [AppointmentController::class, 'appoint'])->name('appoint');
