@@ -26,7 +26,7 @@ class BackSubjectController extends Controller
         return response()->json([
             'data' => BackSubject::select('back_subjects.student_id', 'students.roll_no', DB::raw("CONCAT(students.student_lastname,', ',students.student_firstname,' ',students.student_middlename) as fullname"))
                 ->join('students', 'back_subjects.student_id', 'students.id')
-                ->groupBy('back_subjects.student_id', 'students.roll_no')
+                ->groupBy('back_subjects.student_id', 'students.roll_no', 'fullname')
                 ->get()
         ]);
     }

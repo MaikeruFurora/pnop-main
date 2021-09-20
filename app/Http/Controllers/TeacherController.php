@@ -66,7 +66,8 @@ class TeacherController extends Controller
                 $value['student_id'];
                 Grade::create([
                     'student_id' => $value['student_id'],
-                    'subject_id' => $subject
+                    'subject_id' => $subject,
+                    'section_id' => $section
                 ]);
             }
         }
