@@ -157,7 +157,9 @@ class TeacherController extends Controller
 
     public function assign()
     {
-        $subjects = Subject::where('grade_level', Auth::user()->section->grade_level)->get();
+        $subjects = Subject::where('grade_level', Auth::user()->section->grade_level)
+            ->whereIn('subject_for', [Auth::user()->section->class_type, 'GENENRAL'])
+            ->get();
         $teachers = Teacher::select('id', DB::raw("CONCAT(teachers.teacher_lastname,', ',teachers.teacher_firstname,' ',teachers.teacher_middlename) as teacher_name"))->get();
         return view('teacher/assign', compact('subjects', 'teachers'));
     }
