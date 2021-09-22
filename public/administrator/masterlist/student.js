@@ -192,6 +192,7 @@ $(document).on("click", ".sedit", function () {
             $('input[name="last_school_attended"]').val(
                 data.last_school_attended
             );
+            $('select[name="completer"]').val(data.completer);
             $('input[name="father_name"]').val(data.father_name);
             $('input[name="father_contact_no"]').val(data.father_contact_no);
             $('input[name="mother_name"]').val(data.mother_name);

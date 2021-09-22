@@ -126,6 +126,18 @@
                                     <label>Last school attended</label>
                                     <input type="text" class="form-control" name="last_school_attended" required>
                                 </div>
+
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Grade 10 Completer?</span>
+                                        </div>
+                                        <select name="completer" class="custom-select">
+                                            <option value="No">No</option>
+                                            <option value="Yes">Yes</option>
+                                        </select>
+                                    </div>
+                                </div>
                                 {{-- end student details here --}}
                             </div>
                             <div class="tab-pane fade mt-3" id="nav-profile">

@@ -249,6 +249,14 @@ Route::middleware(['auth:teacher', 'preventBackHistory'])->name('teacher.')->pre
     Route::post('class/monitor/dropped/{enrollment}', [EnrollmentController::class, 'dropped']);
     Route::get('grading', [TeacherController::class, 'grading'])->name('grading');
 
+    //assign subject
+    Route::get('assign', [TeacherController::class, 'assign'])->name('class.assign');
+    Route::post('assign/save', [TeacherController::class, 'assignStore']);
+    Route::delete('assign/delete/{assign}', [TeacherController::class, 'assignDelete']);
+    Route::get('assign/edit/{assign}', [TeacherController::class, 'assignEdit']);
+    Route::get('assign/list/{section}', [TeacherController::class, 'assignList']);
+
+
     // subject Teacher
     Route::get('grading', [TeacherController::class, 'grading'])->name('grading');
     Route::get('grading/load/subject', [TeacherController::class, 'loadMySection']);

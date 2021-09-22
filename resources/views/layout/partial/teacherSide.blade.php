@@ -10,6 +10,12 @@
                 Class Monitor</span>
         </a>
     </li>
+    <li class="{{ request()->is('teacher/my/class/assign')?'active':'' }}">
+        <a class="nav-link" href="{{ route('teacher.class.assign') }}">
+            <i class="fas fa-book-reader"></i>
+            <span>Assign Subject</span>
+        </a>
+    </li>
     @endif
     <li class="menu-header">Data Entry</li>
     <li class="{{ request()->is('teacher/my/grading')?'active':'' }}"><a class="nav-link"

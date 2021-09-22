@@ -15,10 +15,10 @@
                             <div class="form-row mb-2">
                                 <div class="col-1">
                                     <select name="grade_level" class="custom-select" required>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
+                                        <option value="7">Grade 7</option>
+                                        <option value="8">Grade 8</option>
+                                        <option value="9">Grade 9</option>
+                                        <option value="10">Grade 10</option>
                                     </select>
                                 </div>
                                 <div class="col-2">

@@ -44,10 +44,10 @@ class StudentController extends Controller
             'date_of_birth' => $request->date_of_birth,
             'student_contact' => $request->student_contact,
             'gender' => $request->gender,
-            'region' => empty($request->region) ? $request->region : $dataret->region,
-            'province' => empty($request->province) ? $request->province : $dataret->province,
-            'city' => empty($request->city) ? $request->city : $dataret->city,
-            'barangay' => empty($request->barangay) ? $request->barangay : $dataret->barangay,
+            'region' => $request->region ?? $dataret->region,
+            'province' => $request->province ?? $dataret->province,
+            'city' => $request->city ?? $dataret->city,
+            'barangay' => $request->barangay ?? $dataret->barangay,
             'last_school_attended' => $request->last_school_attended,
             'last_schoolyear_attended' => $request->last_schoolyear_attended,
             'isbalik_aral' => !empty($request->last_schoolyear_attended) ? 'Yes' : 'No',
@@ -61,6 +61,7 @@ class StudentController extends Controller
             'orig_password' => empty($dataret->orig_password) ? Crypt::encrypt("pnhs") : $dataret->orig_password,
             'password' => empty($dataret->password) ? Hash::make("pnhs") : $dataret->password,
             'student_status' => null,
+            'completer' => $request->completer,
         ]);
     }
 
