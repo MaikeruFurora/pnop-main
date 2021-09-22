@@ -24,7 +24,7 @@
                                         <select name="subject_id" class="custom-select">
                                             <option value=""></option>
                                             @foreach ($subjects as $item)
-                                            <option value="{{ $item->id }}">[{{ $item->subject_code }}] -
+                                            <option value="{{ $item->id }}">[ {{ $item->subject_code }} ] -
                                                 {{ $item->descriptive_title }}</option>
                                             @endforeach
                                         </select>
