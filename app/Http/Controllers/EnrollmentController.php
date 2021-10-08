@@ -115,7 +115,7 @@ class EnrollmentController extends Controller
     public function store(Request $request)
     {
 
-        if (Auth::user()->chairman->grade_level == 7) {
+        if (Auth::user()->chairman_info->grade_level == 7) {
             $student = $this->storeStudenRequest($request);
             $enrolled = Enrollment::create([
                 'student_id' => $student->id,
@@ -216,7 +216,7 @@ class EnrollmentController extends Controller
             Grade::where('student_id', $enroll->student_id)->whereIn('subject_id', [$subject->id])->delete();
         }
         Enrollment::find($enrollment)->delete();
-        if (Auth::user()->chairman->grade_level == 7) {
+        if (Auth::user()->chairman_info->grade_level == 7) {
             Student::where('id', $enroll->student_id)->delete();
             Student::where('id', $enroll->student_id)->withTrashed()->first()->forceDelete();
         }
@@ -225,7 +225,7 @@ class EnrollmentController extends Controller
     public function checkLRN($lrn, $curriculum, $status)
     {
 
-        if (Auth::user()->chairman->grade_level == 7) {
+        if (Auth::user()->chairman_info->grade_level == 7) {
             //grade 7 only
             $isLRN = Student::where('roll_no', $lrn)->exists();
             if ($isLRN) {
@@ -293,7 +293,7 @@ class EnrollmentController extends Controller
             Section::select('sections.section_name', 'sections.id')
                 ->join('school_years', 'sections.school_year_id', 'school_years.id')
                 ->where('school_years.status', 1)
-                ->where("grade_level", auth()->user()->chairman->grade_level)
+                ->where("grade_level", auth()->user()->chairman_info->grade_level)
                 ->where("class_type", $curriculum)
                 ->get()
         );

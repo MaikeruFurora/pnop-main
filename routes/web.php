@@ -36,9 +36,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::get('/', function(){
+    return view('welcome');
+});
+
 // Auth route
 Route::middleware(['guest:web', 'guest:teacher', 'guest:student', 'preventBackHistory'])->name('auth.')->group(function () {
-    Route::get('/', [AuthController::class, 'login'])->name('login');
+    Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::post('login/post', [AuthController::class, 'login_post'])->name('login_post');
 });
 
@@ -96,6 +100,7 @@ Route::middleware(['auth:web', 'preventBackHistory'])->name('admin.')->prefix('a
     Route::delete('holiday/delete/{holiday}', [AppointmentController::class, 'holidayDelete']);
     Route::get('appointment/list/{month}', [AppointmentController::class, 'getAvailAppoint']);
     Route::get('appointment/list/selected/{selectedDate}', [AppointmentController::class, 'selectedDate']);
+    Route::get('appointment/print/report/{dateSelected}', [AppointmentController::class, 'printReport']);
 
     // teacher-route
     Route::get('teacher', [AdminController::class, 'teacher'])->name('teacher');
@@ -263,6 +268,11 @@ Route::middleware(['auth:teacher', 'preventBackHistory'])->name('teacher.')->pre
     Route::get('grading/load/student/{section}/{subject}', [TeacherController::class, 'loadMyStudent']);
     Route::post('grade/student/now', [GradeController::class, 'gradeStudentNow']);
 
+     // Certificate
+     Route::get('certificate', [TeacherController::class, 'certificate'])->name('certificate');
+     Route::get('certificate/load/student', [TeacherController::class, 'loadMyEnrolledStudent']);
+     Route::get('certificate/load/certificate/{student}', [TeacherController::class, 'loadMyCertificate']);
+     
     // export file
     Route::get('export/excel/{format}/{status}/{curriculum}/{grade_level}', [ExportController::class, 'exportNewEnrollee']);
 });

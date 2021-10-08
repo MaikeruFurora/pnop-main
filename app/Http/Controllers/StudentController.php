@@ -147,16 +147,18 @@ class StudentController extends Controller
     public function enrollment()
     {
         $dataArr = array();
-        $ifexist = Enrollment::join('students', 'enrollments.student_id', 'students.id')
+        $ifexist = Enrollment::select('enrollments.enroll_status', 'enrollments.action_taken', 'section_name', 'enrollments.grade_level')
+            ->join('students', 'enrollments.student_id', 'students.id')
             ->leftjoin('sections', 'enrollments.section_id', 'sections.id')
             ->join('school_years', 'enrollments.school_year_id', 'school_years.id')
             ->where('school_years.status', 1)
             ->where('students.id', Auth::user()->id)
             ->first();
-
         if ($ifexist) {
             $dataArr['status'] = $ifexist->enroll_status;
             $dataArr['action_taken'] = $ifexist->action_taken;
+            $dataArr['section'] = $ifexist->section_name;
+            $dataArr['grade_level'] = 'Grade ' . $ifexist->grade_level;
         } else {
             $dataArr['status'] = 'Ongoing';
             $dataArr['action_taken'] = 'None';
@@ -164,7 +166,7 @@ class StudentController extends Controller
         $eStatus = $this->enrollStatus();
         return view('student/enrollment', compact('eStatus', 'dataArr'));
     }
-
+    
     public function checkSubjectBalance(Student $student)
     {
         return Grade::where('student_id', $student->id)->WhereNull('avg')->orWhere('avg', '')->get()->count();
@@ -174,7 +176,7 @@ class StudentController extends Controller
     {
         $countFail =  BackSubject::where('back_subjects.student_id', $request->id)->where('remarks', 'none')->get();
         $action_taken = $countFail->count() == 0 ? 'Promoted' : ($countFail->count() < 3 ? 'Partialy Promoted' : 'Retained');
-        $grade_level = Enrollment::select('grade_level')->where('student_id', $request->id)->latest()->first();
+        $studInfo = Enrollment::select('grade_level', 'curriculum')->where('student_id', $request->id)->latest()->first();
 
         if ($action_taken == 'Retained') { //if student retained in year level means this is backsubject will reset in grade level
             BackSubject::where('student_id', $request->id)->where('grade_level', $countFail[0]->grade_level)->delete();
@@ -183,11 +185,13 @@ class StudentController extends Controller
         return Enrollment::create([
             'student_id' => $request->id,
             // 'section_id' => $request->section_id,
-            'grade_level' => $countFail->count() >= 3 ? $countFail[0]->grade_level : ($grade_level->grade_level + 1),
+            'grade_level' => $countFail->count() >= 3 ? $countFail[0]->grade_level : ($studInfo->grade_level + 1),
             'school_year_id' => Helper::activeAY()->id,
             'date_of_enroll' => date("d/m/Y"),
             'action_taken' => $action_taken,
             'enroll_status' => 'Pending',
+            'curriculum' => $studInfo->curriculum,
+            'student_type' => ($studInfo->grade_level + 1) <= 10 ? 'JHS' : null,
             'state' => 'Old',
         ]);
     }

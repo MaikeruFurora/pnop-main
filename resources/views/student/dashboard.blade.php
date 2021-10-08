@@ -3,25 +3,58 @@
 <section class="section">
     <div class="section-body">
         <div class="col-lg-12 mt-3 mb-0">
-            <div class="row">
-                <div class="col-lg-2">
-                    <p><b>Enrollment Status:</b>
-                        @if (empty($enrolledData->enroll_status))
+            <div class="btn-group mb-2" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-info" >
+                    Enrollment:@if (empty($enrolledData->enroll_status))
+                    <span class="badge badge-warning">Ongoing</span>
+                    @else
+                    <span class="badge 
+                    @if ($enrolledData->enroll_status=='Pending')
+                    badge-warning
+                    @else
+                     badge-success    
+                    @endif">{{ $enrolledData->enroll_status }}</span>
+                    @endif
+                </button>
+                <button type="button" class="btn btn-info" >
+                    &nbsp;&nbsp;&nbsp; Section: @if (empty($enrolledData->enroll_status) ||
+                    $enrolledData->enroll_status=='Pending')
+                    <span class="badge badge-warning">N/A</span>
+                    @else
+                    <span class="badge badge-success">{{ $enrolledData->section_name }}</span>
+                    @endif
+                    &nbsp;&nbsp;&nbsp;
+                </button>
+              </div>
+            {{-- <div class="row">
+                <div class="col-lg-2 col-md-12 col-sm-12 mb-2">
+                    <button type="button" class="btn btn-info" disabled>
+                        Enrollment:@if (empty($enrolledData->enroll_status))
                         <span class="badge badge-warning">Ongoing</span>
                         @else
-                        <span class="badge badge-info">{{ $enrolledData->enroll_status }}</span>
+                        <span class="badge 
+                        @if ($enrolledData->enroll_status=='Pending')
+                        badge-warning
+                        @else
+                         badge-info    
+                        @endif">{{ $enrolledData->enroll_status }}</span>
                         @endif
-                    </p>
+                    </button>
+
                 </div>
-                <div class="col-lg-2">
-                    <p> <b>Section:</b>
-                        @if (empty($enrolledData->section_name))
+                <div class="col-lg-2 col-md-12 col-sm-12 mb-2">
+                    <button type="button" class="btn btn-info" >
+                        &nbsp;&nbsp;&nbsp; Section: @if (empty($enrolledData->enroll_status) ||
+                        $enrolledData->enroll_status=='Pending')
                         <span class="badge badge-warning">N/A</span>
                         @else
-                        <span class="badge badge-info"> {{ $enrolledData->section_name }}</span></p>
-                    @endif
+                        <span class="badge badge-success">{{ $enrolledData->section_name }}</span>
+                        @endif
+                        &nbsp;&nbsp;&nbsp;
+                    </button>
+
                 </div>
-            </div>
+            </div> --}}
         </div>
         <div class="col-12 mb-4">
             <div class="hero text-white hero-bg-image"
