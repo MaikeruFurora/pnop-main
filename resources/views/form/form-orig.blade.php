@@ -217,7 +217,7 @@
                                                         <input type="hidden" name="province" id="">
                                                     </div>
                                                     <div class="form-group col-md-3">
-                                                        <label>Town</label>
+                                                        <label>Municipality</label>
                                                         <select name="city_text" id="city" class="custom-select"
                                                             required>
                                                             {{-- <option value="city"></option> --}}
