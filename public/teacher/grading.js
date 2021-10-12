@@ -151,19 +151,76 @@ let myClassTable = (section_id, subject_id) => {
     });
 };
 
+
+$("#btnImport").hide();
+$(".btnDownload").hide();
 $("select[name='filterMyLoadSection']").on("change", function () {
     let containID = $(this).val().split("_");
     let section_id = containID[0];
     let subject_id = containID[1];
     if ($(this).val() != "") {
         myClassTable(section_id, subject_id);
+        $(".btnDownload").show();
+        $("#btnImport").show();
     } else {
+        $(".btnDownload").hide();
+        $("#btnImport").hide();
         $("#gradingTable").html(`
         <tr>
         <td colspan="7" class="text-center">No data available</td>
     </tr>`);
     }
 });
+
+$("#btnImport").on('click', function () {
+    $("#exampleModalCenter").modal("show") 
+ });
+ 
+ $(".clickCancel").on('click', function () {
+     $('input[name="file"]').val("")
+ });
+ 
+ $(".btnDownload").on('click', function () {
+     let containID = $("select[name='filterMyLoadSection']").val().split("_");
+     let section_id = containID[0];
+     let subject_id = containID[1];
+     window.open(`export/grade/${section_id}/${subject_id}`,
+         '_target')
+ });
+
+
+ $("#importForm").submit(function (e) {
+    e.preventDefault()
+    let containID = $("select[name='filterMyLoadSection']").val().split("_");
+    let section_id = containID[0];
+    let subject_id = containID[1];
+    $.ajax({
+        url: "import/grade/"+section_id+"/"+subject_id,
+        type: "POST",
+        data: new FormData(this),
+        processData: false,
+        contentType: false,
+        cache: false,
+        beforeSend: function () {
+            $(".btnImportNow").html(
+                `Importing...  <div class="spinner-border spinner-border-sm" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+                    `
+            );
+        },
+    }).done(function (data) {
+        $('input[name="file"]').val("")
+        $(".btnImportNow").html('Import Now')
+        let containID = $("select[name='filterMyLoadSection']").val().split("_");
+        let section_id = containID[0];
+        let subject_id = containID[1];
+        myClassTable(section_id, subject_id);
+    }).fail(function (jqxHR, textStatus, errorThrown) {
+         $(".btnImportNow").html('Import Now')
+        console.log(jqxHR, textStatus, errorThrown);
+    });
+})
 
 let selectedValue;
 $(document).on("mouseup", "input[name='inGrade']", function () {

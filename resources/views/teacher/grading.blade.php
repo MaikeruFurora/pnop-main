@@ -16,6 +16,7 @@
     }
 </style>
 @endsection
+@include('teacher/partial/importModal')
 @section('content')
 <div class="modal fade" id="fillGradeInPrevious" data-backdrop="static" data-keyboard="false" tabindex="-1"
     aria-labelledby="fillGradeInPreviousLabel" aria-hidden="true">
@@ -51,13 +52,20 @@
         <div class="card">
             <div class="card-body pb-1">
 
-                <div class="">
-                    <div class="float-left">
-                        <span style="font-size: 15px" class="txtSubjectName badge badge-warning pt-1 pb-1 mt-2"></span>
-                    </div>
-                    {{-- table-responsive--}}
+                <div class="float-left">
+                    <span style="font-size: 15px" class="txtSubjectName badge badge-warning pt-1 pb-1 mt-2"></span>
+                </div>
+                <div class="col-lg-1 float-left">
+                    <button type="button" class="btn btn-outline-primary btn-block" id="btnImport"><i
+                            class="fas fa-cloud-upload-alt"></i>&nbsp;Import
+                    </button>
+                </div>
+                <div class="col-lg-1 float-left">
+                    <button class="btn btn-outline-secondary btnDownload" type="button"><i
+                        class="fas fa-cloud-download-alt"></i>Template</button>
+                </div>
                     <table class="table  table-bordered table-hover" id="myClassTable" style="font-size: 14px">
-                        <thead class="bg-dark ">
+                        <thead class="bg-info">
                             <tr>
                                 <th class="text-white">Student name</th>
                                 <th class="text-center text-white" width="7%">1st</th>
@@ -69,13 +77,7 @@
                             </tr>
                         </thead>
                         <tbody></tbody>
-                        {{-- <tbody id="gradingTable">
-                            <tr>
-                                <td colspan="7" class="text-center">No data available</td>
-                            </tr>
-                        </tbody> --}}
                     </table>
-                </div>
             </div>
         </div>
     </div>
