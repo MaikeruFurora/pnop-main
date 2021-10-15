@@ -67,7 +67,7 @@ class GradingImport implements ToCollection,WithStartRow
                  'grades.second'=>$d2 ?? $data->second,
                  'grades.third'=>$d3 ?? $data->third,
                  'grades.fourth'=>$d4 ?? $data->fourth,
-                 'grades.avg'=>$d5 ?? $data->avg
+                 'grades.avg'=>(!empty($d5))? $d5 :((!empty($d1) && !empty($d2) && !empty($d3) && !empty($d4))? round(($d1+$d2+$d3+$d4)/4) : $data->avg)
              ]);
         
         }

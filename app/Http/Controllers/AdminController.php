@@ -61,8 +61,9 @@ class AdminController extends Controller
 
     public function enrollment()
     {
-
-        return view('administrator/enrollment/enrollment');
+        return view('administrator/enrollment/enrollment',[
+            'yearList'=>SchoolYear::all()
+        ]);
     }
     public function teacher()
     {

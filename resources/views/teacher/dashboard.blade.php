@@ -12,7 +12,7 @@
                 <h2>Welcome, {{ Auth::user()->fullname }}!</h2>
                 <p class="lead">You almost arrived, complete the information about your account.</p>
                 <div class="mt-4">
-                    <a href="#" class="btn btn-outline-white btn-lg btn-icon icon-left"><i class="far fa-user"></i>
+                    <a href="{{ route('teacher.profile') }}" class="btn btn-outline-white btn-lg btn-icon icon-left"><i class="far fa-user"></i>
                         Setup Profile</a>
                 </div>
             </div>

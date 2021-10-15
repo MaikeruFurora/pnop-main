@@ -3,6 +3,9 @@
     <li class="{{ request()->is('teacher/my/dashboard')?'active':'' }}"><a class="nav-link"
             href="{{ route('teacher.dashboard') }}"><i class="fas fa-cube"></i><span>Dashboard</span></a>
     </li>
+    <li class="{{ request()->is('teacher/my/profile')?'active':'' }}"><a class="nav-link"
+            href="{{ route('teacher.profile') }}"><i class="fas fa-user"></i><span>My Profile</span></a>
+    </li>
     @if (Auth::user()->section()->where('school_year_id', $activeAY->id)->exists())
     <li class="{{ request()->is('teacher/my/class/monitor')?'active':'' }}">
         <a class="nav-link" href="{{ route('teacher.class.monitor') }}">
@@ -19,7 +22,7 @@
     @endif
     <li class="menu-header">Data Entry</li>
     <li class="{{ request()->is('teacher/my/grading')?'active':'' }}"><a class="nav-link"
-            href="{{ route('teacher.grading') }}"><i class="fas fa-cube"></i><span>Grading</span></a>
+            href="{{ route('teacher.grading') }}"><i class="fas fa-users"></i><span>Grading</span></a>
     </li>
     @if (Auth::user()->chairman()->where('school_year_id', $activeAY->id)->exists())
     <li class="menu-header">Chairman Setting</li>

@@ -90,7 +90,7 @@ Route::middleware(['auth:web', 'preventBackHistory'])->name('admin.')->prefix('a
 
     // enrollment route
     Route::get('enrollment', [AdminController::class, 'enrollment'])->name('enrollment');
-    Route::get('enrollment/list/{level}', [EnrollmentController::class, 'masterList']);
+    Route::get('enrollment/list/{level}/{year}', [EnrollmentController::class, 'masterList']);
     Route::post('enrollment/status', [EnrollmentController::class, 'changeStatus']);
     Route::get('enrollment/export/by/level', [ExportController::class, 'exportMasterList']);
 
@@ -209,6 +209,8 @@ Route::middleware(['auth:web', 'preventBackHistory'])->name('admin.')->prefix('a
 Route::middleware(['auth:teacher', 'preventBackHistory'])->name('teacher.')->prefix('teacher/my/')->group(function () {
     Route::get('dashboard', [TeacherController::class, 'dashboard'])->name('dashboard');
 
+    Route::get('profile', [TeacherController::class, 'profile'])->name('profile');
+    
     // chairman-manage-section-route
     Route::get('section', [ChairmanController::class, 'section'])->name('section');
     Route::get('section/list', [ChairmanController::class, 'sectionList']);

@@ -36,8 +36,8 @@
                 <div class="col-lg-5 col-md-8">
                     <h2 class="section-title">Grading</h2>
                 </div>
-                <div class="col-lg-2 col-md-2 my-4">
-                    <div class="float-right ">
+                <div class="col-lg-2 col-md-2 mt-3">
+                    <div class="float-right">
 
                         <form class="form-inline ">
                             <label class="my-1 mr-2" for="filterLabel">Sections</label>

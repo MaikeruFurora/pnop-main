@@ -26,7 +26,7 @@ class EnrollmentController extends Controller
                 'school_enrollment_url' => $request->value == 'yes' ? true : false
             ]);
     }
-    public function masterList($level)
+    public function masterList($level,$year)
     {
         if ($level == "all") {
             $data = Enrollment::select(
@@ -41,7 +41,7 @@ class EnrollmentController extends Controller
                 ->join('students', 'enrollments.student_id', 'students.id')
                 ->leftjoin('sections', 'enrollments.section_id', 'sections.id')
                 ->join('school_years', 'enrollments.school_year_id', 'school_years.id')
-                ->where('school_years.status', 1)
+                ->where('school_years.id', $year)
                 ->get();
         } else {
             $data = Enrollment::select(
@@ -56,7 +56,8 @@ class EnrollmentController extends Controller
                 ->join('students', 'enrollments.student_id', 'students.id')
                 ->leftjoin('sections', 'enrollments.section_id', 'sections.id')
                 ->join('school_years', 'enrollments.school_year_id', 'school_years.id')
-                ->where('school_years.status', 1)
+                // ->where('school_years.status', 1)
+                ->where('school_years.id', $year)
                 ->where('enrollments.grade_level', $level)
                 ->get();
         }

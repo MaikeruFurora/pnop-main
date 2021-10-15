@@ -248,11 +248,15 @@ class ChairmanController extends Controller
                     "student_firstname",
                     "student_middlename",
                     "student_lastname",
+                    "req_psa",
+                    "req_grade",
+                    "req_goodmoral",
                     "isbalik_aral",
                     "last_schoolyear_attended",
                     "roll_no",
                     "student_contact",
-                    "section_name"
+                    "section_name",
+                    DB::raw("CONCAT(student_lastname,', ',student_firstname,' ', student_middlename) AS fullname")
                 )
                     ->join('students', 'enrollments.student_id', 'students.id')
                     ->leftjoin('sections', 'enrollments.section_id', 'sections.id')
@@ -272,10 +276,14 @@ class ChairmanController extends Controller
                 "student_middlename",
                 "student_lastname",
                 "isbalik_aral",
+                "req_psa",
+                "req_grade",
+                "req_goodmoral",
                 "last_schoolyear_attended",
                 "roll_no",
                 "student_contact",
-                "section_name"
+                "section_name",
+                 DB::raw("CONCAT(student_lastname,', ',student_firstname,' ', student_middlename) AS fullname")
             )
                 ->join('students', 'enrollments.student_id', 'students.id')
                 ->leftjoin('sections', 'enrollments.section_id', 'sections.id')
@@ -290,10 +298,14 @@ class ChairmanController extends Controller
                 "student_middlename",
                 "student_lastname",
                 "isbalik_aral",
+                "req_psa",
+                "req_grade",
+                "req_goodmoral",
                 "last_schoolyear_attended",
                 "roll_no",
                 "student_contact",
-                "section_name"
+                "section_name",
+                 DB::raw("CONCAT(student_lastname,', ',student_firstname,' ', student_middlename) AS fullname")
             )
                 ->join('students', 'enrollments.student_id', 'students.id')
                 ->leftjoin('sections', 'enrollments.section_id', 'sections.id')

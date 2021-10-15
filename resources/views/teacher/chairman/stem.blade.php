@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="{{ asset('css/datatable/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('css/datatable/dataTables.checkboxes.css') }}">
 <link rel="stylesheet" href="{{ asset('css/select2/select2.min.css') }}">
+<link rel="stylesheet" href="{{ asset('css/chocolat.css') }}">
 @endsection
 @section('content')
 <!-- Modal -->
@@ -11,6 +12,7 @@
 @include('teacher/chairman/partial/setSectionForm')
 @include('teacher/chairman/partial/exportExcel')
 @include('teacher/chairman/partial/listEnrolled')
+@include('teacher/chairman/partial/viewRequirement')
 {{-- Modal end --}}
 <section class="section">
 
@@ -58,6 +60,7 @@
                                         <th width="10%">Balik Aral</th>
                                         <th width="10%">Action Taken</th>
                                         <th width="8%">State</th>
+                                        <th width="10%">Requirements</th>
                                         <th width="13%">Action</th>
                                     </tr>
                                 </thead>
@@ -85,6 +88,7 @@
 <script src="{{ asset('js/datatable/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('js/datatable/dataTables.checkboxes.min.js') }}"></script>
 <script src="{{ asset('js/select2/select2.full.min.js') }}"></script>
+<script src="{{ asset('js/jquery.chocolat.min.js') }}"></script>
 <script src="{{ asset('teacher/chairman/enroll.js') }}"></script>
 <script src="{{ asset('teacher/chairman/stem.js') }}"></script>
 @endsection

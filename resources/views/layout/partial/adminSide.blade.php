@@ -42,6 +42,10 @@
     </li>
 
     <li class="menu-header">Management</li>
+    <li class="{{ request()->is('admin/my/chairman')?'active':'' }}">
+        <a class="nav-link" href="{{ route('admin.chairman') }}">
+            <i class="fas fa-user-shield"></i><span>Chairman</span></a>
+    </li>
     {{-- <li class="{{ request()->is('admin/my/strand')?'active':'' }}">
     <a class="nav-link" href="{{ route('admin.strand') }}">
         <i class="fas fa-dna"></i><span>Strand &amp; Track</span></a>
@@ -61,10 +65,6 @@
     <li class="{{ request()->is('admin/my/assign')?'active':'' }}">
         <a class="nav-link" href="{{ route('admin.assign') }}">
             <i class="fas fa-hands-helping"></i><span>Assign</span></a>
-    </li>
-    <li class="{{ request()->is('admin/my/chairman')?'active':'' }}">
-        <a class="nav-link" href="{{ route('admin.chairman') }}">
-            <i class="fas fa-user"></i><span>Chairman</span></a>
     </li>
 
     <li class="menu-header">Settings</li>

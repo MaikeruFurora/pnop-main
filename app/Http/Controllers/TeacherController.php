@@ -32,6 +32,10 @@ class TeacherController extends Controller
         return view('teacher/grading');
     }
 
+    public function profile()
+    {
+        return view('teacher/profile');
+    }
 
     public function loadMySection()
     {
