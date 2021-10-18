@@ -27,6 +27,7 @@ class EnrollmentExport implements FromCollection, ShouldAutoSize, WithMapping, W
                 ->where('enrollments.grade_level', $this->grade_level)
                 ->where('enrollments.school_year_id', Config::get('activeAY')->id)
                 ->where('students.curriculum', strtoupper($this->curriculum))
+                ->orderBy('students.curriculum','asc')
                 ->get();
         } else {
             $data = Enrollment::select('students.student_contact', 'students.mother_contact_no', 'students.father_contact_no', 'students.guardian_contact_no', DB::raw("CONCAT(student_lastname,', ',student_firstname,' ', student_middlename) AS fullname"))
@@ -35,6 +36,7 @@ class EnrollmentExport implements FromCollection, ShouldAutoSize, WithMapping, W
                 ->where('enrollments.grade_level', $this->grade_level)
                 ->where('enrollments.school_year_id', Config::get('activeAY')->id)
                 ->where('students.curriculum', strtoupper($this->curriculum))
+                ->orderBy('students.curriculum','asc')
                 ->get();
         }
         return $data;

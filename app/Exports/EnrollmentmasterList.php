@@ -19,6 +19,7 @@ class EnrollmentMasterList implements FromCollection, ShouldAutoSize, WithHeadin
         $data = Enrollment::join("students","enrollments.student_id","students.id")
         ->leftjoin('sections','enrollments.section_id','sections.id')
         ->where('enrollments.school_year_id', Config::get('activeAY')->id)
+        ->orderBy('students.curriculum','asc')
         ->get();
 
         return $data;

@@ -55,6 +55,7 @@ Route::get('done/{tracking}', [FormController::class, 'done'])->name('done');
 Route::get('form', [FormController::class, 'form'])->name('form');
 Route::post('form/save', [FormController::class, 'store']);
 Route::get('form/check/lrn/{lrn}', [FormController::class, 'checkLRN']);
+Route::get('done/download/form/{tracking_no}', [ExportController::class, 'exportEnrollmentForm'])->name('done.download');
 
 
 // Route::get('welcome', [FormSection::class, 'welcome'])->name('welcome');
@@ -290,6 +291,7 @@ Route::middleware(['auth:student', 'preventBackHistory'])->name('student.')->pre
     Route::get('dashboard', [StudentController::class, 'dashboard'])->name('dashboard');
     Route::get('profile', [StudentController::class, 'profile'])->name('profile');
     Route::post('student/save', [StudentController::class, 'store']);
+    Route::post('student/profile/save', [StudentController::class, 'storeProfileImage']);
     Route::get('grade', [StudentController::class, 'grade'])->name('grade');
     Route::get('grade/list/{level}/{section}', [StudentController::class, 'gradeList']);
     Route::get('level/list', [StudentController::class, 'levelList']);

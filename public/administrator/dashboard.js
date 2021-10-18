@@ -36,14 +36,14 @@ let loadData = () => {
 };
 loadData();
 
-let populationBySex = (data) => {
+let populationBySex = (data1,data2) => {
     var ctx = document.getElementById("myChart4").getContext("2d");
     var myChart = new Chart(ctx, {
         type: "pie",
         data: {
             datasets: [
                 {
-                    data: [data.Male, data.Female],
+                    data: [data2.Male, data1.Female],
                     backgroundColor: ["#191d21", "#63ed7a"],
                     label: "Dataset 1",
                 },
@@ -66,7 +66,7 @@ let loadDataSex = () => {
         dataType: "json",
     })
         .done(function (data) {
-            populationBySex(data[0]);
+            populationBySex(data[0],data[1]);
         })
         .fail(function (jqxHR, textStatus, errorThrown) {
             console.log(jqxHR, textStatus, errorThrown);

@@ -12,7 +12,7 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Employee ID</label>
                                 <input type="email" class="form-control" id="exampleInputEmail1"
-                                    value="{{ auth()->user()->roll_no }}">
+                                    value="{{ auth()->user()->roll_no }}" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">First name</label>
