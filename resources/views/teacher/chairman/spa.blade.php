@@ -41,7 +41,7 @@
                 <div class="card">
                     <div class="card-body">
 
-                        {{-- <div class="table-responsive"> --}}
+                        <div class="table-responsive">
 
                         <form id="massSectioningForm">
                             @include('teacher/chairman/partial/massSection')
@@ -74,7 +74,7 @@
                             </table>
                         </form>
 
-                        {{-- </div> --}}
+                        </div>
                     </div>
                 </div>
             </div>
