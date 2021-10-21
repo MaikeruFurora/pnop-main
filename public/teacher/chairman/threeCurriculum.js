@@ -1,3 +1,4 @@
+let current_curriculum = $('input[name="current_curriculum"]').val();
 let tableCurriculum = $("#tableCurriculum").DataTable({
     columnDefs: [
         {
