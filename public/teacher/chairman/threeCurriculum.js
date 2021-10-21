@@ -1,4 +1,4 @@
-let current_curriculum = $('input[name="current_curriculum"]').val();
+// let current_curriculum = $('input[name="current_curriculum"]').val();
 let tableCurriculum = $("#tableCurriculum").DataTable({
     columnDefs: [
         {
@@ -37,7 +37,7 @@ let tableCurriculum = $("#tableCurriculum").DataTable({
               </div>`,
     },
 
-    ajax: "table/list/" + current_curriculum,
+    ajax: "table/list/" + $('input[name="current_curriculum"]').val(),
     columns: [
         { data: "id" },
         { data: "tracking_no" },
