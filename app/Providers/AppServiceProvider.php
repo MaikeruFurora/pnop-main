@@ -30,8 +30,8 @@ class AppServiceProvider extends ServiceProvider
         if($this->app->environment('production')) {
             URL::forceScheme('https');
         }
-        // $aydb = SchoolYear::where('status', 1)->first();
-        // Config::set('activeAY', $aydb);
-        // View::share('activeAY', $aydb);
+        $aydb = SchoolYear::where('status', 1)->first();
+        Config::set('activeAY', $aydb);
+        View::share('activeAY', $aydb);
     }
 }
