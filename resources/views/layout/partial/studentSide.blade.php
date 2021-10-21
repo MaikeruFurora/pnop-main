@@ -25,10 +25,10 @@
     <li class="{{ request()->is('student/my/enrollment')?'active':'' }}"><a class="nav-link"
             href="{{ route('student.enrollment') }}"><i class="fas fa-box-tissue"></i><span>Enrollment</span></a>
     </li>
-    <li class="menu-header">Report</li>
+    {{-- <li class="menu-header">Report</li>
     <li class="{{ request()->is('student/my/report')?'active':'' }}"><a class="nav-link"
             href="{{ route('student.report') }}"><i class="fas fa-bug"></i><span>Report</span></a>
-    </li>
+    </li> --}}
     <li><a class="nav-link" href="{{ route('auth.logout') }}"
             onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
                 class="fas fa-sign-out-alt text-danger"></i><span class="text-danger">Logout</span></a>

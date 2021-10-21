@@ -67,7 +67,7 @@
                                                     {{ Auth::user()->backsubject()->where('back_subjects.remarks','none')->get()->count() }}
                                                 </span><br>
                                                 <small>* Note
-                                                    <em> Must enroll in remedial classes for learning areas with
+                                                    <em> Must take a remedial classes for learning areas with
                                                         failing mark
                                                         and obtain at least 75 or higher</em>
                                                 </small>

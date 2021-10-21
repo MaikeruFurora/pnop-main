@@ -105,6 +105,9 @@ let tableCurriculum = $("#tableCurriculum").DataTable({
         {
             data: null,
             render: function (data) {
+               if (data.state=="Old") {
+                   return `-------`;
+               } else {
                 if (data.req_grade != null || data.req_goodmoral != null || data.req_psa != null) {
                     
                     return `
@@ -113,6 +116,7 @@ let tableCurriculum = $("#tableCurriculum").DataTable({
                     } else {
                     return '--- None ---';
                 }
+               }
             }
         },
         {

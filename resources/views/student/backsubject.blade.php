@@ -13,6 +13,11 @@
                                 class="txtSubjectName badge badge-warning pt-1 pb-1 mt-2"></span>
                         </div>
                         {{-- table-responsive--}}
+                        <p>* Note
+                            <em> Must take a remedial classes for learning areas with
+                                failing mark
+                                and obtain at least 75 or higher</em>
+                        </p>
                         <table class="table  table-bordered table-hover" id="myClassTable" style="font-size: 14px">
                             <thead class="bg-info ">
                                 <tr>

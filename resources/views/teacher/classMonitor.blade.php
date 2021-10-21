@@ -10,7 +10,7 @@
         <div class="card">
             <div class="card-body pb-1">
 
-                <div class="">
+                <div class="table-responsive">
                     {{-- table-responsive--}}
                     <table class="table table-striped" id="myClassTable" style="font-size: 11px">
                         <thead>

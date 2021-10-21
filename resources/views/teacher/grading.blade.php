@@ -55,7 +55,7 @@
                 <div class="float-left">
                     <span style="font-size: 15px" class="txtSubjectName badge badge-warning pt-1 pb-1 mt-2"></span>
                 </div>
-                <div class="col-lg-1 float-left">
+                {{-- <div class="col-lg-1 float-left">
                     <button type="button" class="btn btn-outline-primary btn-block" id="btnImport"><i
                             class="fas fa-cloud-upload-alt"></i>&nbsp;Import
                     </button>
@@ -63,7 +63,7 @@
                 <div class="col-lg-1 float-left">
                     <button class="btn btn-outline-secondary btnDownload" type="button"><i
                         class="fas fa-cloud-download-alt"></i>Template</button>
-                </div>
+                </div> --}}
                     <table class="table  table-bordered table-hover" id="myClassTable" style="font-size: 14px">
                         <thead class="bg-info">
                             <tr>

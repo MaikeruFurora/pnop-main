@@ -66,6 +66,7 @@
                                 </thead>
                                 <tbody>
                                     <tr>
+                                        {{-- <td colspan="8" class="text-center">No available data</td> --}}
                                         <td colspan="9" class="text-center">No available data</td>
                                     </tr>
                                 </tbody>

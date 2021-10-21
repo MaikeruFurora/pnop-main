@@ -105,13 +105,17 @@ let tableCurriculum = $("#tableCurriculum").DataTable({
         {
             data: null,
             render: function (data) {
-                if (data.req_grade != null || data.req_goodmoral != null || data.req_psa != null) {
-                    
-                    return `
-                        <button type="button" class="btn btn-warning btn-sm pt-0 pb-0 pl-3 pr-3 btnRequirement" value="${data.fullname + "^" + data.req_grade + '^' + data.req_goodmoral + '^' + data.req_psa}"><i class="fas fa-file-import"></i> view</button>
-                      `;
-                    } else {
-                    return '--- None ---';
+                if (data.state=="Old") {
+                    return `-------`;
+                } else {
+                 if (data.req_grade != null || data.req_goodmoral != null || data.req_psa != null) {
+                     
+                     return `
+                         <button type="button" class="btn btn-warning btn-sm pt-0 pb-0 pl-3 pr-3 btnRequirement" value="${data.fullname + "^" + data.req_grade + '^' + data.req_goodmoral + '^' + data.req_psa}"><i class="fas fa-file-import"></i> view</button>
+                       `;
+                     } else {
+                     return '--- None ---';
+                 }
                 }
             }
         },

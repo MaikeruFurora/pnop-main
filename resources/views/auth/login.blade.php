@@ -90,7 +90,7 @@
                                     <div class="text-job text-black">-- OR --</div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-6">
+                                    <div class="col-6 /appoint/register">
                                         <a href="/appoint/register" class="btn btn-block text-black">
                                             <span class="fas fa-calendar-check"></span><br> Get Appointment
                                         </a>

@@ -31,6 +31,6 @@ class ExportController extends Controller
     }
 
     public function exportEnrollmentForm($tracking_no){
-        return Excel::download(new FormExport($tracking_no), 'Enrollment-Masterlist-'.date("F_d_Y").'.pdf');
+        return Excel::download(new FormExport($tracking_no), 'Enrollment-Form-'.date("F_d_Y").'.pdf');
     }
 }

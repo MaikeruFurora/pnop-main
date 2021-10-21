@@ -15,7 +15,7 @@
                         <select id="myFormat" class="form-control">
                             <option value=".xlsx">XLSX</option>
                             <option value=".xls">XLS</option>
-                            <option value=".csv">CSV</option>
+                            {{-- <option value=".csv">CSV</option> --}}
                         </select>
                     </div>
                     <div class="form-group">
