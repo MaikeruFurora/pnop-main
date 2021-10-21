@@ -1,3 +1,4 @@
+alert($('input[name="current_curriculum"]').val())
 let tableCurriculum = $("#tableCurriculum").DataTable({
     columnDefs: [
         {
@@ -149,9 +150,7 @@ let tableCurriculum = $("#tableCurriculum").DataTable({
     ],
 });
 
-tableCurriculum.ajax
-    .url("table/list/" + current_curriculum)
-    .load();
+tableCurriculum.ajax.url("table/list/" + current_curriculum).load();
 $('select[name="selectBarangay"]').on("change", function () {
     $(this).val() != ""
         ? tableCurriculum.ajax
