@@ -7,15 +7,15 @@
     <title>PNOP &mdash; Login</title>
 
     <!-- General CSS Files -->
-    <link rel="stylesheet" href="{{ secure_asset('css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ secure_asset('fontawesome/css/all.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('fontawesome/css/all.css') }}">
 
     <!-- CSS Libraries -->
     {{-- <link rel="stylesheet" href="../node_modules/bootstrap-social/bootstrap-social.css"> --}}
 
     <!-- Template CSS -->
-    <link rel="stylesheet" href="{{ secure_asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ secure_asset('css/components.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/components.css') }}">
     <style>
         .center-screen {
             display: flex;
@@ -50,7 +50,7 @@
                                             <h4>Login</h4>
                                         </div>
                                         <div class=" float-right">
-                                            <img class="img-fluid m-0 p-0" src="{{ secure_asset('image/logo/logo.png') }}"
+                                            <img class="img-fluid m-0 p-0" src="{{ asset('image/logo/logo.png') }}"
                                                 alt="PNHS LOGO" width="50px">
                                         </div>
                                     </div>
@@ -113,20 +113,20 @@
     </div>
 
     <!-- General JS Scripts -->
-    <script src="{{ secure_asset('js/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ secure_asset('js/popper.min.js') }}">
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('js/popper.min.js') }}">
     </script>
-    <script src="{{ secure_asset('js/bootstrap.min.js') }}">
+    <script src="{{ asset('js/bootstrap.min.js') }}">
     </script>
-    <script src="{{ secure_asset('js/jquery.nicescroll.min.js') }}"></script>
-    <script src="{{ secure_asset('js/moment.min.js') }}"></script>
-    <script src="{{ secure_asset('js/stisla.js') }}"></script>
+    <script src="{{ asset('js/jquery.nicescroll.min.js') }}"></script>
+    <script src="{{ asset('js/moment.min.js') }}"></script>
+    <script src="{{ asset('js/stisla.js') }}"></script>
 
     <!-- JS Libraies -->
 
     <!-- Template JS File -->
-    <script src="{{ secure_asset('js/scripts.js') }}"></script>
-    <script src="{{ secure_asset('js/custom.js') }}"></script>
+    <script src="{{ asset('js/scripts.js') }}"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
 
     <!-- Page Specific JS File -->
 </body>
