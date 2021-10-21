@@ -152,7 +152,7 @@ setTimeout(() => {
         .val()
         .split("_");
     gradeTable(val[0], val[1]);
-}, 1000);
+}, 5000);
 
 $("select[name='filterGradeLevel']").on("change", function () {
     let data = $(this).val().split("_");
