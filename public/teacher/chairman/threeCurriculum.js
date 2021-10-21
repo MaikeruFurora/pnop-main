@@ -1,5 +1,3 @@
-alert($('input[name="current_curriculum"]').val())
-
 let tableCurriculum = $("#tableCurriculum").DataTable({
     columnDefs: [
         {
