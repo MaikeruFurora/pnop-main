@@ -26,17 +26,16 @@ let tableAssign = (section) => {
                 <td>${val.descriptive_title}</td>
                     <td>${val.teacher_name}</td>
                     <td>
-                        <button type="button" class="btn btn-sm btn-warning sdelete deleteAssign btnDelete_${
-                            val.id
-                        }  pt-0 pb-0 pl-2 pr-2" id="${val.id}">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-sm btn-warning sdelete deleteAssign btnDelete_${val.id}  pt-0 pb-0 pl-3 pr-3" id="${val.id}">
                         <i class="fas fa-user-times"></i>
                         </button>
-                        &nbsp;&nbsp;
                         <button type="button" class="btn btn-sm btn-info editAssign  editA_${
                             val.id
-                        } pt-0 pb-0 pl-2 pr-2" id="${val.id}">
+                        } pt-0 pb-0 pl-3 pr-3" id="${val.id}">
                         <i class="fas fa-edit"></i>
                         </button>
+                        </div>
                     </td>
                 </tr>
             `;

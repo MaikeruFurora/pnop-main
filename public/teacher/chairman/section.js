@@ -43,10 +43,10 @@ const sectionTable = () => {
                                 <div class="btn-group" role="group" aria-label="Basic example">
                                     <button type="button" style="font-size:9px" class="btn btn-sm btn-info pl-3 pr-3 editSection editSec_${
                                         val.id
-                                    }" id="${val.id}">Edit</button>
-                                    <button type="button" style="font-size:9px" class="btn btn-sm btn-danger deleteSection deleteSec_${
+                                    }" id="${val.id}"><i class="fas fa-edit"></i></button>
+                                    <button type="button" style="font-size:9px" class="btn btn-sm btn-danger pl-3 pr-3 deleteSection deleteSec_${
                                         val.id
-                                    }" id="${val.id}">Delete</button>
+                                    }" id="${val.id}"><i class="far fa-trash-alt"></i></button>
                                 </div>
                             </td>
                         </tr>
@@ -147,28 +147,35 @@ $("input[name='section_name']").on("blur", function () {
  */
 $(document).on("click", ".deleteSection", function () {
     let id = $(this).attr("id");
+    $("#studentEnrollDeleteMOdal").modal("show")
+    $(".deleteYes").val(id)
+   
+});
+
+$(".deleteYes").on('click', function () {
     $.ajax({
-        url: "section/delete/" + id,
+        url: "section/delete/" + $(this).val(),
         type: "DELETE",
         data: { _token: $('input[name="_token"]').val() },
         beforeSend: function () {
-            $(".deleteSec_" + id).html(`
+            $(".deleteYes").html(`
             <div class="spinner-border spinner-border-sm" role="status">
                 <span class="sr-only">Loading...</span>
             </div>`);
         },
     })
         .done(function (response) {
-            $(".deleteSec_" + id).text("Delete");
+            $(".deleteYes").text("Delete");
             getToast("success", "Success", "deleted one record");
             sectionTable($("#selectedGL").val());
+            $("#studentEnrollDeleteMOdal").modal("hide")
         })
         .fail(function (jqxHR, textStatus, errorThrown) {
             console.log(jqxHR, textStatus, errorThrown);
             getToast("error", "Eror", errorThrown);
-            $(".deleteSec_" + id).text("Delete");
+            $(".deleteYes").text("Delete");
         });
-});
+})
 
 /**
  *
@@ -191,7 +198,7 @@ $(document).on("click", ".editSection", function () {
         .done(function (data) {
             $(".cancelSection").show();
             // console.log(data.id);
-            $(".editSec_" + id).html("Edit");
+            $(".editSec_" + id).html(`<i class="fas fa-edit"></i>`);
             $(".btnSaveSection").html("Update");
             $("input[name='id']").val(data.id);
             $("input[name='section_name']").val(data.section_name);

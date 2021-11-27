@@ -10,7 +10,7 @@
 <section class="section">
     <div class="section-body">
         <h2 class="section-title">Academic Year</h2>
-            <div class="card">
+            <div class="card card-primary">
                 <div class="card-body">
                     <form id="schoolYearForm">@csrf
                         <input type="hidden" name="id">

@@ -6,7 +6,7 @@
         <h2 class="section-title">Manage User</h2>
         <div class="row">
             <div class="col-8 col-lg-8 col-md-8">
-                <div class="card">
+                <div class="card card-primary">
                     <div class="card-body">
                         <table class="table">
                             <thead>
@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div class="col-4 col-lg-4 col-md-4">
-                <div class="card">
+                <div class="card card-primary">
                     <div class="card-body">
                         <form class="mt-3" id="userForm">@csrf
                             <input type="hidden" name="id">

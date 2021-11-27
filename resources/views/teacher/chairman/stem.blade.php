@@ -13,6 +13,8 @@
 @include('teacher/chairman/partial/exportExcel')
 @include('teacher/chairman/partial/listEnrolled')
 @include('teacher/chairman/partial/viewRequirement')
+@include('teacher/chairman/partial/enrollAssignSection')
+@include('teacher/chairman/partial/deleteModal')
 {{-- Modal end --}}
 <section class="section">
 
@@ -42,7 +44,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class="row sectionListAvailable mb-3"></div>
 
-                <div class="card">
+                <div class="card card-info">
                     <div class="card-body">
                         <div class="table-responsive">
 

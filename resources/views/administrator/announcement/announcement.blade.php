@@ -10,7 +10,7 @@
         <h2 class="section-title">Announcement</h2>
         <div class="row">
             <div class="col-lg-6">
-                <div class="card">
+                <div class="card card-primary">
                     <div class="card-header">
                         <h4>Create post</h4>
                     </div>
@@ -44,7 +44,7 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="card">
+                <div class="card card-primary">
                     <div class="card-header">
                         <h4>Post announcement</h4>
                     </div>

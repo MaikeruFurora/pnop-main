@@ -39,7 +39,7 @@
             </div>
         </div>
 
-        <div class="card">
+        <div class="card card-primary">
             <div class="card-body">
 
                 <div class="">

@@ -16,12 +16,15 @@
     return round($final / 4)<75?'Failed':'Passed'; } default: return false; break; } } @endphp <div
         class="section-body">
         <h2 class="section-title">
-            Student: {{ $student->student_lastname.', '.$student->student_firstname.' '.$student->student_middlename }}
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <a href="{{ url()->previous() }}" class="btn btn-info"><i class="fa fa-arrow-left"></i> Back</a>
+                <button type="button" class="btn btn-default">{{ $student->student_lastname.', '.$student->student_firstname.' '.$student->student_middlename }}</button>
+            </div>
         </h2>
         <div class="col-12">
             <div class="row">
                 <div class="col-6 col-lg-6 col-md-6 col-sm-12">
-                    <div class="card ">
+                    <div class="card card-primary">
                         <div class="card-body">
                             <table class="table table-bordered ">
                                 <thead>
@@ -82,7 +85,7 @@
                 </div>
                 {{-- eight --}}
                 <div class="col-6 col-lg-6 col-md-6 col-sm-12">
-                    <div class="card ">
+                    <div class="card card-primary">
                         <div class="card-body">
                             <table class="table table-bordered ">
                                 <thead>
@@ -140,7 +143,7 @@
                 </div>
                 {{-- nine --}}
                 <div class="col-6 col-lg-6 col-md-6 col-sm-12">
-                    <div class="card ">
+                    <div class="card card-primary">
                         <div class="card-body">
                             <table class="table table-bordered ">
                                 <thead>
@@ -198,7 +201,7 @@
                 </div>
                 {{-- ten --}}
                 <div class="col-6 col-lg-6 col-md-6 col-sm-12">
-                    <div class="card ">
+                    <div class="card card-primary">
                         <div class="card-body">
                             <table class="table table-bordered ">
                                 <thead>

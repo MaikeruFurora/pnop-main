@@ -9,7 +9,7 @@
         <h2 class="section-title">Manage Subject</h2>
         <div class="row">
             <div class="col-lg-8 col-md-8 col-sm-12">
-                <div class="card">
+                <div class="card card-primary">
                     <div class="card-body">
                         <div class="float-right">
                             <div class="form-row align-items-center mt-3 ml-4 pb-0">
@@ -51,7 +51,7 @@
                 </div>
             </div><!-- col-lg-8 -->
             <div class="col-lg-4 col-md-4 col-sm-12">
-                <div class="card">
+                <div class="card card-primary">
                     <div class="card-body m-1">
                         <form id="subjectForm">@csrf
                             <input type="hidden" name="id">

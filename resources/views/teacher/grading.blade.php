@@ -49,21 +49,16 @@
                 </div>
             </div>
         </div>
-        <div class="card">
+        <div class="card card-info">
+            <div class="card-header">
+                <span style="font-size: 15px" class="txtSubjectName badge badge-warning pt-1 pb-1"></span>&nbsp;
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-outline-primary btn-sm" id="btnImport"><i class="fas fa-cloud-upload-alt"></i>Import</button>&nbsp;
+                    <button class="btn btn-outline-secondary btnDownload btn-sm" type="button"><i class="fas fa-cloud-download-alt"></i>Template</button>
+                </div>
+            </div>
             <div class="card-body pb-1">
 
-                <div class="float-left">
-                    <span style="font-size: 15px" class="txtSubjectName badge badge-warning pt-1 pb-1 mt-2"></span>
-                </div>
-                {{-- <div class="col-lg-1 float-left">
-                    <button type="button" class="btn btn-outline-primary btn-block" id="btnImport"><i
-                            class="fas fa-cloud-upload-alt"></i>&nbsp;Import
-                    </button>
-                </div>
-                <div class="col-lg-1 float-left">
-                    <button class="btn btn-outline-secondary btnDownload" type="button"><i
-                        class="fas fa-cloud-download-alt"></i>Template</button>
-                </div> --}}
                     <table class="table  table-bordered table-hover" id="myClassTable" style="font-size: 14px">
                         <thead class="bg-info">
                             <tr>

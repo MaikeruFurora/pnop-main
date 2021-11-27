@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use App\Helpers\Helper;
+use App\Models\Announcement;
 use App\Models\BackSubject;
 use App\Models\Enrollment;
 use App\Models\Grade;
@@ -21,13 +22,14 @@ class StudentController extends Controller
 
     public function dashboard()
     {
+        $post = Announcement::latest()->get();
         $enrolledData = Enrollment::join('students', 'enrollments.student_id', 'students.id')
             ->leftjoin('sections', 'enrollments.section_id', 'sections.id')
             ->join('school_years', 'enrollments.school_year_id', 'school_years.id')
             ->where('school_years.status', 1)
             ->where('students.id', Auth::user()->id)
             ->first();
-        return view('student/dashboard', compact('enrolledData'));
+        return view('student/dashboard', compact('enrolledData','post'));
     }
 
     public function store(Request $request)

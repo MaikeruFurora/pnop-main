@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Helper;
+use App\Models\Announcement;
 use App\Models\Student;
 use App\Models\Assign;
 use App\Models\Enrollment;
@@ -20,7 +21,8 @@ class TeacherController extends Controller
 {
     public function dashboard()
     {
-        return view('teacher/dashboard');
+        $post = Announcement::latest()->get();
+        return view('teacher/dashboard',compact('post'));
     }
 
     public function classMonitor()

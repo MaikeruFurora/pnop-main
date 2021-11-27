@@ -34,7 +34,7 @@
             </div>
         </div>
         <div class="col-12">
-            <div class="card">
+            <div class="card card-primary">
 
                 <div class="card-body mt-2 pb-0 pt-1">
                     {{-- <div class="table-responsive"> --}}

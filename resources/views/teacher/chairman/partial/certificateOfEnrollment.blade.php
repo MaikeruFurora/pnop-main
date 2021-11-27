@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
-<body style="background: white">
+<body style="background: white" onload="window.print()">
     <div class="container">
        
         </div>
@@ -34,7 +34,7 @@
                     </p><br>
                     <p style="line-height:2;font-family:'times new roman';font-size:25px">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This CERTIFICATION is issued upon the request of the aforenmentioned name 
-                        for whatever legal purposes that mau serve him/her under the law.
+                        for whatever legal purposes that may serve him/her under the law.
                     </p><br>
                     <p style="line-height:2;font-family:'times new roman';font-size:25px">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Given this {{ date("j") }} <sup>{{ date("S") }}</sup> day of {{ date("F, Y") }} at Pili National High School,

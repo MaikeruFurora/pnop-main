@@ -20,7 +20,7 @@
         <h2 class="section-title">School Profile</h2>
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
-                <div class="card">
+                <div class="card card-primary">
                     <div class="card-body m-3">
                         <form enctype="multipart/form-data" id="schooProfileForm">@csrf
                             <input type="hidden" name="id" value="{{ $data->id ?? '' }}">
@@ -79,7 +79,7 @@
                     @if (isset($data))
                     {{empty($data->school_enrollment_url)}}
                     <div class="col-lg-4">
-                        <div class="card">
+                        <div class="card card-primary">
                             <div class="card-body pb-0">
                                 <form id="enrollStatusForm">@csrf
                                     <div class="form-row">
@@ -109,7 +109,7 @@
                     </div>
                     @endif
                     <div class="col-lg-4">
-                        <div class="card">
+                        <div class="card card-primary">
                             <div class="card-body">
                                 <a href="{{ route('admin.backup.run') }}" class="btn btn-block btn-warning">BACK-UP
                                     DATABASE</a>
@@ -119,7 +119,7 @@
                 </div>
                 <div class="row">
                  <div class="col-12">
-                    <div class="card">
+                    <div class="card card-primary">
                         <div class="card-header">
                             BACK-UP HISTORY
                         </div>

@@ -3,12 +3,13 @@
 <link rel="stylesheet" href="{{ asset('css/select2/select2.min.css') }}">
 @endsection
 @section('content')
+@include('teacher/chairman/partial/deleteModal')
 <section class="section">
     <div class="section-body">
         <h2 class="section-title">Manage Section | Grade {{ auth()->user()->chairman->grade_level }} Chairman</h2>
         <div class="row">
             <div class="col-lg-8 col-md-8 col-sm-12">
-                <div class="card">
+                <div class="card card-info">
                     <div class="card-body pb-1">
                         <div class="table-responsive">
                             <table class="table table-striped" style="font-size: 11px">
@@ -32,7 +33,7 @@
                 </div>
             </div><!-- col-lg-8 -->
             <div class="col-lg-4 col-md-4 col-sm-12">
-                <div class="card">
+                <div class="card card-info">
                     <div class="card-body m-1">
                         <form id="sectionForm">@csrf
                             <input type="hidden" name="id">

@@ -20,8 +20,8 @@ const subjectTable = (level) => {
         },
     })
         .done(function (data) {
-            if (data.length > 0) {
-                data.forEach((val) => {
+            if (data.subjects.length > 0) {
+                data.subjects.forEach((val) => {
                     htmlHold += `
                         <tr>
                             <td>
@@ -41,9 +41,10 @@ const subjectTable = (level) => {
                                     <button type="button" style="font-size:9px" class="btn btn-sm btn-info pl-3 pr-3 editSubject editSub_${
                                         val.id
                                     }" id="${val.id}"><i class="far fa-edit"></i></button>
-                                    <button type="button" style="font-size:9px" class="btn btn-sm btn-danger pl-3 pr-3 deleteSubject deleteSub_${
-                                        val.id
-                                    }" id="${val.id}"><i class="far fa-trash-alt"></i></button>
+                                    <button type="button" style="font-size:9px" class="btn btn-sm btn-danger pl-3 pr-3 deleteSubject
+                                    deleteSub_${val.id}" id="${val.id}"
+                                    ${data.previlege.filter(element=>(element==val.id))!='' ? "disabled" : ""}
+                                    ><i class="far fa-trash-alt"></i></button>
                                 </div>
                             </td>
                         </tr>

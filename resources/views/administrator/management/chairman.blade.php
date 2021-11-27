@@ -10,7 +10,7 @@
         <div class="row">
            
             <div class="col-lg-8 col-md-8 col-sm-12">
-                <div class="card">
+                <div class="card card-primary">
                     <div class="card-body">
                       
                         <div class="table-responsive">
@@ -35,7 +35,7 @@
             </div><!-- col-lg-8 -->
 
             <div class="col-lg-4 col-md-4 col-sm-12">
-                <div class="card">
+                <div class="card card-primary">
                     <div class="card-body">
                      <form id="chairmanForm">@csrf
                          <input type="hidden" name="id">

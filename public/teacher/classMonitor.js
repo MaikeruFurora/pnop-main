@@ -27,12 +27,12 @@ let myClassTable = $("#myClassTable").DataTable({
             data: null,
             render: function (data) {
                 if (data.enroll_status != "Dropped") {
-                    return `<button type="button" class="btn btn-sm btn-warning dropped btnDropped_${data.id}  pt-0 pb-0 pl-2 pr-2" id="${data.id}">
+                    return `<button type="button" class="btn btn-sm btn-warning dropped btnDropped_${data.id}  pt-0 pb-0 pl-2 pr-2" id="${data.id}" data-student="${data.enroll_status}">
                     <i class="fas fa-user-times"></i> Drop
                     </button>
                     `;
                 } else {
-                    return `<button type="button" class="btn btn-sm btn-info dropped btnDropped_${data.id}  pt-0 pb-0 pl-2 pr-2" id="${data.id}">
+                    return `<button type="button" class="btn btn-sm btn-info dropped btnDropped_${data.id}  pt-0 pb-0 pl-2 pr-2" id="${data.id}" data-student="${data.enroll_status}">
                     <i class="fas fa-user-times"></i> Undrop
                     </button>
                     `;
@@ -44,20 +44,27 @@ let myClassTable = $("#myClassTable").DataTable({
 
 $(document).on("click", ".dropped", function () {
     let id = $(this).attr("id");
+    $("#dropModal").modal("show")
+    $(".confirmYes").val(id);
+    let msg =($(this).attr('data-student') == 'Enrolled') ? 'You are about to Drop this student, Are you sure?' : 'You are about to Undrop this student, Are you sure?'
+    $('.confirmText').html(msg)
+});
+
+$(".confirmYes").on('click', function () {
     $.ajax({
-        url: "monitor/dropped/" + id,
+        url: "monitor/dropped/" + $(this).val(),
         type: "POST",
         data: { _token: $('input[name="_token"]').val() },
         beforeSend: function () {
-            $(".btnDropped_" + id).html(`
+            $(".confirmYes").html(`
                 <div class="spinner-border spinner-border-sm" role="status">
                     <span class="sr-only">Loading...</span>
                 </div>`);
         },
     })
         .done(function (response) {
-            $(".btnDropped_" + id).html("Delete");
-
+            $(".confirmYes").html("Yes");
+            $("#dropModal").modal("hide")
             getToast("info", "Done", "Change one record");
             myClassTable.ajax.reload();
         })
@@ -65,4 +72,4 @@ $(document).on("click", ".dropped", function () {
             console.log(jqxHR, textStatus, errorThrown);
             getToast("error", "Eror", errorThrown);
         });
-});
+})

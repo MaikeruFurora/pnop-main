@@ -72,7 +72,7 @@
             </div>
         </div>
         <div class="col-12">
-            <div class="card">
+            <div class="card card-primary">
 
                 <div class="card-body mt-2">
                     {{-- <div class="table-responsive"> --}}

@@ -34,7 +34,7 @@
 
         <div class="row">
             <div class="col-lg-7">
-                <div class="card">
+                <div class="card card-primary">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12">
@@ -47,7 +47,7 @@
                 </div>
             </div>
             <div class="col-lg-5">
-                <div class="card">
+                <div class="card card-primary">
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-striped" id="tableHoliday">

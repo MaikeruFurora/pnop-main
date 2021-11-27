@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Grade;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 
@@ -9,7 +10,10 @@ class SubjectController extends Controller
 {
     public function list($grade_level)
     {
-        return response()->json(Subject::where('grade_level', $grade_level)->get());
+        return response()->json([
+            'subjects'=>Subject::where('grade_level', $grade_level)->get(),
+            'previlege'=>Grade::select('subject_id')->pluck('subject_id')
+        ]);
     }
 
     public function store(Request $request)
