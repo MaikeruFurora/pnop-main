@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{{ asset('css/datatable/responsive.bootstrap4.min.css') }}">
 @endsection
 @section('content')
-
+@include('administrator/masterlist/partial/deleteModal')
 <!-- Modal -->
 <form id="teacherForm" method="POST">@csrf
     <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
@@ -103,5 +103,8 @@
 <script src="{{ asset('js/datatable/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('js/datatable/dataTables.responsive.min.js') }}"></script>
 <script src="{{ asset('js/datatable/responsive.bootstrap4.min.js') }}"></script>
+<script>
+    const AssignId = {{ json_encode($AssignId) }}
+</script>
 <script src="{{ asset('administrator/masterlist/teacher.js') }}"></script>
 @endsection

@@ -35,9 +35,9 @@
                     <a href="#" class="nav-link sidebar-gone-show" data-toggle="sidebar"><i class="fas fa-bars"></i></a>
                    
                     <ul class="navbar-nav navbar-right">
-                        <li class="dropdown dropdown-list-toggle">
+                        {{-- <li class="dropdown dropdown-list-toggle">
                             <a  class="nav-link nav-link-lg text-white"><i class="fas fa-graduation-cap" style="font-size: 13px"></i>&nbsp;&nbsp;Curriculum</a>
-                        </li>
+                        </li> --}}
                       <li class="dropdown dropdown-list-toggle">
                           <a href="{{ route('auth.login') }}" class="nav-link nav-link-lg text-white"><i class="fas fa-sign-in-alt" style="font-size: 13px"></i>&nbsp;&nbsp;Login</a>
                       </li>
@@ -81,7 +81,6 @@
                             </div>
                           </div>
                           {{--  --}}
-                          <div class="row">
                               <div class="col-12 col-lg-6 col-md-6 col-sm-12">
                                <div class="row">
                                 <div class="col-lg-6">
@@ -133,14 +132,14 @@
                                       </div>
                                   </div>
                               </div>
-                          </div>
+                          
                       </div>
                     {{--  --}}
                 
         
                   <div class="section-body">
                     <h1 class="section-title">Vision & Mission</h1>
-                    <p class="section-lead">This page is just an example for you to create your own page.</p>
+                    {{-- <p class="section-lead">This page is just an example for you to create your own page.</p> --}}
 
                     <div class="row">
                         <div class="col-12 col-md-4 col-lg-4">
@@ -229,7 +228,7 @@
                     </div>
 
                     <h1 class="section-title">School Activity</h1>
-                    <p class="section-lead">This page is just an example for you to create your own page.</p>
+                    {{-- <p class="section-lead">This page is just an example for you to create your own page.</p> --}}
 
                     <div class="row">
                         <div class="col-12 col-md-4 col-lg-4">
@@ -312,7 +311,7 @@
                     </div>
 
                     <h1 class="section-title">History</h1>
-                    <p class="section-lead">This page is just an example for you to create your own page.</p>
+                    {{-- <p class="section-lead">This page is just an example for you to create your own page.</p> --}}
 
                     <div class="card">
                       <div class="card-header">

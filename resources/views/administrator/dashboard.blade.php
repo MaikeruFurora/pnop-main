@@ -113,6 +113,7 @@
                             @forelse ($appointies as $item)
                             <li class="media">
                                 <div class="media-body">
+                                    <div class="float-right">{{  $item->created_at->diffForHumans() }}</div>
                                     <div class="media-title">{{ $item->fullname }}</div>
                                     <span class="text-small text-muted">{{ $item->address }}</span>
                                 </div>

@@ -29,12 +29,12 @@
                                         <td>
 
                                             Section:
-                                            <span class="badge badge-info">{{  $recordSeven[0]->section_name }}</span>
+                                            <span class="badge badge-info">{{  $recordSeven[0]->section_name ?? 'N/A' }}</span>
                                         </td>
                                         <td colspan="6" class="text-center">
                                             Class Adviser:
                                             <span class="badge badge-info pt-1 pb-1">
-                                                {{  $recordSeven[0]->fullname }}
+                                                {{  $recordSeven[0]->fullname ?? 'N/A'}}
                                             </span> &nbsp;&nbsp;
                                             Grade Level: <b>7</b>
                                         </td>
@@ -89,12 +89,12 @@
                                     <tr>
                                         <td>Section:
                                             <span class="badge badge-info">
-                                                {{  $recordEight[0]->section_name ??'No Data' }}
+                                                {{  $recordEight[0]->section_name ??'N/A' }}
                                             </span>
                                             &nbsp;&nbsp;
                                             Class Adviser:
                                             <span
-                                                class="badge badge-info">{{  $recordEight[0]->fullname??'No Data' }}</span>
+                                                class="badge badge-info">{{  $recordEight[0]->fullname??'N/A' }}</span>
                                         </td>
                                         <td colspan="4" class="text-center">
                                             Grade Level: <b>8</b>
@@ -148,11 +148,11 @@
                                         <td>
                                             Section:
                                             <span
-                                                class="badge badge-info">{{  $recordNine[0]->section_name ??'No Data' }}</span>
+                                                class="badge badge-info">{{  $recordNine[0]->section_name ??'N/A' }}</span>
                                             &nbsp;&nbsp;
                                             Class Adviser:
                                             <span
-                                                class="badge badge-info">{{  $recordNine[0]->fullname ?? 'NO Data'}}</span>
+                                                class="badge badge-info">{{  $recordNine[0]->fullname ?? 'N/A'}}</span>
                                         </td>
                                         <td colspan="4" class="text-center">
                                             Grade Level: <b>9</b>
@@ -206,11 +206,11 @@
                                         <td>
                                             Section:
                                             <span
-                                                class="badge badge-info">{{  $recordTen[0]->section_name ??'No Data' }}</span>
+                                                class="badge badge-info">{{  $recordTen[0]->section_name ??'N/A' }}</span>
                                             &nbsp;&nbsp;
                                             Class Adviser:
                                             <span
-                                                class="badge badge-info">{{  $recordTen[0]->fullname ?? 'No Data' }}</span>
+                                                class="badge badge-info">{{  $recordTen[0]->fullname ?? 'N/A' }}</span>
                                         </td>
                                         <td colspan="4" class="text-center">
                                             Grade Level: <b>10</b>

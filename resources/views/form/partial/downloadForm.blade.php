@@ -10,9 +10,9 @@
 </head>
 <body>
     <table width="100">
-        {{-- <tr>
-            <td colspan="4" align="left" height="35" valign="center">&nbsp;&nbsp;&nbsp; SF: 12499-72385729-57374-9825</td>
-        </tr> --}}
+        <tr>
+            <td colspan="4" align="left" height="35" valign="center">&nbsp;&nbsp;&nbsp; SF: 12499-7238</td>
+        </tr>
         <tr>
             <td colspan="4" align="center" height="35" valign="center">PILI NATIONAL HIGH SCHOOL</td>
         </tr>

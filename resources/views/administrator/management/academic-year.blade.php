@@ -5,10 +5,11 @@
 <link rel="stylesheet" href="{{ asset('css/select2/select2.min.css') }}">
 @endsection
 @section('content')
+@include('administrator/management/partial/deleteModal')
+@include('administrator/management/partial/confirmation')
 <section class="section">
     <div class="section-body">
         <h2 class="section-title">Academic Year</h2>
-        <div class="col-lg-6 offset-lg-3 mt-5">
             <div class="card">
                 <div class="card-body">
                     <form id="schoolYearForm">@csrf
@@ -28,7 +29,7 @@
                         </div>
                     </form>
                     {{-- <div class="table-responsive mt-1"> --}}
-                    <table class="table table-bordered text-center" id="school_year_Table">
+                    <table class="table table-bordered text-center mt-3" id="school_year_Table">
                         <thead>
                             <tr>
                                 <th class="text-center" width="65%">Academic Year</th>
@@ -40,7 +41,6 @@
                     {{-- </div> --}}
                 </div>
             </div>
-        </div>
     </div>
 </section>
 @endsection
@@ -50,5 +50,8 @@
 <script src="{{ asset('js/datatable/dataTables.responsive.min.js') }}"></script>
 <script src="{{ asset('js/datatable/responsive.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('js/select2/select2.full.min.js') }}"></script>
+<script>
+    const yearList = {{ json_encode($year) }}
+</script>
 <script src="{{ asset('administrator/management/school-year.js') }}"></script>
 @endsection

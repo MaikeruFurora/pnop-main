@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="{{ asset('css/select2/select2.min.css') }}">
 @endsection
 @section('content')
+@include('administrator/management/partial/deleteModal')
 <section class="section">
     <div class="section-body">
         <h2 class="section-title">Manage Section and Subject</h2>
@@ -16,13 +17,13 @@
                             <div class="col-1">
                                 <label class="my-2">Filter:</label>
                             </div>
-                            <div class="col-1">
+                            <div class="col-2">
                                 <select name="grade_level_top" class="custom-select" required>
-                                    <option value=""></option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
+                                    <option value="">Choose...</option>
+                                    <option value="7">Grade 7</option>
+                                    <option value="8">Grade 8</option>
+                                    <option value="9">Grade 9</option>
+                                    <option value="10">Grade 10</option>
                                 </select>
                             </div>
                             <div class="col-3">
@@ -60,11 +61,11 @@
                             <div class="form-group">
                                 <label>Grade Level</label>
                                 <select name="grade_level" class="custom-select" required>
-                                    {{-- <option selected>Choose...</option> --}}
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
+                                    <option value="">Choose...</option>
+                                    <option value="7">Grade 7</option>
+                                    <option value="8">Grade 8</option>
+                                    <option value="9">Grade 9</option>
+                                    <option value="10">Grade 10</option>
                                 </select>
                             </div>
                             <div class="form-group">

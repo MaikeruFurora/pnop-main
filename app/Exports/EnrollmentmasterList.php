@@ -14,14 +14,29 @@ class EnrollmentMasterList implements FromCollection, ShouldAutoSize, WithHeadin
     /**
     * @return \Illuminate\Support\Collection
     */
+
+    public function __construct(String $schoolyear, String $level)
+    {
+        $this->schoolyear = $schoolyear;
+        $this->level = $level;
+    }
+
     public function collection()
     {
-        $data = Enrollment::join("students","enrollments.student_id","students.id")
-        ->leftjoin('sections','enrollments.section_id','sections.id')
-        ->where('enrollments.school_year_id', Config::get('activeAY')->id)
-        ->orderBy('students.curriculum','asc')
-        ->get();
-
+       if ($this->level=="all") {
+            $data = Enrollment::join("students","enrollments.student_id","students.id")
+                    ->leftjoin('sections','enrollments.section_id','sections.id')
+                    ->where('enrollments.school_year_id', $this->schoolyear)
+                    ->orderBy('students.curriculum','asc')
+                    ->get();
+       } else {
+            $data = Enrollment::join("students","enrollments.student_id","students.id")
+                    ->leftjoin('sections','enrollments.section_id','sections.id')
+                    ->where('enrollments.school_year_id', $this->schoolyear)
+                    ->where('enrollments.grade_level', intval($this->level))
+                    ->orderBy('students.curriculum','asc')
+                    ->get();
+       }
         return $data;
     }
 

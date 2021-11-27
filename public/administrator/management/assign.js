@@ -197,10 +197,10 @@ let loadTableSchedule = (section) => {
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 <button type="button" style="font-size:9px" class="btn btn-sm btn-info pl-3 pr-3 editAssign editA${
                                     val.id
-                                }" id="${val.id}">Edit</button>
-                                <button type="button" style="font-size:9px" class="btn btn-sm btn-danger pl-2 pr-2 deleteAssign deleteA${
+                                }" id="${val.id}"><i class="far fa-edit"></i></button>
+                                <button type="button" style="font-size:9px" class="btn btn-sm btn-danger pl-3 pr-3 deleteAssign deleteA${
                                     val.id
-                                }" id="${val.id}">Delete</button>
+                                }" id="${val.id}"><i class="far fa-trash-alt"></i></button>
                             </div>
                         </td>
                     </tr>
@@ -246,7 +246,7 @@ $(document).on("click", ".editAssign", function () {
         .done(function (data) {
             cancelAssign.show();
             $(".editA" + id)
-                .html("Edit")
+                .html(`<i class="far fa-edit"></i>`)
                 .attr("disabled", false);
             $(".btnSaveAssign").html("Update");
             $("input[name='id']").val(data.id);
@@ -267,7 +267,7 @@ $(document).on("click", ".editAssign", function () {
         .fail(function (jqxHR, textStatus, errorThrown) {
             console.log(jqxHR, textStatus, errorThrown);
             $(".editA" + id)
-                .html("Edit")
+                .html(`<i class="far fa-edit"></i>`)
                 .attr("disabled", false);
             getToast("error", "Eror", errorThrown);
         });
@@ -275,12 +275,17 @@ $(document).on("click", ".editAssign", function () {
 
 $(document).on("click", ".deleteAssign", function () {
     let id = $(this).attr("id");
+    $(".deleteYes").val(id)
+    $("#teacherDeleteModal").modal("show")
+});
+
+$(".deleteYes").on('click', function () {
     $.ajax({
-        url: `assign/delete/${id}`,
+        url: `assign/delete/${$(this).val()}`,
         type: "DELETE",
         data: { _token: $('input[name="_token"]').val() },
         beforeSend: function () {
-            $(".deleteA" + id)
+            $(".deleteYes")
                 .html(
                     `
             <div class="spinner-border spinner-border-sm" role="status">
@@ -291,17 +296,18 @@ $(document).on("click", ".deleteAssign", function () {
         },
     })
         .done(function (response) {
-            $(".deleteA" + id)
+            $(".deleteYes")
                 .html("Delete")
                 .attr("disabled", false);
             getToast("success", "Success", "deleted one record");
             loadTableSchedule($('select[name="showSection"]').val());
+            $("#teacherDeleteModal").modal("hide")
         })
         .fail(function (jqxHR, textStatus, errorThrown) {
-            $(".deleteA" + id)
+            $(".deleteYes")
                 .html("Delete")
                 .attr("disabled", false);
             console.log(jqxHR, textStatus, errorThrown);
             getToast("error", "Eror", errorThrown);
         });
-});
+})

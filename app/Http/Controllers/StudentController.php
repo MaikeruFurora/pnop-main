@@ -48,7 +48,7 @@ class StudentController extends Controller
             'province' => $request->province ?? $dataret->province,
             'city' => $request->city ?? $dataret->city,
             'barangay' => $request->barangay ?? $dataret->barangay,
-            'last_school_attended' => $request->last_school_attended,
+            // 'last_school_attended' => $request->last_school_attended,
             'last_schoolyear_attended' => $request->last_schoolyear_attended,
             'isbalik_aral' => !empty($request->last_schoolyear_attended) ? 'Yes' : 'No',
             'mother_name' => $request->mother_name,

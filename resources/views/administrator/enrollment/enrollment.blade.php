@@ -31,7 +31,7 @@
                                     <option value="10">Grade 10</option>
                                 </select>
                           <div class="input-group-append">
-                            <button class="btn btn-primary" type="button" name="btnExport">Export Enrollee</button>
+                            <button class="btn btn-primary" type="button" name="btnExport">Export Excel</button>
                           </div>
                         </div>
                       </div>

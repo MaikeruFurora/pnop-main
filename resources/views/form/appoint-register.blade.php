@@ -68,8 +68,7 @@
                         <br><br>
                     </div>
                     <div class="col-lg">
-                        <form action="">
-                        {{-- <form action="{{ route('appoint.save') }}" method="POST">@csrf --}}
+                        <form action="{{ route('appoint.save') }}" method="POST">@csrf
                             <div class="card shadow card-info">
                                 <div class="card-header">
                                     <h4>Appointment Form</h4>
@@ -142,7 +141,7 @@
     {{-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css" />
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script> --}}
-    {{-- <script src="{{ asset('js/appoint.js') }}"></script> --}}
+    <script src="{{ asset('js/appoint.js') }}"></script>
 </body>
 
 </html>

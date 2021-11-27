@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Helpers\Helper;
 use App\Models\Appointment;
+use App\Models\Assign;
+use App\Models\Chairman;
 use App\Models\Enrollment;
 use App\Models\SchoolProfile;
 use App\Models\SchoolYear;
@@ -13,13 +15,15 @@ use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str as SupportStr;
 
 class AdminController extends Controller
 {
     public function dashboard()
     {
-        $appointies = Appointment::select('fullname', 'address', 'purpose')
+        $appointies = Appointment::select('fullname', 'address', 'purpose','created_at')
             ->where('set_date', date('m/d/Y'))->limit(5)->orderBy('fullname')->get();
         $data = response()->json(
             Enrollment::select('enrollments.grade_level', DB::raw("COUNT(enrollments.grade_level) as total"))
@@ -67,7 +71,11 @@ class AdminController extends Controller
     }
     public function teacher()
     {
-        return view('administrator/masterlist/teacher');
+        // $listId=array();
+        $AssignId=Assign::select('teacher_id')->pluck('teacher_id');
+        $ChairmanId=Chairman::select('teacher_id')->pluck('teacher_id');
+        // return   array_merge((array)$AssignId);
+        return view('administrator/masterlist/teacher',compact('AssignId'));
     }
     public function student()
     {
@@ -86,8 +94,34 @@ class AdminController extends Controller
 
     public function profile()
     {
+        
+        $files = Storage::files("Laravel");
+        $fileRetrive=array();
+            foreach ($files as $key => $value) {
+                $value= str_replace("Laravel/","",$value);
+                array_push($fileRetrive,$value);
+            }
         $data = SchoolProfile::find(1);
-        return view('administrator/management/profile', compact('data'));
+        return view('administrator/management/profile', compact('data','fileRetrive'));
+    }
+    
+    public function backUpDonwload($file_name){
+        $file = Storage::disk('public')->get($file_name);
+  
+         (new Response($file, 200))
+              ->header('Content-Type', 'image/jpeg');
+        
+        return redirect()->back();
+    }
+
+    public function backUpRemove($file_name){
+        // return ;
+        //  $file = Storage::disk('Laravel')->get($file_name);
+        $directory=storage_path()."\app\Laravel\'".$file_name;
+        $value= str_replace("'","",$directory);
+        unlink($value);
+    //    return   Storage::deleteDirectory(storage_path('laravel/'.$file_name));
+         return redirect()->back();
     }
 
     public function strandAndTrack()
@@ -128,7 +162,9 @@ class AdminController extends Controller
 
     public function academicYear()
     {
-        return view('administrator/management/academic-year');
+        return view('administrator/management/academic-year',[
+            'year'=>Enrollment::select('school_year_id')->pluck('school_year_id')
+        ]);
     }
 
     public function user()

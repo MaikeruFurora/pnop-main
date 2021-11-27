@@ -42,10 +42,10 @@ const chairmanTable = () => {
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                         <button type="button" style="font-size:9px" class="btn btn-sm btn-info pl-3 pr-3 editchairman editCha_${
                                             val.id
-                                        }" id="${val.id}">Edit</button>
-                                        <button type="button" style="font-size:9px" class="btn btn-sm btn-danger deletechairman deleteCha_${
+                                        }" id="${val.id}"><i class="far fa-edit"></i></button>
+                                        <button type="button" style="font-size:9px" class="btn btn-sm btn-danger pl-3 pr-3 deletechairman deleteCha_${
                                             val.id
-                                        }" id="${val.id}">Delete</button>
+                                        }" id="${val.id}"><i class="far fa-trash-alt"></i></button>
                                     </div>
                                 </td>
                             </tr>
@@ -122,7 +122,7 @@ $(document).on("click", ".editchairman", function () {
         .done(function (data) {
             cancelchairman.show();
             // console.log(data.id);
-            $(".editCha_" + id).html("Edit");
+            $(".editCha_" + id).html(`<i class="far fa-edit"></i>`);
             $(".btnSavechairman").html("Update");
             $("input[name='id']").val(data.id);
             $("select[name='grade_level']").val(data.grade_level);
@@ -147,24 +147,30 @@ $(".cancelchairman").on("click", function (e) {
 
 $(document).on("click", ".deletechairman", function () {
     let id = $(this).attr("id");
+    $("#teacherDeleteModal").modal("show")
+    $(".deleteYes").val(id)
+});
+
+$(".deleteYes").on('click', function () {
     $.ajax({
-        url: "chairman/delete/" + id,
+        url: "chairman/delete/" + $(this).val(),
         type: "DELETE",
         data: { _token: $('input[name="_token"]').val() },
         beforeSend: function () {
-            $(".deleteCha_" + id).html(`
+            $(".deleteYes").html(`
             <div class="spinner-border spinner-border-sm" role="status">
                 <span class="sr-only">Loading...</span>
             </div>`);
         },
     })
         .done(function (response) {
-            $(".deleteCha_" + id).html("Delete");
+            $(".deleteYes").html(`<i class="far fa-trash-alt"></i>`);
             getToast("success", "Success", "deleted one record");
             chairmanTable();
+            $("#teacherDeleteModal").modal("hide")
         })
         .fail(function (jqxHR, textStatus, errorThrown) {
             console.log(jqxHR, textStatus, errorThrown);
             getToast("error", "Eror", errorThrown);
         });
-});
+})

@@ -3,42 +3,16 @@
 <link rel="stylesheet" href="{{ asset('css/select2/select2.min.css') }}">
 @endsection
 @section('content')
+@include('administrator/management/partial/deleteModal')
 <section class="section">
     <div class="section-body">
         <h2 class="section-title">Manage Grade Level Chairman</h2>
         <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
+           
+            <div class="col-lg-8 col-md-8 col-sm-12">
                 <div class="card">
                     <div class="card-body">
-                        <form id="chairmanForm">@csrf
-                            <input type="hidden" name="id">
-                            <div class="form-row mb-2">
-                                <div class="col-1">
-                                    <select name="grade_level" class="custom-select" required>
-                                        <option value="7">Grade 7</option>
-                                        <option value="8">Grade 8</option>
-                                        <option value="9">Grade 9</option>
-                                        <option value="10">Grade 10</option>
-                                    </select>
-                                </div>
-                                <div class="col-2">
-                                    <select name="teacher_id" class="form-control select2" id="mySelect2" required>
-                                        <option value=""></option>
-                                        @foreach ($teachers as $teacher)
-                                        <option value="{{ $teacher->id }}">
-                                            {{ $teacher->teacher_lastname.', '.$teacher->teacher_firstname.' '.$teacher->teacher_middlename }}
-                                        </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="col">
-                                    <button type="submit"
-                                        class="btn btn-primary my-1 pl-4 pr-4 btnSavechairman">Save</button>
-                                    <button type="submit"
-                                        class="btn btn-warning my-1 pl-4 pr-4 cancelchairman">Cancel</button>
-                                </div>
-                            </div>
-                        </form>
+                      
                         <div class="table-responsive">
                             <table class="table table-striped" style="font-size: 13px">
                                 <thead>
@@ -60,6 +34,40 @@
                 </div>
             </div><!-- col-lg-8 -->
 
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                     <form id="chairmanForm">@csrf
+                         <input type="hidden" name="id">
+                         <div class="form-group">
+                           <label for="exampleInputEmail1">Grade level</label>
+                           <select name="grade_level" class="custom-select" required>
+                             <option value="">Choose...</option>
+                             <option value="7">Grade 7</option>
+                             <option value="8">Grade 8</option>
+                             <option value="9">Grade 9</option>
+                             <option value="10">Grade 10</option>
+                         </select>
+                         </div>
+                         <div class="form-group">
+                           <label for="exampleInputPassword1">Teacher</label>
+                           <select name="teacher_id" class="form-control select2" id="mySelect2" required>
+                                 <option value=""></option>
+                                 @foreach ($teachers as $teacher)
+                                 <option value="{{ $teacher->id }}">
+                                     {{ $teacher->teacher_lastname.', '.$teacher->teacher_firstname.' '.$teacher->teacher_middlename }}
+                                 </option>
+                                 @endforeach
+                             </select>
+                         </div>
+                             <button type="submit"
+                             class="btn btn-block btn-primary my-1 pl-4 pr-4 btnSavechairman">Save</button>
+                         <button type="submit"
+                             class="btn btn-block btn-warning my-1 pl-4 pr-4 cancelchairman">Cancel</button>
+                       </form>
+                    </div>
+                </div> 
+             </div><!-- col-lg-4 -->
         </div><!-- row -->
     </div><!-- section-body -->
 </section>

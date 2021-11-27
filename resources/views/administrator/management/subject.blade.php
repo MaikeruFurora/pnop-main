@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="{{ asset('css/select2/select2.min.css') }}">
 @endsection
 @section('content')
+@include('administrator/management/partial/deleteModal')
 <section class="section">
     <div class="section-body">
         <h2 class="section-title">Manage Subject</h2>
@@ -19,10 +20,10 @@
                                 </div>
                                 <div class="col-auto my-1">
                                     <select class="custom-select mr-sm-2" id="selectedGL">
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
+                                        <option value="7">Grade 7</option>
+                                        <option value="8">Grade 8</option>
+                                        <option value="9">Grade 9</option>
+                                        <option value="10">Grade 10</option>
                                     </select>
                                 </div>
 
@@ -57,10 +58,11 @@
                             <div class="form-group">
                                 <label>Grade Level</label>
                                 <select name="grade_level" class="form-control" required>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
+                                    <option value="">Choose...</option>
+                                    <option value="7">Grade 7</option>
+                                    <option value="8">Grade 8</option>
+                                    <option value="9">Grade 9</option>
+                                    <option value="10">Grade 10</option>
                                 </select>
                             </div>
                             <div class="form-group">

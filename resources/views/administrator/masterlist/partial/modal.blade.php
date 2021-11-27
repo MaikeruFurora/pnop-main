@@ -122,10 +122,10 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label>Last school attended</label>
                                     <input type="text" class="form-control" name="last_school_attended" required>
-                                </div>
+                                </div> --}}
 
                                 <div class="form-group">
                                     <div class="input-group">

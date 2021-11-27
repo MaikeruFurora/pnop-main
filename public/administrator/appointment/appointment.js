@@ -78,6 +78,7 @@ $("#holidayForm").submit(function (e) {
             $('input[name="id"]').val("");
             tableHoliday.ajax.reload();
             myAllAppointment();
+            window.location.reload()
         })
         .fail(function (jqxHR, textStatus, errorThrown) {
             $(".btnSaveHoliday").html("Save").attr("disabled", false);
@@ -120,8 +121,8 @@ let tableHoliday = $("#tableHoliday").DataTable({
             data: null,
             render: function (data) {
                 return `
-                    <button class="btn btn-sm btn-info btnEdit btnload_${data.id}" value="${data.id}">Edit</button>
-                    <button class="btn btn-sm btn-danger btnDelete btnDLoad_${data.id}" value="${data.id}">Delete</button>
+                    <button class="btn btn-sm btn-info btnEdit btnload_${data.id}" value="${data.id}"><i class="far fa-edit"></i></button>
+                    <button class="btn btn-sm btn-danger btnDelete btnDLoad_${data.id}" value="${data.id}"><i class="far fa-trash-alt"></i></button>
                 `;
             },
         },
@@ -159,7 +160,7 @@ $(document).on("click", ".btnEdit", function () {
     })
         .done(function (response) {
             $(".btnload_" + id)
-                .html("Edit")
+                .html(`<i class="far fa-edit"></i>`)
                 .attr("disabled", false);
             $('input[name="id"]').val(response.id);
             $('input[name="holi_date_from"]').val(response.holi_date_from);
@@ -180,12 +181,19 @@ $(document).on("click", ".btnEdit", function () {
 
 $(document).on("click", ".btnDelete", function () {
     let id = $(this).val();
+    $("#teacherDeleteModal").modal("show")
+    $(".deleteYes").val(id)
+   
+});
+
+
+$('.deleteYes').on('click', function () {
     $.ajax({
         url: "holiday/delete/" + $(this).val(),
         type: "DELETE",
         data: { _token: $('input[name="_token"]').val() },
         beforeSend: function () {
-            $(".btnDLoad_" + id)
+            $(".deleteYes")
                 .html(
                     `
             <div class="spinner-border spinner-border-sm" role="status">
@@ -196,46 +204,107 @@ $(document).on("click", ".btnDelete", function () {
         },
     })
         .done(function (response) {
-            $(".btnDLoad_" + id)
-                .html("Edit")
+            $(".deleteYes")
+                .html(`<i class="far fa-trash-alt"></i>`)
                 .attr("disabled", false);
             tableHoliday.ajax.reload();
+            window.location.reload()
         })
         .fail(function (jqxHR, textStatus, errorThrown) {
-            $(".btnDLoad_" + id)
+            $(".deleteYes")
                 .html("Save")
                 .attr("disabled", false);
             console.log(jqxHR, textStatus, errorThrown);
             getToast("error", "Eror", errorThrown);
         });
-});
-
+})
 /**
  *
  * --------------------- CALENDARA EVENT-----------------------------
  *
  *
  */
+ let listAppoint =  $("#appointedTable").DataTable({
+    // columnDefs: [
+    //     {
+    //         orderable: false,
+    //         targets: 0,
+    //         data: null,
+    //         defaultContent: "",
+    //         render: function (data, type, row, meta) {
+    //             // return '<input type="checkbox" class="dt-checkboxes">';
+    //             data = '<input type="checkbox" class="dt-checkboxes">';
+    //             if (row.email == null) {
+    //                 data = "";
+    //             }
+    //             return data;
+    //         },
+    //         checkboxes: {
+    //             selectRow: true,
+    //             selectAll: false,
+    //         },
+    //     },
+    //     // {
+    //     //     targets: [2],
+    //     //     visible: false,
+    //     //     searchable: false,
+    //     // },
+    // ],
+    // select: {
+    //     style: "multi",
+    //     selector: "td:first-child",
+    // },
+    pageLength: 5,
+    lengthMenu: [ 5,10, 25, 50, 75, 100 ],
+    destroy: true,
+    ajax: "appointment/list/selected/"+null,
+    columns: [
+        // { data: "email" },
+        { data: "appoint_no", orderable: false },
+        { data: "fullname", orderable: false },
+        { data: "contact_no", orderable: false },
+        { data: "email", orderable: false },
+        { data: "address", orderable: false },
+        { data: "purpose", orderable: false },
+    ],
+ });
 
 let showListOfAppointed = (selected) => {
     $("#printAppointed").val(selected);
-    $("#appointedTable").DataTable({
-        pageLength: 5,
-        lengthMenu: [ 5,10, 25, 50, 75, 100 ],
-        destroy: true,
-        ajax: "appointment/list/selected/" + selected,
-        columns: [
-            { data: "appoint_no", orderable: false },
-            { data: "fullname", orderable: false },
-            { data: "contact_no", orderable: false },
-            { data: "email", orderable: false },
-            { data: "address", orderable: false },
-            { data: "purpose", orderable: false },
-        ],
-    });
+    listAppoint.ajax.url("appointment/list/selected/"+selected).load()
     $("#appointedModal").modal("show");
     $("#appointedModalLabel").text(selected);
+    $('input[name="selectedDateNow"]').val(selected);
+   
+    $("#btnSendEmail").on("click", function () {
+            $("#emailDiv").toggle(1000);
+    });
+    
+    $(".sendCancel").on('click', function () {
+        $("#emailDiv").fadeOut(500);
+        $("textarea[name='bodyEmail']").val('')
+            $("input[name='selectedDateNow']").val('')
+    })
+
+    
+    $("#appointedTable").on("click", 'input[type="checkbox"]', function () {
+    if ($("input[type='checkbox']:checked").length > 0) {
+        $("#emailDiv").fadeIn(1000);
+    } else {
+        $("#emailDiv").fadeOut(500);
+    }
+});
 };
+
+// $("#appointedTable").on("click", 'input[type="checkbox"]', function () {
+ 
+//     if ($("input[type='checkbox']:checked").length > 0) {
+//         $("#sendEmailForm").fadeIn(1000);
+//     } else {
+//         $("#sendEmailForm").fadeOut(500);
+//     }
+// });
+
 
 let myEvent = () => {
     $("#myEvent").fullCalendar({
@@ -318,3 +387,43 @@ $("#printAppointed").on("click", function () {
             h: 800,
         });
 });
+
+$("#emailDiv").hide();
+$("#sendEmailForm").on('submit', function (e) {
+    e.preventDefault();
+
+    let array_selected = [];
+    let tblData = listAppoint.rows(".selected").data();
+    $.each(tblData, function (i, val) {
+        array_selected.push(val.email);
+    });
+    
+    $.ajax({
+        url: "appointment/send/email",
+        type: "POST",
+        data: {
+            _token: $('input[name="_token"]').val(),
+            body: $("textarea[name='bodyEmail']").val(),
+            dateSelected:$("input[name='selectedDateNow']").val(),
+            array_selected
+        },
+        beforeSend: function () {
+            $(".btnSendEmail").html( `Sending.. <div class="spinner-border spinner-border-sm" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>`).attr("disabled", true);
+        },
+    })
+        .done(function (response) {
+            $(".btnSendEmail").html("Send").attr("disabled", false);
+            $("textarea[name='bodyEmail']").val('')
+            $("input[name='selectedDateNow']").val('')
+            getToast("success", "Info", 'Succesfuly Send!');
+            $("#emailDiv").fadeOut(500);
+            listAppoint.ajax.reload()
+        })
+        .fail(function (jqxHR, textStatus, errorThrown) {
+            $(".btnSendEmail").html("Send").attr("disabled", false);
+            console.log(jqxHR, textStatus, errorThrown);
+            getToast("error", "Eror", errorThrown);
+        });
+})

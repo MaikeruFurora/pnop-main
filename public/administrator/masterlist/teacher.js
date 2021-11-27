@@ -30,7 +30,9 @@ const table_teacher = $("#teacherTable").DataTable({
         {
             data: null,
             render: function (data) {
-                return `<button type="button" class="btn btn-sm btn-warning tdelete btnDelete_${data.id}  pt-0 pb-0 pl-2 pr-2" id="${data.id}">
+                return `<button type="button" class="btn btn-sm btn-warning tdelete btnDelete_${data.id}  pt-0 pb-0 pl-2 pr-2" id="${data.id}"
+                    ${ AssignId.filter(val=>(val==data.id))!='' ? "disabled" : ""}
+                    >
                     <i class="fas fa-user-times"></i>
                     </button>&nbsp;
                     <button type="button" class="btn btn-sm btn-info tedit btnEdit_${data.id} pt-0 pb-0 " id="${data.id}">
@@ -72,8 +74,13 @@ $("#teacherForm").submit(function (e) {
 
 $(document).on("click", ".tdelete", function () {
     let id = $(this).attr("id");
+    $("#teacherDeleteModal").modal("show")
+    $(".deleteYes").val(id)
+});
+
+$(".deleteYes").on('click', function () {
     $.ajax({
-        url: "teacher/delete/" + id,
+        url: "teacher/delete/" + $(this).val(),
         type: "DELETE",
         data: { _token: $('input[name="_token"]').val() },
         beforeSend: function () {
@@ -102,7 +109,7 @@ $(document).on("click", ".tdelete", function () {
                 .attr("disabled", false);
             getToast("error", "Eror", errorThrown);
         });
-});
+})
 
 $(document).on("click", ".tedit", function () {
     let id = $(this).attr("id");

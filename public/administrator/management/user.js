@@ -76,10 +76,10 @@ const userTable = (level) => {
                                 <div class="btn-group" role="group" aria-label="Basic example">
                                     <button type="button" style="font-size:9px" class="btn btn-sm btn-info pl-3 pr-3 editUser edit_${
                                         val.id
-                                    }" id="${val.id}">Edit</button>
-                                    <button type="button" style="font-size:9px" class="btn btn-sm btn-danger deleteUser delete_${
+                                    }" id="${val.id}"><i class="far fa-edit"></i></button>
+                                    <button type="button" style="font-size:9px" class="btn btn-sm btn-danger pl-3 pr-3 deleteUser delete_${
                                         val.id
-                                    }" id="${val.id}">Delete</button>
+                                    }" id="${val.id}"><i class="far fa-trash-alt"></i></button>
                                 </div>
                             </td>
                         </tr>
@@ -111,27 +111,33 @@ $("input[name='confirmPassword']").on("blur", function () {
 
 $(document).on("click", ".deleteUser", function () {
     let id = $(this).attr("id");
+    $("#teacherDeleteModal").modal("show")
+    $(".deleteYes").val(id)
+});
+
+$(".deleteYes").on('click', function () {
     $.ajax({
-        url: "user/delete/" + id,
+        url: "user/delete/" + $(this).val(),
         type: "DELETE",
         data: { _token: $('input[name="_token"]').val() },
         beforeSend: function () {
-            $(".delete_" + id).html(`
+            $(".deleteYes").html(`
             <div class="spinner-border spinner-border-sm" role="status">
                 <span class="sr-only">Loading...</span>
             </div>`);
         },
     })
         .done(function (response) {
-            $(".delete_" + id).html("Delete");
+            $(".deleteYes").html("Delete");
             userTable();
             getToast("success", "Success", "deleted one record");
+            $("#teacherDeleteModal").modal("hide")
         })
         .fail(function (jqxHR, textStatus, errorThrown) {
             console.log(jqxHR, textStatus, errorThrown);
             getToast("error", "Eror", errorThrown);
         });
-});
+})
 
 $(document).on("click", ".editUser", function () {
     let id = $(this).attr("id");
@@ -148,7 +154,7 @@ $(document).on("click", ".editUser", function () {
     })
         .done(function (data) {
             cancelUser.show();
-            $(".edit_" + id).html("Edit");
+            $(".edit_" + id).html(`<i class="far fa-edit"></i>`);
             $(".btnSaveUser").html("Update");
             $("input[name='id']").val(data.id);
             $("input[name='name']").val(data.name);

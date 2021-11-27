@@ -7,6 +7,7 @@
             href="{{ route('teacher.profile') }}"><i class="fas fa-user"></i><span>My Profile</span></a>
     </li>
     @if (Auth::user()->section()->where('school_year_id', $activeAY->id)->exists())
+    <li class="menu-header">Adviser Setting</li>
     <li class="{{ request()->is('teacher/my/class/monitor')?'active':'' }}">
         <a class="nav-link" href="{{ route('teacher.class.monitor') }}">
             <i class="fas fa-puzzle-piece"></i><span>
