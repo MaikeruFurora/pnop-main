@@ -1,5 +1,5 @@
 // alert($('input[name="current_curriculum"]').val())
-setTimeout(() => {
+// setTimeout(() => {
     let tableCurriculum = $("#tableCurriculum").DataTable({
         columnDefs: [
             {
@@ -151,8 +151,8 @@ setTimeout(() => {
         ],
     });
     
-    tableCurriculum.ajax.url("table/list/" + current_curriculum).load();
-}, 5000);
+//     tableCurriculum.ajax.url("table/list/" + current_curriculum).load();
+// }, 5000);
 $('select[name="selectBarangay"]').on("change", function () {
     $(this).val() != ""
         ? tableCurriculum.ajax
@@ -166,18 +166,18 @@ $('select[name="selectBarangay"]').on("change", function () {
         : "";
 });
 
-setTimeout(() => {
-    tableCurriculum.ajax
-        .url(
-            "table/list/filtered/" +
-                current_curriculum +
-                "/" +
-                $('select[name="selectBarangay"]')
-                    .prop("selectedIndex", 0)
-                    .val()
-        )
-        .load();
-}, 1000);
+// setTimeout(() => {
+//     tableCurriculum.ajax
+//         .url(
+//             "table/list/filtered/" +
+//                 current_curriculum +
+//                 "/" +
+//                 $('select[name="selectBarangay"]')
+//                     .prop("selectedIndex", 0)
+//                     .val()
+//         )
+//         .load();
+// }, 1000);
 
 
 $(document).on('click', ".btnRequirement", function () {

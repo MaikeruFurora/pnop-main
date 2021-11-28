@@ -391,7 +391,8 @@ $("#sectionFilter").on("change", function () {
 /**
  * SET SECTION
  */
-$("#setSectionForm").submit(function (e) {
+$("#enrollAssignForm").submit(function (e) {
+    // $("#setSectionForm").submit(function (e) {
     e.preventDefault();
     $.ajax({
         url: "section/set",
@@ -505,19 +506,32 @@ $(document).on("click", ".cEdit", function () {
         },
     })
         .done(function (response) {
-            $(".nameOfStudent").val(
-                response.student_lastname +
-                    " " +
-                    response.student_firstname +
-                    " " +
-                    response.student_middlename
-            );
-            $('select[name="section"]').val(response.section_id);
+            // $(".nameOfStudent").val(
+            //     response.student_lastname +
+            //         " " +
+            //         response.student_firstname +
+            //         " " +
+            //         response.student_middlename
+            // );
+            // $('select[name="section"]').val(response.section_id);
+            // $("input[name='enroll_id']").val(response.id);
+            // $(".btnEdit_" + id).html(response.section_id != "" ? "Change" : "Section");
+            // $("#setSectionModal").modal("show");
+
+            // new method here
+            setTimeout(() => {
             $("input[name='enroll_id']").val(response.id);
-            $(".btnEdit_" + id).html(
-                response.section_id != "" ? "Change" : "Section"
-            );
-            $("#setSectionModal").modal("show");
+            $("input[name='fullname_again']").val(response.fullname)
+            $("input[name='lrn_again']").val(response.roll_no)
+            $("select[name='grade_level_again']").val(response.grade_level)
+            $("select[name='curriculum_again']").val(response.curriculum)
+            $("select[name='section_again']").val(response.section_id)
+            $(".action_taken_again").text(response.action_taken ?? 'N/A')
+               $(".enroll_status_again").text(response.enroll_status)
+               response.enroll_status=='Enrolled'?$(".enroll_status_again").addClass('badge-success'):$(".enroll_status_again").addClass('badge-warning')
+            $("#enrollStudentModal").modal("show")
+            $(".btnEdit_" + id).html(response.section_id != "" ? "Section" : "Change");
+           }, 2000);
         })
         .fail(function (jqxHR, textStatus, errorThrown) {
             console.log(jqxHR, textStatus, errorThrown);
@@ -626,6 +640,7 @@ $("#massSectioningForm").on("submit", function (e) {
                 _token: $('input[name="_token"]').val(),
                 enroll_id: array_selected,
                 section: $('select[name="sectioningNow"]').val(),
+                curriculum:current_curriculum //added only for new method
             },
             beforeSend: function () {
                 $(".btnmassSectioning")

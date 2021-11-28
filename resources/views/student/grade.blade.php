@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="col-lg-12">
-            <div class="card">
+            <div class="card card-warning">
                 <div class="card-body pb-1">
                     <div class="">
                         <div class="float-left">
@@ -46,7 +46,7 @@
                             <tbody></tbody>
                             <tbody id="gradeTable">
                                 <tr>
-                                    <td colspan="8" class="text-center text-white">No data available</td>
+                                    <td colspan="8" class="text-center">No data available</td>
                                 </tr>
                             </tbody>
                             <tfoot>

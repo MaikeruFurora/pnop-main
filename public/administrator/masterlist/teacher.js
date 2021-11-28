@@ -61,6 +61,7 @@ $("#teacherForm").submit(function (e) {
         },
     })
         .done(function (response) {
+            $("input[name='id']").val('');
             $("#btnSave").html("Save");
             getToast("success", "Success", "Successfully added new teacher");
             $("#teacherForm")[0].reset();

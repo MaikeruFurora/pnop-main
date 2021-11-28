@@ -81,11 +81,11 @@ class EnrollmentController extends Controller
         }
 
         $checkIfExistStudentGrade = Grade::where('student_id', $enrolledSubject->student_id)
-            ->whereIn('subject_id', [
+            ->whereIn('subject_id', 
                 Subject::select('id')->where('grade_level', $enrolledSubject->grade_level)
                     ->whereIn('subject_for', [$enrolledSubject->curriculum, 'GENERAL'])
                     ->pluck('id')
-            ])
+            )
             ->exists();
 
         if ($checkIfExistStudentGrade) { //if student enrolled change section here
@@ -113,6 +113,7 @@ class EnrollmentController extends Controller
             }
         }
     }
+    
     public function store(Request $request)
     {
 
@@ -202,9 +203,11 @@ class EnrollmentController extends Controller
             Enrollment::select(
                 'enrollments.*',
                 'enrollments.section_id',
+                "students.roll_no",
                 "students.student_firstname",
                 "students.student_middlename",
                 "students.student_lastname",
+                DB::raw("CONCAT(students.student_lastname,', ',students.student_firstname,' ',students.student_middlename) as fullname")
             )->join('students', 'enrollments.student_id', 'students.id')
                 ->leftjoin('sections', 'enrollments.section_id', 'sections.id')
                 ->where('enrollments.id', $enrollment)->first()
@@ -308,12 +311,25 @@ class EnrollmentController extends Controller
         return Enrollment::where("section_id", $section)->where('school_year_id', Helper::activeAY()->id)->count();
     }
 
-    public function enrolled($enroll_id, $section)
+    // public function enrolled($enroll_id, $section)
+    // {
+    //     Enrollment::where('id', $enroll_id)
+    //         ->where('school_year_id', Helper::activeAY()->id)
+    //         ->update([
+    //             'section_id' => $section,
+    //             'enroll_status' => 'Enrolled',
+    //         ]);
+    // }
+
+    public function enrolled($enroll_id, $request)
     {
+        // return $request->all();
         Enrollment::where('id', $enroll_id)
             ->where('school_year_id', Helper::activeAY()->id)
             ->update([
-                'section_id' => $section,
+                'section_id' => $request->section_again ?? $request->section,
+                'curriculum' => $request->curriculum_again ?? $request->curriculum,
+                'grade_level' => $request->grade_level_again ?? Auth::user()->chairman_info->grade_level,
                 'enroll_status' => 'Enrolled',
             ]);
     }
@@ -322,25 +338,42 @@ class EnrollmentController extends Controller
     {
         if (is_array($request->enroll_id)) {
             foreach ($request->enroll_id as  $value) {
-                $this->enrolled($value, $request->section);
+                $this->enrolled($value, $request);
                 $this->enrolledSubject($value);
             }
         } else {
-            $this->enrolled($request->enroll_id, $request->section);
+            $this->enrolled($request->enroll_id, $request);
             $this->enrolledSubject($request->enroll_id);
         }
     }
 
+    // public function setSection(Request $request)
+    // {
+    //     if ($request->status_now == 'force') {
+    //         if ($this->totalStudentInSection($request->section) >= 45) {
+    //             return response()->json(['warning' => 'This section reach the maximum number of student']);
+    //         } else {
+    //             $this->updateSection($request);
+    //         }
+    //     } else {
+    //         if ($this->totalStudentInSection($request->section) > 40) {
+    //             return response()->json(['warning' => 'Section is full']);
+    //         } else {
+    //             $this->updateSection($request);
+    //         }
+    //     }
+    // }
+
     public function setSection(Request $request)
     {
         if ($request->status_now == 'force') {
-            if ($this->totalStudentInSection($request->section) >= 45) {
+            if ($this->totalStudentInSection($request->section_again) >= 45) {
                 return response()->json(['warning' => 'This section reach the maximum number of student']);
             } else {
                 $this->updateSection($request);
             }
         } else {
-            if ($this->totalStudentInSection($request->section) > 40) {
+            if ($this->totalStudentInSection($request->section_again) > 40) {
                 return response()->json(['warning' => 'Section is full']);
             } else {
                 $this->updateSection($request);

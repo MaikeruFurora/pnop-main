@@ -26,6 +26,10 @@ class CreateGradesTable extends Migration
             $table->tinyInteger('third')->nullable();
             $table->tinyInteger('fourth')->nullable();
             $table->tinyInteger('avg')->nullable();
+            $table->string('avg_now',10)->nullable();
+            $table->string('remarks',10)->nullable();
+            $table->string('conducted_from',20)->nullable();
+            $table->string('conducted_to',20)->nullable();
             $table->timestamps();
         });
     }

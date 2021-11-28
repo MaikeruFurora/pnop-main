@@ -5,10 +5,10 @@
         <h2 class="section-title">My Profile</h2>
         <div class="row">
             <div class="col-lg-8 col-md-12 col-sm-12">
-                    <div class="card profile-widget">
+                    <div class="card card-warning profile-widget">
                       <div class="profile-widget-header">     
                           @if (!empty(auth()->user()->profile_image))
-                          <img alt="Profile pictur of {{ auth()->user()->student_firstname }}" src="{{ asset('image/profile/'.auth()->user()->profile_image) }}" class="rounded-circle profile-widget-picture">
+                          <img alt="Profile pictur of {{ auth()->user()->student_firstname }}" src="{{ asset('image/profile/'.auth()->user()->profile_image) }}" class="rounded-circle profile-widget-picture shadow">
                           @else
                           <img alt="image" src="{{ asset('image/avatar-1.png') }}" class="rounded-circle profile-widget-picture">
                           @endif                
@@ -141,7 +141,7 @@
 
             </div>
             <div class="col-lg-4 col-md-12 col-sm-12">
-                <div class="card mt-4">
+                <div class="card card-warning mt-4">
                     <div class="card-header">
                         Account
                     </div>
@@ -167,7 +167,7 @@
 
                 {{-- upload picture --}}
 
-                <div class="card">
+                <div class="card  card-warning">
                     <div class="card-header">
                         Upload Picture
                     </div>

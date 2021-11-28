@@ -22,6 +22,11 @@
         </a>
     </li>
     @endif
+    <li class="menu-header">Appointment</li>
+    <li class="{{ request()->is('student/my/enrollment')?'active':'' }}"><a class="nav-link"
+            href="{{ route('student.enrollment') }}"><i class="fas fa-calendar-check"></i><span>Appointment</span></a>
+    </li>
+    <li class="menu-header">Enrollment</li>
     <li class="{{ request()->is('student/my/enrollment')?'active':'' }}"><a class="nav-link"
             href="{{ route('student.enrollment') }}"><i class="fas fa-box-tissue"></i><span>Enrollment</span></a>
     </li>

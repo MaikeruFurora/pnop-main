@@ -34,7 +34,7 @@
                             <form id="assignForm">@csrf
                                 <input type="hidden" name="id">
                                     <div class="form-group">
-                                      <label for="exampleInputEmail1">Email address</label>
+                                      <label for="exampleInputEmail1">Subject</label>
                                       <select name="subject_id" class="custom-select">
                                         <option value=""></option>
                                         @foreach ($subjects as $item)
@@ -44,7 +44,7 @@
                                     </select>
                                     </div>
                                     <div class="form-group">
-                                      <label for="exampleInputPassword1">Password</label>
+                                      <label for="exampleInputPassword1">Subject Teacher</label>
                                       <select name="teacher_id" class="select2 custom-select">
                                         <option value=""></option>
                                         @foreach ($teachers as $item)
