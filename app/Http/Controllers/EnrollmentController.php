@@ -330,7 +330,7 @@ class EnrollmentController extends Controller
                 'section_id' => $request->section_again ?? $request->section,
                 'curriculum' => $request->curriculum_again ?? $request->curriculum,
                 'grade_level' => $request->grade_level_again ?? Auth::user()->chairman_info->grade_level,
-                'enroll_status' => 'Enrolled',
+                'enroll_status' => ($request->section_again ?? $request->section)?'Enrolled':'Pending',
             ]);
     }
 

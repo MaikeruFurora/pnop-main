@@ -24,6 +24,12 @@ class Student extends Authenticatable
     {
         return ucwords("{$this->student_firstname} {$this->student_lastname}");
     }
+
+    public function getPernamentAddressAttribute()
+    {
+        return ucwords(strtolower("{$this->barangay}, {$this->city}, {$this->province}"));
+    }
+    
     public function grade()
     {
         return $this->hasMany(Grade::class);

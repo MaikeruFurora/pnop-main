@@ -214,6 +214,9 @@ Route::middleware(['auth:web', 'preventBackHistory'])->name('admin.')->prefix('a
     })->name('backup.run');
     Route::get('backup/donwload/{file_name}', [AdminController::class, 'backUpDonwload']);
     Route::post('backup/remove/{file_name}', [AdminController::class, 'backUpRemove']);
+
+    Route::put('grade/update/status', [AdminController::class, 'gradeStatus']);
+    
 });
 
 Route::middleware(['auth:teacher', 'preventBackHistory'])->name('teacher.')->prefix('teacher/my/')->group(function () {
@@ -310,6 +313,7 @@ Route::middleware(['auth:student', 'preventBackHistory'])->name('student.')->pre
     Route::get('check/subject/balance/{student}', [StudentController::class, 'checkSubjectBalance']);
     Route::post('self/enroll', [StudentController::class, 'selfEnroll']);
     Route::get('report', [StudentController::class, 'reportBug'])->name('report');
+    Route::get('appointment', [StudentController::class, 'appointment'])->name('appointment');
 });
 
 Route::get('/clear', function () { //-> tawagin mo to url sa browser -> 127.0.0.1:8000/clear

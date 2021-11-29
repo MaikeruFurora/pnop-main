@@ -193,6 +193,7 @@ class StudentController extends Controller
             ->latest()->first();
             $dataArr['curriculum'] = $putDataForPreviuosLevel->curriculum;
             $dataArr['grade_level'] = 'Grade ' . $putDataForPreviuosLevel->grade_level;
+            // $dataArr['status'] = $putDataForPreviuosLevel->enroll_status;
             $dataArr['status'] = 'Ongoing';
             $dataArr['action_taken'] = 'None';
         }
@@ -202,14 +203,14 @@ class StudentController extends Controller
     
     public function checkSubjectBalance(Student $student)
     {
-        return Grade::where('student_id', $student->id)->WhereNull('avg')->orWhere('avg', '')->get()->count();
+        return Grade::where('student_id', $student->id)->whereNull('avg')->orWhere('avg', '')->get()->count();
     }
 
     public function selfEnroll(Request $request)
     {
         $countFail =  Grade::where('student_id', $request->id)->where('avg','<',75)->whereNull('remarks')->get();
         $action_taken = $countFail->count() == 0 ? 'Promoted' : ($countFail->count() < 3 ? 'Partialy Promoted' : 'Retained');
-        $studInfo = Enrollment::select('grade_level', 'curriculum')->where('student_id', $request->id)->latest()->first();
+        $studInfo = Enrollment::select('grade_level', 'curriculum','enroll_status')->where('student_id', $request->id)->latest()->first();
 
         if ($action_taken == 'Retained') { //if student retained in year level means this is backsubject will reset in grade level
             // BackSubject::where('student_id', $request->id)->where('grade_level', $countFail[0]->grade_level)->delete();
@@ -226,20 +227,48 @@ class StudentController extends Controller
 
         $sp = SchoolProfile::find(1);
 
-        return Enrollment::create([
-            'student_id' => $request->id,
-            // 'section_id' => $request->section_id,
-            'grade_level' => $countFail->count() >= 3 ? $countFail[0]->grade_level : ($studInfo->grade_level + 1),
-            'school_year_id' => Helper::activeAY()->id,
-            'date_of_enroll' => date("d/m/Y"),
-            'action_taken' => $action_taken,
-            'enroll_status' => 'Pending',
-            'tracking_no' => $tracking_no,
-            'curriculum' => $studInfo->curriculum,
-            'last_school_attended'=>$sp->school_name,
-            'student_type' => ($studInfo->grade_level + 1) <= 10 ? 'JHS' : null,
-            'state' => 'Old',
-        ]);
+        switch ($studInfo->enroll_status) {
+            case 'Enrolled':
+                return Enrollment::create([
+                    'student_id' => $request->id,
+                    // 'section_id' => $request->section_id,
+                    'grade_level' => $countFail->count() >= 3 ? $countFail[0]->grade_level : ($studInfo->grade_level + 1),
+                    'school_year_id' => Helper::activeAY()->id,
+                    'date_of_enroll' => date("d/m/Y"),
+                    'action_taken' => $action_taken,
+                    'enroll_status' => 'Pending',
+                    'tracking_no' => $tracking_no,
+                    'curriculum' => $studInfo->curriculum,
+                    'last_school_attended'=>$sp->school_name,
+                    'student_type' => ($studInfo->grade_level + 1) <= 10 ? 'JHS' : null,
+                    'state' => 'Old',
+                ]);
+                break;
+            case 'Pending':
+                    return false;
+                break;
+            case 'Dropped':
+                return Enrollment::create([
+                    'student_id' => $request->id,
+                    // 'section_id' => $request->section_id,
+                    'grade_level' => $studInfo->grade_level,
+                    'school_year_id' => Helper::activeAY()->id,
+                    'date_of_enroll' => date("d/m/Y"),
+                    'action_taken' => $action_taken,
+                    'enroll_status' => 'Pending',
+                    'tracking_no' => $tracking_no,
+                    'curriculum' => $studInfo->curriculum,
+                    'last_school_attended'=>$sp->school_name,
+                    'student_type' => ($studInfo->grade_level + 1) <= 10 ? 'JHS' : null,
+                    'state' => 'Old',
+                ]);
+                break;
+            default:
+                    return false;
+                break;
+        }
+        
+       
     }
 
     public function viewRecord(Student $student)
@@ -312,5 +341,10 @@ class StudentController extends Controller
     public function reportBug()
     {
         return view("student/reportBug");
+    }
+
+    public function appointment()
+    {
+        return view("student/appointment");
     }
 }

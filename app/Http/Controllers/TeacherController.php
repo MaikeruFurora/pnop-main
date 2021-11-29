@@ -8,6 +8,7 @@ use App\Models\Student;
 use App\Models\Assign;
 use App\Models\Enrollment;
 use App\Models\Grade;
+use App\Models\SchoolProfile;
 use App\Models\Subject;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
@@ -31,7 +32,9 @@ class TeacherController extends Controller
     }
     public function grading()
     {
-        return view('teacher/grading');
+        return view('teacher/grading',[
+            'data'=>SchoolProfile::find(1)
+        ]);
     }
 
     public function profile()

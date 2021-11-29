@@ -85,7 +85,7 @@ $(".deleteYes").on('click', function () {
         type: "DELETE",
         data: { _token: $('input[name="_token"]').val() },
         beforeSend: function () {
-            $(".btnDelete_" + id)
+            $(".deleteYes")
                 .html(
                     `
                 <div class="spinner-border spinner-border-sm" role="status">
@@ -96,7 +96,7 @@ $(".deleteYes").on('click', function () {
         },
     })
         .done(function (response) {
-            $(".btnDelete_" + id)
+            $(".deleteYes")
                 .html(`<i class="fas fa-user-times"></i>`)
                 .attr("disabled", false);
             getToast("success", "Success", "deleted one record");
@@ -105,7 +105,7 @@ $(".deleteYes").on('click', function () {
         })
         .fail(function (jqxHR, textStatus, errorThrown) {
             console.log(jqxHR, textStatus, errorThrown);
-            $(".btnDelete_" + id)
+            $(".deleteYes")
                 .html(`<i class="fas fa-user-times"></i>`)
                 .attr("disabled", false);
             getToast("error", "Eror", errorThrown);

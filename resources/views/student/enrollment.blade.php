@@ -124,6 +124,8 @@
                                                 ">
                                             </div>
                                             <button class="btn btn-primary" disabled>FINALIZED <small>(Enrolled)</small></button>
+                                            @elseif($dataArr['status']=='Dropped')
+                                            <p class="mt-3"><b>Note: </b>If your enrollment status is <b class="text-danger">dropped</b>, you will need to enroll at the last grade level you attended when the academic year resumes. Please coordinate with the grade level chairman to guide you through the enrollment process.</p>
                                             @else
                                             <span class="badge badge-warning badge-pill noteTxt mb-3"></span>
                                             @csrf
@@ -142,7 +144,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <input id="my-input" readonly class="form-control" type="text" name="" value="@if($dataArr['curriculum']=='STEM')Science, Technology, Engineering and Mathematics @elseif($dataArr['curriculum']=='BEC')Basic Education for Art @elseif($dataArr['curriculum']=='SPJ')Special Program for Journalis @elseif($dataArr['curriculum']=='SPA')Special Program for Art @else None @endif
+                                                <input id="my-input" readonly class="form-control" type="text" name="" value="@if($dataArr['curriculum']=='STEM')Science, Technology, Engineering and Mathematics @elseif($dataArr['curriculum']=='BEC')Basic Education Curriculum @elseif($dataArr['curriculum']=='SPJ')Special Program for Journalis @elseif($dataArr['curriculum']=='SPA')Special Program for Art @else None @endif
                                                 ">
                                             </div>
                                             <button type="submit" class="btn btn-primary promptModal">Proceed</button>

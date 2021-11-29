@@ -95,3 +95,26 @@ $("select[name='statusEnrollment']").on("change", function () {
         $(".btnYes").hide();
     }
 });
+
+
+$('input[name="grade_status"]').on('click', function () {
+    $(".badgeText").text(this.checked?'Disabled':'Enabled')
+    $.ajax({
+        url: `grade/update/status`,
+        type: "PUT",
+        data: {
+            active:this.checked?1:0,
+            _token: $('input[name="_token"]').val(),
+        },
+    })
+        .done(function (data) {
+            if (data) {
+                getToast("info", "Done", "Grade has been ended!");
+            } else {
+                getToast("info", "Active", "Grade has been activated!");
+            }
+        })
+        .fail(function (jqxHR, textStatus, errorThrown) {
+            console.log(jqxHR, textStatus, errorThrown);
+        });
+})

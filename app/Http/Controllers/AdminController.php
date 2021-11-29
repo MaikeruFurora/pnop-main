@@ -298,4 +298,13 @@ class AdminController extends Controller
                 break;
         }
     }
+
+    public function gradeStatus(Request $request){
+        $data=SchoolProfile::find(1);
+        $data->update([
+            'grade_status'=>$request->active
+        ]);
+
+        return response($request->active);
+    }
 }

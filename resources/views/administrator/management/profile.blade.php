@@ -80,15 +80,17 @@
                     {{empty($data->school_enrollment_url)}}
                     <div class="col-lg-4">
                         <div class="card card-primary">
-                            <div class="card-body pb-0">
+                            <div class="card-header">
+                                Enrollment Status
+                            </div>
+                            <div class="card-body">
                                 <form id="enrollStatusForm">@csrf
-                                    <div class="form-row">
-                                        <div class="form-group col-lg-4 col-md-4 col-sm-12">
-                                            <label for="selectEnrollmentStatus" class="my-2">Enrollment Status</label>
-                                        </div>
-                                        <div class="form-group col-lg-8 col-md-8 col-sm-12">
+                                  
+                                    After the enrollment deadline has passed, online enrollment is disabled so that other users cannot access it.
+                                    
+                                      
                                             <select name="statusEnrollment" id="selectEnrollmentStatus"
-                                                class="form-control" required>
+                                                class="form-control mt-2" required>
                                                 <option {{ empty($data->school_enrollment_url)?'selected':'' }}
                                                     value="">
                                                 </option>
@@ -101,8 +103,6 @@
                                                     Disabled
                                                 </option>
                                             </select>
-                                        </div>
-                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -110,9 +110,37 @@
                     @endif
                     <div class="col-lg-4">
                         <div class="card card-primary">
+                            <div class="card-header">
+                                BACK-UP DATABASE
+                            </div>
                             <div class="card-body">
-                                <a href="{{ route('admin.backup.run') }}" class="btn btn-block btn-warning">BACK-UP
-                                    DATABASE</a>
+                                A backup is a copy of data from your database that can be used to reconstruct that data. Backups can be divided into physical backups
+                                <a href="{{ route('admin.backup.run') }}" class="btn btn-block btn-warning mt-3">BACK-UP DATABASE</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card card-primary">
+                            <div class="card-header">
+                               <h4> Grade Input Status</h4>
+                                <div class="card-header-action">
+                                    <span class="badge badge-primary badgeText">
+                                        {{ $data->grade_status?'Disabled':'Enabled' }}
+                                    </span>
+                                  </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-row">
+                                    <div class="form-group col-lg-9 col-md-9 col-sm-12">
+                                        To protect the data from new changes, disable the teacher's grading sheet.
+                                    </div>
+                                    <div class="form-group col-lg-3 col-md-3 col-sm-12">
+                                        <label class="custom-switch my-3 mx-0">
+                                            <input type="checkbox" name="grade_status" class="custom-switch-input switchMe" {{ $data->grade_status?'checked':'' }}>
+                                            <span class="custom-switch-indicator"></span>
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

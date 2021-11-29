@@ -39,7 +39,7 @@ let myClassTable = (section_id, subject_id) => {
                 data: null,
                 orderable: false,
                 render: function (data) {
-                    return `<input type="text" pattern="^[0-9]{3}$" onkeypress="return numberOnly(event)" maxlength="3"  name="inGrade" class="noborder text-center"
+                    return `<input type="text" ${grade_status?'disabled':''} pattern="^[0-9]{3}$" onkeypress="return numberOnly(event)" maxlength="3"  name="inGrade" class="noborder text-center"
                         value="${
                             data.first == null
                                 ? ""
@@ -57,7 +57,7 @@ let myClassTable = (section_id, subject_id) => {
                 data: null,
                 orderable: false,
                 render: function (data) {
-                    return `<input type="text" pattern="^[0-9]{3}$" onkeypress="return numberOnly(event)" maxlength="3"  name="inGrade" class="noborder text-center"  value="${
+                    return `<input type="text" ${grade_status?'disabled':''} pattern="^[0-9]{3}$" onkeypress="return numberOnly(event)" maxlength="3"  name="inGrade" class="noborder text-center"  value="${
                         data.second == null
                             ? ""
                             : data.second == 0
@@ -72,7 +72,7 @@ let myClassTable = (section_id, subject_id) => {
                 data: null,
                 orderable: false,
                 render: function (data) {
-                    return `<input type="text" pattern="^[0-9]{3}$" onkeypress="return numberOnly(event)" maxlength="3"  name="inGrade" class="noborder text-center" value="${
+                    return `<input type="text" ${grade_status?'disabled':''} pattern="^[0-9]{3}$" onkeypress="return numberOnly(event)" maxlength="3"  name="inGrade" class="noborder text-center" value="${
                         data.third == null
                             ? ""
                             : data.third == 0
@@ -87,7 +87,7 @@ let myClassTable = (section_id, subject_id) => {
                 data: null,
                 orderable: false,
                 render: function (data) {
-                    return `<input type="text" pattern="^[0-9]{3}$" onkeypress="return numberOnly(event)" maxlength="3"  name="inGrade" class="noborder text-center" value="${
+                    return `<input type="text" ${grade_status?'disabled':''} pattern="^[0-9]{3}$" onkeypress="return numberOnly(event)" maxlength="3"  name="inGrade" class="noborder text-center" value="${
                         data.fourth == null
                             ? ""
                             : data.fourth == 0

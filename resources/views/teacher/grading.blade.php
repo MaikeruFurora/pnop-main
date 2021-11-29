@@ -34,7 +34,7 @@
         <div class="col-12">
             <div class="row justify-content-between">
                 <div class="col-lg-5 col-md-8">
-                    <h2 class="section-title">Grading</h2>
+                    <h2 class="section-title">Grading</h2> 
                 </div>
                 <div class="col-lg-2 col-md-2 mt-3">
                     <div class="float-right">
@@ -58,7 +58,7 @@
                 </div>
             </div>
             <div class="card-body pb-1">
-
+                <small><span class="badge badge-danger badgeText mb-2"></span></small>
                     <table class="table  table-bordered table-hover" id="myClassTable" style="font-size: 14px">
                         <thead class="bg-info">
                             <tr>
@@ -82,5 +82,12 @@
 <script src="{{ asset('js/datatable/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('js/datatable/dataTables.min.js') }}"></script>
 <script src="{{ asset('js/datatable/dataTables.bootstrap4.min.js') }}"></script>
+<script>
+    let grade_status = {{ json_encode($data->grade_status) }}
+    if (grade_status) {
+        $("#gradeWarningDisabled").modal("show")
+        $(".badgeText").text("Grading system was disbaled")
+    }
+</script>
 <script src="{{ asset('teacher/grading.js') }}"></script>
 @endsection

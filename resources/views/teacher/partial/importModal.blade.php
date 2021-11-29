@@ -31,3 +31,26 @@
     </div>
   </div>
 </form>
+
+
+<!-- Modal -->
+<div class="modal fade" id="gradeWarningDisabled" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="gradeWarningDisabledLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="gradeWarningDisabledTitle">Warning</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body pb-1">
+        <h6 class="lead">
+          Warning you will no longer be allowed to edit or add a grade please contact the administrator
+        </h6>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
