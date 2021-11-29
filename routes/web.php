@@ -223,6 +223,8 @@ Route::middleware(['auth:teacher', 'preventBackHistory'])->name('teacher.')->pre
     Route::get('dashboard', [TeacherController::class, 'dashboard'])->name('dashboard');
 
     Route::get('profile', [TeacherController::class, 'profile'])->name('profile');
+    Route::post('profile/update', [TeacherController::class, 'profileUpdate'])->name('profile.update');
+    Route::post('profile/account', [TeacherController::class, 'profileAccount'])->name('profile.account');
     
     // chairman-manage-section-route
     Route::get('section', [ChairmanController::class, 'section'])->name('section');

@@ -42,6 +42,26 @@ class TeacherController extends Controller
         return view('teacher/profile');
     }
 
+    public function profileUpdate(Request $request){
+        Teacher::whereId(auth()->user()->id)->update([
+            'teacher_firstname'=>$request->teacher_firstname,
+            'teacher_middlename'=>$request->teacher_middlename,
+            'teacher_lastname'=>$request->teacher_lastname,
+        ]);
+        return redirect()->back();
+    }
+
+    public function profileAccount(Request $request){
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required|required_with:confirm_password|same:confirm_password',
+            'confirm_password' => 'required'
+        ]);
+        Teacher::whereId(auth()->user()->id)
+            ->update(['password'=>Hash::make($request->password)]);
+            return redirect()->back();
+    }
+
     public function loadMySection()
     {
         return response()->json(
