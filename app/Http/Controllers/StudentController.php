@@ -273,7 +273,7 @@ class StudentController extends Controller
 
     public function viewRecord(Student $student)
     {
-        $recordSeven = $this->gradeViewAll($student->id, 7);
+       $recordSeven = $this->gradeViewAll($student->id, 7);
         $recordEight = $this->gradeViewAll($student->id, 8);
         $recordNine = $this->gradeViewAll($student->id, 9);
         $recordTen = $this->gradeViewAll($student->id, 10);
@@ -285,23 +285,29 @@ class StudentController extends Controller
 
     public function gradeViewAll($id, $gl)
     {
-        return Grade::select(
-            "first",
-            'second',
-            'third',
-            'fourth',
-            'sections.section_name',
-            'subjects.descriptive_title',
-            'subjects.grade_level',
-            DB::raw("CONCAT(teachers.teacher_lastname,', ',teachers.teacher_firstname,' ',teachers.teacher_middlename) as fullname")
-        )
-            ->join("students", "grades.student_id", "students.id")
-            ->join('subjects', 'grades.subject_id', 'subjects.id')
-            ->join('sections', 'grades.section_id', 'sections.id')
-            ->join('teachers', 'sections.teacher_id', 'teachers.id')
-            ->where('students.id', $id)
-            ->where('subjects.grade_level', $gl)
-            ->get();
+
+        $getData = Enrollment::where('student_id',$id)->where('grade_level',$gl)->where('enroll_status','Enrolled')->first();
+
+        if ($getData) {
+            return Grade::select(
+                "first",
+                'second',
+                'third',
+                'fourth',
+                'sections.section_name',
+                'subjects.descriptive_title',
+                'subjects.grade_level',
+                DB::raw("CONCAT(teachers.teacher_lastname,', ',teachers.teacher_firstname,' ',teachers.teacher_middlename) as fullname")
+            )
+                ->join("students", "grades.student_id", "students.id")
+                ->join('subjects', 'grades.subject_id', 'subjects.id')
+                ->join('sections', 'grades.section_id', 'sections.id')
+                ->join('teachers', 'sections.teacher_id', 'teachers.id')
+                ->where('students.id', $getData->student_id)
+                ->where('subjects.grade_level', $getData->grade_level)
+                ->where('sections.id', $getData->section_id)
+                ->get();
+        }
     }
     public function backsubject()
     {

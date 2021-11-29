@@ -121,7 +121,7 @@ let gradeTable = (level, section) => {
 
 
 let filterGradeLevel = () => {
-    let filterGradeLevelHTML;
+    let filterGradeLevelHTML='<option value="">Choose Grade Level</option>';
     $.ajax({
         url: "level/list",
         type: "GET",
@@ -131,11 +131,14 @@ let filterGradeLevel = () => {
             $(".txtSectionName").text(data[0].section_name);
             data.forEach((val) => {
                 console.log(val.status);
-                filterGradeLevelHTML += `<option ${
-                    val.status == "1" ? "selected" : ""
-                } value="${val.grade_level}_${val.section_id}">Grade - ${
+                // filterGradeLevelHTML += `<option ${
+                //     val.status == "1" ? "selected" : ""
+                // } value="${val.grade_level}_${val.section_id}">Grade - ${
+                //     val.grade_level
+                // }</option>`;
+                filterGradeLevelHTML += `<option value="${val.grade_level}_${val.section_id}">Grade - ${
                     val.grade_level
-                }</option>`;
+                } ${val.status == "1" ? "(current)" : ""}</option>`;
             });
             $("select[name='filterGradeLevel']").html(filterGradeLevelHTML);
         })
@@ -146,15 +149,23 @@ let filterGradeLevel = () => {
 };
 
 filterGradeLevel();
-setTimeout(() => {
-    let val = $("select[name='filterGradeLevel']")
-        .prop("selectedIndex", 0)
-        .val()
-        .split("_");
-    gradeTable(val[0], val[1]);
-}, 5000);
+// setTimeout(() => {
+//     let val = $("select[name='filterGradeLevel']")
+//         .prop("selectedIndex", 0)
+//         .val()
+//         .split("_");
+//     gradeTable(val[0], val[1]);
+// }, 5000);
 
 $("select[name='filterGradeLevel']").on("change", function () {
-    let data = $(this).val().split("_");
-    gradeTable(data[0], data[1]);
+    if ($(this).val()!="") {
+        let data = $(this).val().split("_");
+        gradeTable(data[0], data[1]);
+    } else {
+        $("#gradeTable").html(` <tr>
+        <td colspan="8" class="text-center">
+            No subjects available
+        </td>
+    </tr>`)
+    }
 });

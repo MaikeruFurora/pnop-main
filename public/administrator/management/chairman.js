@@ -31,7 +31,7 @@ const chairmanTable = () => {
                                     ${i++}
                                 </td>
                                 <td>
-                                    ${val.grade_level}
+                                   Grade ${val.grade_level}
                                 </td>
                                 <td>
                                     ${val.teacher_lastname},

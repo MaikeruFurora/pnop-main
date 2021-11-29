@@ -12,7 +12,7 @@
                     <div class="float-right ">
 
                         <form class="form-inline ">
-                            <label class="my-1 mr-2" for="filterLabel">Grade Level</label>
+                            {{-- <label class="my-1 mr-2" for="filterLabel">Grade Level</label> --}}
                             <select name="filterGradeLevel" class="custom-select my-1 mr-sm-2" id="filterLabel">
                             </select>
                         </form>
