@@ -275,26 +275,26 @@ let showListOfAppointed = (selected) => {
     $("#appointedModal").modal("show");
     $("#appointedModalLabel").text(selected);
     $('input[name="selectedDateNow"]').val(selected);
-   
-    $("#btnSendEmail").on("click", function () {
-            $("#emailDiv").toggle(1000);
-    });
-    
-    $(".sendCancel").on('click', function () {
-        $("#emailDiv").fadeOut(500);
-        $("textarea[name='bodyEmail']").val('')
-            $("input[name='selectedDateNow']").val('')
-    })
-
-    
-    $("#appointedTable").on("click", 'input[type="checkbox"]', function () {
-    if ($("input[type='checkbox']:checked").length > 0) {
-        $("#emailDiv").fadeIn(1000);
-    } else {
-        $("#emailDiv").fadeOut(500);
-    }
-});
 };
+
+$("#btnSendEmail").on("click", function () {
+    $("#emailDiv").toggle(1000);
+});
+
+$(".sendCancel").on('click', function () {
+    $("#emailDiv").fadeOut(500);
+    $("textarea[name='bodyEmail']").val('')
+    $("input[name='selectedDateNow']").val('')
+})
+
+
+    $("#appointedTable").on("click", 'input[type="checkbox"]', function () {
+        if ($("input[type='checkbox']:checked").length > 0) {
+            $("#emailDiv").fadeIn(1000);
+        } else {
+            $("#emailDiv").fadeOut(500);
+        }
+    });
 
 // $("#appointedTable").on("click", 'input[type="checkbox"]', function () {
  
