@@ -77,7 +77,6 @@
             <div class="col-lg-12">
                 <div class="row">
                     @if (isset($data))
-                    {{empty($data->school_enrollment_url)}}
                     <div class="col-lg-4">
                         <div class="card card-primary">
                             <div class="card-header">
