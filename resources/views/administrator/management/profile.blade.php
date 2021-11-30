@@ -124,9 +124,16 @@
                             <div class="card-header">
                                <h4> Grade Input Status</h4>
                                 <div class="card-header-action">
-                                    <span class="badge badge-primary badgeText">
-                                        {{ $data->grade_status?'Disabled':'Enabled' }}
+                                  
+                                    @if ($data->grade_status)
+                                    <span class="badge badge-warning badgeText">
+                                       Disabled
+                                    </span>      
+                                    @else
+                                    <span class="badge badge-success badgeText">
+                                        Enabled
                                     </span>
+                                    @endif
                                   </div>
                             </div>
                             <div class="card-body">

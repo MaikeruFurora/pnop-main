@@ -49,32 +49,50 @@
                 </div>
             </div>
         </div>
-        <div class="card card-info">
-            <div class="card-header">
-                <span style="font-size: 15px" class="txtSubjectName badge badge-warning pt-1 pb-1"></span>&nbsp;
-                <div class="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-outline-primary btn-sm" id="btnImport"><i class="fas fa-cloud-upload-alt"></i>Import</button>&nbsp;
-                    <button class="btn btn-outline-secondary btnDownload btn-sm" type="button"><i class="fas fa-cloud-download-alt"></i>Template</button>
-                </div>
+       @if ($data->grade_status)
+       <div class="col-12 col-md-12 col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="empty-state" data-height="200">
+              {{-- <div class="empty-state-icon bg-danger"> --}}
+                <i class="fas fa-exclamation-circle" style="font-size: 30px"></i>
+              {{-- </div> --}}
+              <h2>Grading system is not available</h2>
+              <p class="lead">
+                Warning you will no longer be allowed to edit or add a grade
+              </p>
             </div>
-            <div class="card-body pb-1">
-                <small><span class="badge badge-danger badgeText mb-2"></span></small>
-                    <table class="table  table-bordered table-hover" id="myClassTable" style="font-size: 14px">
-                        <thead class="bg-info">
-                            <tr>
-                                <th class="text-white">Student name</th>
-                                <th class="text-center text-white" width="7%">1st</th>
-                                <th class="text-center text-white" width="7%">2nd</th>
-                                <th class="text-center text-white" width="7%">3rd</th>
-                                <th class="text-center text-white" width="7%">4th</th>
-                                <th class="text-center text-white" width="7%">Avg</th>
-                                <th class="text-center text-white" width="8%">Remarks</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
+          </div>
+        </div>
+      </div>
+       @else
+       <div class="card card-info">
+        <div class="card-header">
+            <span style="font-size: 15px" class="txtSubjectName badge badge-warning pt-1 pb-1"></span>&nbsp;
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-outline-primary btn-sm" id="btnImport"><i class="fas fa-cloud-upload-alt"></i>Import</button>&nbsp;
+                <button class="btn btn-outline-secondary btnDownload btn-sm" type="button"><i class="fas fa-cloud-download-alt"></i>Template</button>
             </div>
         </div>
+        <div class="card-body pb-1">
+            <small><span class="badge badge-danger badgeText mb-2"></span></small>
+                <table class="table  table-bordered table-hover" id="myClassTable" style="font-size: 14px">
+                    <thead class="bg-info">
+                        <tr>
+                            <th class="text-white">Student name</th>
+                            <th class="text-center text-white" width="7%">1st</th>
+                            <th class="text-center text-white" width="7%">2nd</th>
+                            <th class="text-center text-white" width="7%">3rd</th>
+                            <th class="text-center text-white" width="7%">4th</th>
+                            <th class="text-center text-white" width="7%">Avg</th>
+                            <th class="text-center text-white" width="8%">Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+        </div>
+    </div>
+       @endif
     </div>
 </section>
 @endsection

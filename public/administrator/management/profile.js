@@ -98,7 +98,13 @@ $("select[name='statusEnrollment']").on("change", function () {
 
 
 $('input[name="grade_status"]').on('click', function () {
-    $(".badgeText").text(this.checked?'Disabled':'Enabled')
+    // $(".badgeText").text(this.checked ? 'Disabled' : 'Enabled')
+    if (this.checked) {
+        $(".badgeText").addClass('badge-warning').removeClass('badge-success').text('Disabled')
+    } else {
+        $(".badgeText").addClass('badge-success').removeClass('badge-warning').text('Enabled')
+        
+    }
     $.ajax({
         url: `grade/update/status`,
         type: "PUT",

@@ -121,7 +121,7 @@ let gradeTable = (level, section) => {
 
 
 let filterGradeLevel = () => {
-    let filterGradeLevelHTML='<option value="">Choose Grade Level</option>';
+    let filterGradeLevelHTML='';
     $.ajax({
         url: "level/list",
         type: "GET",
@@ -129,6 +129,7 @@ let filterGradeLevel = () => {
     })
         .done(function (data) {
             $(".txtSectionName").text(data[0].section_name);
+            filterGradeLevelHTML+='<option value="">Choose Grade Level</option>';
             data.forEach((val) => {
                 console.log(val.status);
                 // filterGradeLevelHTML += `<option ${

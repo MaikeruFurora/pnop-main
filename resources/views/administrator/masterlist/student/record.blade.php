@@ -90,49 +90,56 @@
                             <table class="table table-bordered ">
                                 <thead>
                                     <tr>
-                                        <td>Section:
-                                            <span class="badge badge-info">
-                                                {{  $recordEight[0]->section_name ??'N/A' }}
-                                            </span>
-                                            &nbsp;&nbsp;
-                                            Class Adviser:
-                                            <span
-                                                class="badge badge-info">{{  $recordEight[0]->fullname??'N/A' }}</span>
+                                        <td>
+
+                                            Section:
+                                            <span class="badge badge-info">{{  $recordEight[0]->section_name ?? 'N/A' }}</span>
                                         </td>
-                                        <td colspan="4" class="text-center">
+                                        <td colspan="6" class="text-center">
+                                            Class Adviser:
+                                            <span class="badge badge-info pt-1 pb-1">
+                                                {{  $recordEight[0]->fullname ?? 'N/A'}}
+                                            </span> &nbsp;&nbsp;
                                             Grade Level: <b>8</b>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td rowspan="2">LEARNING AREAS</td>
                                         <td colspan="4" class="text-center">Quarterly Rating</td>
+                                        <td rowspan="2" class="text-center">Final Rating</td>
+                                        <td rowspan="2">Remarks</td>
                                     </tr>
                                     <tr>
                                         <td>1</td>
                                         <td>2</td>
                                         <td>3</td>
-                                        <td>4</th>
+                                        <td>4</td>
+
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @if (!empty($recordEight))
-                                    @forelse ($recordEight as $item)
+                                    @foreach ($recordEight as $item)
                                     <tr>
                                         <th>{{ $item->descriptive_title }}</th>
                                         <th>{{ $item->first }}</th>
                                         <th>{{ $item->second }}</th>
                                         <th>{{ $item->third }}</th>
-                                        <th>{{ $item->Fourth }}</th>
+                                        <th>{{ $item->fourth }}</th>
+                                        <th>
+                                            {{ computedGrade($item->first,$item->second,$item->third,$item->fourth,'final') }}
+                                        </th>
+                                        <th>
+                                            {{ computedGrade($item->first,$item->second,$item->third,$item->fourth,'remark') }}
+                                        </th>
                                     </tr>
-                                    @empty
+                                    @endforeach
                                     <tr>
-                                        <th width="80%">No data</th>
                                         <th></th>
+                                        <th colspan="4" class="text-center">General Average</th>
                                         <th></th>
-                                        <th></th>
-                                        <th></th>
+                                        <th colspan="1"></th>
                                     </tr>
-                                    @endforelse
                                     @else
 
                                     @endif
@@ -149,50 +156,55 @@
                                 <thead>
                                     <tr>
                                         <td>
+
                                             Section:
-                                            <span
-                                                class="badge badge-info">{{  $recordNine[0]->section_name ??'N/A' }}</span>
-                                            &nbsp;&nbsp;
-                                            Class Adviser:
-                                            <span
-                                                class="badge badge-info">{{  $recordNine[0]->fullname ?? 'N/A'}}</span>
+                                            <span class="badge badge-info">{{  $recordNine[0]->section_name ?? 'N/A' }}</span>
                                         </td>
-                                        <td colspan="4" class="text-center">
+                                        <td colspan="6" class="text-center">
+                                            Class Adviser:
+                                            <span class="badge badge-info pt-1 pb-1">
+                                                {{  $recordNine[0]->fullname ?? 'N/A'}}
+                                            </span> &nbsp;&nbsp;
                                             Grade Level: <b>9</b>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td rowspan="2">LEARNING AREAS</td>
                                         <td colspan="4" class="text-center">Quarterly Rating</td>
+                                        <td rowspan="2" class="text-center">Final Rating</td>
+                                        <td rowspan="2">Remarks</td>
                                     </tr>
                                     <tr>
                                         <td>1</td>
                                         <td>2</td>
                                         <td>3</td>
-                                        <td>4</th>
+                                        <td>4</td>
+
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @if (!empty($recordNine))
-                                    @forelse ($recordNine as $item)
+                                    @foreach ($recordNine as $item)
                                     <tr>
                                         <th>{{ $item->descriptive_title }}</th>
                                         <th>{{ $item->first }}</th>
                                         <th>{{ $item->second }}</th>
                                         <th>{{ $item->third }}</th>
-                                        <th>{{ $item->Fourth }}</th>
+                                        <th>{{ $item->fourth }}</th>
+                                        <th>
+                                            {{ computedGrade($item->first,$item->second,$item->third,$item->fourth,'final') }}
+                                        </th>
+                                        <th>
+                                            {{ computedGrade($item->first,$item->second,$item->third,$item->fourth,'remark') }}
+                                        </th>
                                     </tr>
-                                    @empty
+                                    @endforeach
                                     <tr>
-                                        <th width="80%">No data</th>
                                         <th></th>
+                                        <th colspan="4" class="text-center">General Average</th>
                                         <th></th>
-                                        <th></th>
-                                        <th></th>
+                                        <th colspan="1"></th>
                                     </tr>
-                                    @endforelse
-                                    @else
-
                                     @endif
                                 </tbody>
                             </table>
@@ -207,50 +219,57 @@
                                 <thead>
                                     <tr>
                                         <td>
+
                                             Section:
-                                            <span
-                                                class="badge badge-info">{{  $recordTen[0]->section_name ??'N/A' }}</span>
-                                            &nbsp;&nbsp;
-                                            Class Adviser:
-                                            <span
-                                                class="badge badge-info">{{  $recordTen[0]->fullname ?? 'N/A' }}</span>
+                                            <span class="badge badge-info">{{  $recordTen[0]->section_name ?? 'N/A' }}</span>
                                         </td>
-                                        <td colspan="4" class="text-center">
+                                        <td colspan="6" class="text-center">
+                                            Class Adviser:
+                                            <span class="badge badge-info pt-1 pb-1">
+                                                {{  $recordTen[0]->fullname ?? 'N/A'}}
+                                            </span> &nbsp;&nbsp;
                                             Grade Level: <b>10</b>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td rowspan="2">LEARNING AREAS</td>
                                         <td colspan="4" class="text-center">Quarterly Rating</td>
+                                        <td rowspan="2" class="text-center">Final Rating</td>
+                                        <td rowspan="2">Remarks</td>
                                     </tr>
                                     <tr>
                                         <td>1</td>
                                         <td>2</td>
                                         <td>3</td>
-                                        <td>4</th>
+                                        <td>4</td>
+
                                     </tr>
                                 </thead>
+                              
                                 <tbody>
                                     @if (!empty($recordTen))
-                                    @forelse ($recordTen as $item)
+                                    @foreach ($recordTen as $item)
                                     <tr>
                                         <th>{{ $item->descriptive_title }}</th>
                                         <th>{{ $item->first }}</th>
                                         <th>{{ $item->second }}</th>
                                         <th>{{ $item->third }}</th>
-                                        <th>{{ $item->Fourth }}</th>
+                                        <th>{{ $item->fourth }}</th>
+                                        <th>
+                                            {{ computedGrade($item->first,$item->second,$item->third,$item->fourth,'final') }}
+                                        </th>
+                                        <th>
+                                            {{ computedGrade($item->first,$item->second,$item->third,$item->fourth,'remark') }}
+                                        </th>
                                     </tr>
-                                    @empty
+                                   
+                                    @endforeach
                                     <tr>
-                                        <th width="80%">No data</th>
                                         <th></th>
+                                        <th colspan="4" class="text-center">General Average</th>
                                         <th></th>
-                                        <th></th>
-                                        <th></th>
+                                        <th colspan="1"></th>
                                     </tr>
-                                    @endforelse
-                                    @else
-
                                     @endif
                                 </tbody>
                             </table>
