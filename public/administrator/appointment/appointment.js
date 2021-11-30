@@ -283,7 +283,7 @@ $("#btnSendEmail").on("click", function () {
 
 $(".sendCancel").on('click', function () {
     $("#emailDiv").fadeOut(500);
-    $("textarea[name='bodyEmail']").val('')
+    $("textarea[name='bodyEmail']").summernote('reset')
     $("input[name='selectedDateNow']").val('')
 })
 
@@ -415,7 +415,7 @@ $("#sendEmailForm").on('submit', function (e) {
     })
         .done(function (response) {
             $(".btnSendEmail").html("Send").attr("disabled", false);
-            $("textarea[name='bodyEmail']").val('')
+            $("textarea[name='bodyEmail']").summernote('reset')
             $("input[name='selectedDateNow']").val('')
             getToast("success", "Info", 'Succesfuly Send!');
             $("#emailDiv").fadeOut(500);
