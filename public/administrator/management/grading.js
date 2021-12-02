@@ -227,6 +227,9 @@ $(document).on('blur','input[name="inGrade"]',function(){
             },
         }).done(function (data) {
             getToast("success", "Saved", "Success");
+            if ($("#3rd_" + student_id).val() != "") {
+                loadstudent($('select[name="section_id"]').val(),$('select[name="subject_id"]').val())   
+            }
             if ($("#4th_" + student_id).val() != "") {
                 loadstudent($('select[name="section_id"]').val(),$('select[name="subject_id"]').val())   
             }
