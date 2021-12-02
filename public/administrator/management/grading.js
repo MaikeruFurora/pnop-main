@@ -152,6 +152,7 @@ let loadstudent = (section, subject) => {
                         name="inGrade"
                         class="noborder text-center"
                         value="${ myGradePerGrading(val.fourth) }"
+                        ${disbaledFourthQuarter(val.first,val.second,val.third)}
                         data-column="4th"
                         data-grade_id="${val.gid}"
                         data-subject_id="${ val.subject_id }"
@@ -160,7 +161,7 @@ let loadstudent = (section, subject) => {
                         >
                     </td>
                     <td>
-                        <input type="text"
+                        <input type="text" disabled
                         pattern="^[0-9]{3}$" 
                         onkeypress="return numberOnly(event)"
                         maxlength="3"
@@ -184,6 +185,12 @@ let loadstudent = (section, subject) => {
         getToast("error", "Eror", errorThrown);
     });
    
+}
+
+let disbaledFourthQuarter = (first, second, third)=>{
+    if (first == null || second==null || third ==null ) {
+        return 'disabled'   
+    }
 }
 
 $(document).on('blur','input[name="inGrade"]',function(){
@@ -219,7 +226,7 @@ $(document).on('blur','input[name="inGrade"]',function(){
                 _token:$('input[name="_token"]').val()
             },
         }).done(function (data) {
-            getToast("success", "Saved", "");
+            getToast("success", "Saved", "Success");
             if ($("#4th_" + student_id).val() != "") {
                 loadstudent($('select[name="section_id"]').val(),$('select[name="subject_id"]').val())   
             }
