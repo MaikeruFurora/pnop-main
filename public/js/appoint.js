@@ -3,7 +3,7 @@ let n = d.getFullYear();
 
 let eventHoliday = [];
 $.ajax({
-    url: "holiday/list",
+    url: "/appoint/holiday/list",
     type: "GET",
 })
     .done(function (data) {
@@ -58,7 +58,7 @@ $.ajax({
 
 let dateFetch = [];
 $.ajax({
-    url: "list",
+    url: "/appoint/list",
     type: "GET",
 })
     .done(function (data) {
@@ -75,7 +75,7 @@ $.ajax({
 
 $(".datepicker").datepicker({
     dateFormat: "mm/dd/yy",
-    minDate: 0,
+    minDate: +1,
     beforeShowDay: function (date) {
         let day = date.getDay();
 
@@ -95,9 +95,9 @@ $(".datepicker").datepicker({
         });
 
         if (changeColor || dateFound) {
-            return [false, "full", ""];
+            return [false, "full", "Full Schedule, reach the maximum client for this date"];
         } else {
-            return [true && day != 0 && day != 6, "vacant", ""];
+            return [true && day != 0 && day != 6, "vacant", "Available this day"];
         }
         // check if date is in your array of dates
         // if () {

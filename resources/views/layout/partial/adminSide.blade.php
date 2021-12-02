@@ -18,7 +18,7 @@
     </li>
     <li class="menu-header">Masterlist</li>
     <li
-        class="nav-item dropdown {{ request()->is('admin/my/teacher') ||  request()->is('admin/my/student') ||  request()->is('admin/my/archive') ||  request()->is('admin/my/backrecord')?'active':'' }}">
+        class="nav-item dropdown {{ request()->is('admin/my/teacher') ||  request()->is('admin/my/student') ||  request()->is('admin/my/archive') ||  request()->is('admin/my/backrecord') ||  request()->is('admin/my/grading')?'active':''  }} ">
         <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
                 class="fas fa-cog"></i><span>Masterlist</span></a>
         <ul class="dropdown-menu">
@@ -37,6 +37,10 @@
             <li class="{{ request()->is('admin/my/backrecord')?'active':'' }}">
                 <a class="nav-link" href="{{ route('admin.backrecord') }}">
                     <i class="fas fa-reply-all"></i><span>Back Subject</span></a>
+            </li>
+            <li class="{{ request()->is('admin/my/grading')?'active':'' }}">
+                <a class="nav-link" href="{{ route('admin.grading') }}">
+                    <i class="fas fa-users"></i><span>Grading Sheet</span></a>
             </li>
         </ul>
     </li>

@@ -31,7 +31,13 @@ let myClassTable = (section_id, subject_id) => {
                     <span class="sr-only">Loading...</span>
                   </div>`,
         },
-
+        rowCallback: function( row, data, index ) {
+            if ( data.avg<75 && data.avg != null)
+            {
+                $('td', row).css('background-color', '#ffe6e6');
+            }
+     
+        },
         ajax: `grading/load/student/${section_id}/${subject_id}`,
         columns: [
             { data: "fullname" },

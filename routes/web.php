@@ -186,6 +186,13 @@ Route::middleware(['auth:web', 'preventBackHistory'])->name('admin.')->prefix('a
     Route::delete('assign/delete/{assign}', [AssignController::class, 'destroy']);
     Route::get('assign/edit/{assign}', [AssignController::class, 'edit']);
 
+    //Grading
+    Route::get('grading', [AdminController::class, 'grading'])->name('grading');
+    Route::get('grading/search/section/{grade_level}', [GradeController::class, 'searchBySection']);
+    Route::get('grading/search/subject/{section}', [GradeController::class, 'searchBySubject']);
+    Route::get('grading/load/all/student/{section}/{subject}', [GradeController::class, 'loadMyStudent']);
+    Route::post('grading/student/now', [GradeController::class, 'gradeStudentNow']);
+
     // chairman route
     Route::get('chairman', [AdminController::class, 'chairman'])->name('chairman');
     Route::get('chairman/list', [ChairmanController::class, 'list']);

@@ -18,6 +18,36 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/components.css') }}">
+    <style>
+        .center-screen {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            /* text-align: center; */
+            min-height: 90vh;
+        }
+
+        .full .ui-state-default {
+            color: red;
+            border: 1px solid red;
+        }
+
+        .vacant .ui-state-default {
+            color: green;
+            border: .5px solid green;
+        }
+
+        .not .ui-state-default {
+            color: gray;
+            border: 1px solid gray;
+        }
+
+        .ui-datepicker-unselectable .ui-state-default {
+            background: gray;
+            color: black;
+            border: none
+        }
+    </style>
 </head>
 
 <body>

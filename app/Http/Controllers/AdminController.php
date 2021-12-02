@@ -154,6 +154,10 @@ class AdminController extends Controller
         return view('administrator/management/assign', compact('teachers'));
     }
 
+    public function grading(){
+        return view('administrator/management/grading');
+    }
+
     public function chairman()
     {
         $teachers = Teacher::all();
