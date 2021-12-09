@@ -263,21 +263,21 @@
                             <div class="form-group mt-2">
                                 <label for="">Latest Copy of Grades</label>
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" name="req_grade">
+                                    <input type="file" accept=".jpg,.png,.jpeg" class="custom-file-input" name="req_grade">
                                     <label class="custom-file-label" for="customFile">Choose file</label>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="">Good Moral Certificate</label>
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" name="req_goodmoral">
+                                    <input type="file" accept=".jpg,.png,.jpeg" class="custom-file-input" name="req_goodmoral">
                                     <label class="custom-file-label" for="customFile">Choose file</label>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="">PSA Birth Certificate</label>
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" name="req_psa">
+                                    <input type="file" accept=".jpg,.png,.jpeg" class="custom-file-input" name="req_psa">
                                     <label class="custom-file-label" for="customFile">Choose file</label>
                                 </div>
                             </div>

@@ -34,7 +34,8 @@
                                 <label>Contact no.</label>
                                 <input type="text" class="form-control" placeholder="Contact no."
                                     name="contact_no" required onkeypress="return numberOnly(event)"
-                                    maxlength="11" value="{{auth()->user()->student_contact}}">
+                                    maxlength="12" value="{{auth()->user()->student_contact}}">
+                                    <small class="text-danger showError"></small>
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Email</label>

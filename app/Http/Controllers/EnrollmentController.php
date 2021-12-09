@@ -98,6 +98,7 @@ class EnrollmentController extends Controller
                     Grade::select('id')
                         ->where('subject_id', $value)
                         ->where('student_id', $enrolledSubject->student_id)
+                        ->where('is_retained','No')
                         ->pluck('id')
                 )->update([
                     'section_id' => $enrolledSubject->section_id

@@ -446,6 +446,6 @@ $("#sendEmailForm").on('submit', function (e) {
         .fail(function (jqxHR, textStatus, errorThrown) {
             $(".btnSendEmail").html("Send").attr("disabled", false);
             console.log(jqxHR, textStatus, errorThrown);
-            getToast("error", "Eror", errorThrown);
+            getToast("warning", "Warning", errorThrown);
         });
 })

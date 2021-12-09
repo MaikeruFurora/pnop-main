@@ -115,3 +115,85 @@ $("#enrollForm").submit(function (e) {
             getToast("error", "Eror", errorThrown);
         });
 });
+
+
+$("input[name='student_contact']").on('blur',function(){
+    let contact_no = $(this).val();
+    let surfix=contact_no.substr(0,3);
+    if (contact_no.length!=0) {
+        if (contact_no.length==12 && surfix == '639') {
+            $("input[name='student_contact']").removeClass('is-invalid').addClass('is-valid')
+        } else {
+            $("input[name='student_contact']").removeClass('is-valid').addClass('is-invalid')
+        }
+    } else {
+        $("input[name='student_contact']").removeClass('is-invalid is-valid')
+    }
+})
+
+$("input[name='father_contact_no']").on('blur',function(){
+    let contact_no = $(this).val();
+    let surfix=contact_no.substr(0,3);
+    if (contact_no.length!=0) {
+        if (contact_no.length==12 && surfix == '639') {
+            $("input[name='father_contact_no']").removeClass('is-invalid').addClass('is-valid')
+        } else {
+            $("input[name='father_contact_no']").removeClass('is-valid').addClass('is-invalid')
+        }
+    } else {
+        $("input[name='father_contact_no']").removeClass('is-invalid is-valid')
+    }
+})
+
+$("input[name='mother_contact_no']").on('blur',function(){
+    let contact_no = $(this).val();
+    let surfix=contact_no.substr(0,3);
+    if (contact_no.length!=0) {
+        if (contact_no.length==12 && surfix == '639') {
+            $("input[name='mother_contact_no']").removeClass('is-invalid').addClass('is-valid')
+        } else {
+            $("input[name='mother_contact_no']").removeClass('is-valid').addClass('is-invalid')
+        }
+    } else {
+        $("input[name='mother_contact_no']").removeClass('is-invalid is-valid')
+    }
+})
+
+$("input[name='guardian_contact_no']").on('blur',function(){
+    let contact_no = $(this).val();
+    let surfix=contact_no.substr(0,3);
+    if (contact_no.length!=0) {
+        if (contact_no.length==12 && surfix == '639') {
+            $("input[name='guardian_contact_no']").removeClass('is-invalid').addClass('is-valid')
+        } else {
+            $("input[name='guardian_contact_no']").removeClass('is-valid').addClass('is-invalid')
+        }
+    } else {
+        $("input[name='guardian_contact_no']").removeClass('is-invalid is-valid')
+    }
+})
+
+let fileValidation = (fileInput,target) => {
+      
+    let filePath = fileInput;
+  
+    // Allowing file type
+    let allowedExtensions = /(\.png|\.jpeg|\.jpg)$/i;
+      
+    if (!allowedExtensions.exec(filePath)) {
+        alert('Invalid file type');
+        $('input[name="'+target+'"]').val('');
+        return false;
+    } 
+}
+
+$("input[name='req_grade']").on('change',function(){
+    fileValidation($(this).val(),'req_grade')
+})
+$("input[name='req_goodmoral']").on('change',function(){
+    fileValidation($(this).val(),'req_goodmoral')
+})
+$("input[name='req_psa']").on('change',function(){
+    fileValidation($(this).val(),'req_psa')
+})
+

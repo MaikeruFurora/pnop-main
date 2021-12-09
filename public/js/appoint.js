@@ -1,6 +1,23 @@
 let d = new Date();
 let n = d.getFullYear();
 
+$("input[name='contact_no']").on('blur',function(){
+    let contact_no = $(this).val();
+    let surfix=contact_no.substr(0,3);
+    if (contact_no.length!=0) {
+        if (contact_no.length==12 && surfix == '639') {
+            $("input[name='contact_no']").removeClass('is-invalid').addClass('is-valid')
+            $(".showError").text('')
+        } else {
+            $("input[name='contact_no']").removeClass('is-valid').addClass('is-invalid')
+            $(".showError").text('Wrong number format')
+        }
+    } else {
+        $("input[name='contact_no']").removeClass('is-valid').addClass('is-invalid')
+        $(".showError").text('Please fill this field')
+    }
+})
+
 let eventHoliday = [];
 $.ajax({
     url: "/appoint/holiday/list",

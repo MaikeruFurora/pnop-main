@@ -22,12 +22,13 @@ class AppointmentFactory extends Factory
     public function definition()
     {
         return [
-            'fullname' => $this->faker->name(),
-            'contact_no' => $this->faker->e164PhoneNumber(),
+            'fullname' => $this->faker->firstNameFemale().' '.$this->faker->lastName(),
+            'contact_no' => '639'.rand(100,200).rand(100,200).rand(100,200),
+            'age' => rand(18,30),
             'email' => $this->faker->email(),
-            'address' => $this->faker->address(),
-            'purpose' => $this->faker->name(),
-            'set_date' => date("m/") . "21" . date("/Y"),
+            'address' => str_replace(array('.',','),"",$this->faker->sentence($nbWords = 2, $variableNbWords = true)),
+            'purpose' => $this->faker->sentence($nbWords = 3, $variableNbWords = true),
+            'set_date' => date("m/") . "20" . date("/Y"),
             'appoint_no' => rand(99, 1000) . '-' . rand(99, 1000)
         ];
     }

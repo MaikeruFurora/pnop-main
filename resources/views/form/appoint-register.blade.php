@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>PNOP &mdash;</title>
+    <title>PNOP &mdash; Register</title>
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
@@ -100,6 +100,7 @@
                                                 name="contact_no" required onkeypress="return numberOnly(event)"
                                                 title="Example mobile number format 6392370000"
                                                 maxlength="12">
+                                                <small class="text-danger showError"></small>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Email</label>
@@ -158,6 +159,7 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script> --}}
     <script src="{{ asset('js/appoint.js') }}"></script>
+
 </body>
 
 </html>
