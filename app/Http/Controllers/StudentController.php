@@ -33,6 +33,10 @@ class StudentController extends Controller
         return view('student/dashboard', compact('enrolledData','post'));
     }
 
+    public function notificationStudent(){
+        return view('student/notification');
+    }
+
     public function store(Request $request)
     {
         if (isset($request->id)) {
@@ -40,7 +44,6 @@ class StudentController extends Controller
         }
         return Student::updateOrCreate(['id' => $request->id], [
             'roll_no' => $request->roll_no,
-            'curriculum' => empty($dataret->curriculum) ? $request->curriculum : $dataret->curriculum,
             'student_firstname' => $request->student_firstname,
             'student_middlename' => $request->student_middlename,
             'student_lastname' => $request->student_lastname,
@@ -51,9 +54,6 @@ class StudentController extends Controller
             'province' => $request->province ?? $dataret->province,
             'city' => $request->city ?? $dataret->city,
             'barangay' => $request->barangay ?? $dataret->barangay,
-            // 'last_school_attended' => $request->last_school_attended,
-            'last_schoolyear_attended' => $request->last_schoolyear_attended,
-            'isbalik_aral' => !empty($request->last_schoolyear_attended) ? 'Yes' : 'No',
             'mother_name' => $request->mother_name,
             'mother_contact_no' => $request->mother_contact_no,
             'father_name' => $request->father_name,
@@ -86,6 +86,7 @@ class StudentController extends Controller
             $arr['student_lastname'] = $value->student_lastname;
             $arr['student_contact'] = $value->student_contact;
             $arr['gender'] = $value->gender;
+            $arr['completer'] = $value->completer;
             $arr['username'] = $value->username;
             $arr['orig_password'] = Crypt::decrypt($value->orig_password);
             $data[] = $arr;
@@ -129,6 +130,7 @@ class StudentController extends Controller
                 ->where('grades.student_id', Auth::user()->id)
                 ->where('grades.section_id', $section)
                 ->where('assigns.section_id', $section)
+                // ->where('assigns.school_year_id',$sy)
                 ->get()
         );
     }
@@ -136,12 +138,12 @@ class StudentController extends Controller
     public function levelList()
     {
         return response()->json(
-            Enrollment::select('enrollments.grade_level', 'school_years.status', 'sections.section_name', 'enrollments.section_id')
+            Enrollment::select('enrollments.grade_level', 'school_years.status', 'sections.section_name', 'enrollments.section_id','enrollments.school_year_id','school_years.from','school_years.to')
                 ->join('students', 'enrollments.student_id', 'students.id')
                 ->join('sections', 'enrollments.section_id', 'sections.id')
                 ->join('school_years', 'enrollments.school_year_id', 'school_years.id')
                 ->where('students.id', Auth::user()->id)
-                ->groupBy('enrollments.grade_level', 'school_years.status', 'sections.section_name', 'enrollments.section_id')
+                ->groupBy('enrollments.grade_level', 'school_years.status', 'sections.section_name', 'enrollments.section_id','enrollments.school_year_id','school_years.from','school_years.to')
                 ->orderBy('school_years.status', 'desc')
                 ->get()
         );
@@ -208,9 +210,9 @@ class StudentController extends Controller
 
     public function selfEnroll(Request $request)
     {
-        $countFail =  Grade::where('student_id', $request->id)->where('avg','<',75)->whereNull('remarks')->get();
+        $countFail =  Grade::select('subjects.id','subjects.grade_level')->join('subjects','grades.subject_id','subjects.id')->where('student_id', $request->id)->where('avg','<',75)->whereNull('remarks')->get();
         $action_taken = $countFail->count() == 0 ? 'Promoted' : ($countFail->count() < 3 ? 'Partialy Promoted' : 'Retained');
-        $studInfo = Enrollment::select('grade_level', 'curriculum','enroll_status')->where('student_id', $request->id)->latest()->first();
+        $studInfo = Enrollment::select('section_id','grade_level', 'curriculum','enroll_status')->where('student_id', $request->id)->latest()->first();
 
         if ($action_taken == 'Retained') { //if student retained in year level means this is backsubject will reset in grade level
             // BackSubject::where('student_id', $request->id)->where('grade_level', $countFail[0]->grade_level)->delete();
@@ -219,7 +221,10 @@ class StudentController extends Controller
                 Grade::where('student_id',$request->id)
                 ->where('subject_id',$subject->id)
                 ->where('section_id',$studInfo->section_id)
-                ->delete();
+                ->update([
+                    'is_retained'=>'Yes'
+                ]);
+                // ->delete();
             }
         }
 
@@ -266,14 +271,13 @@ class StudentController extends Controller
             default:
                     return false;
                 break;
-        }
-        
+        } 
        
     }
 
     public function viewRecord(Student $student)
     {
-       $recordSeven = $this->gradeViewAll($student->id, 7);
+        $recordSeven = $this->gradeViewAll($student->id, 7);
         $recordEight = $this->gradeViewAll($student->id, 8);
         $recordNine = $this->gradeViewAll($student->id, 9);
         $recordTen = $this->gradeViewAll($student->id, 10);
@@ -286,7 +290,8 @@ class StudentController extends Controller
     public function gradeViewAll($id, $gl)
     {
 
-        $getData = Enrollment::where('student_id',$id)->where('grade_level',$gl)->where('enroll_status','Enrolled')->first();
+        //  return $getData = Enrollment::where('student_id',$id)->where('grade_level',$gl)->where('enroll_status','Enrolled')->first();
+          $getData = Enrollment::where('student_id',$id)->where('grade_level',$gl)->where('enroll_status','Enrolled')->latest()->first();
 
         if ($getData) {
             return Grade::select(
@@ -306,6 +311,7 @@ class StudentController extends Controller
                 ->where('students.id', $getData->student_id)
                 ->where('subjects.grade_level', $getData->grade_level)
                 ->where('sections.id', $getData->section_id)
+                ->where('grades.is_retained','No')
                 ->get();
         }
     }
@@ -336,13 +342,12 @@ class StudentController extends Controller
        return Student::where('id',Auth::user()->id)->update(['profile_image'=>$name]);
     }
 
-
     protected function deleteOldImage()
     {
       if (auth()->user()->profile_image){
         return unlink(public_path('image/profile/'.auth()->user()->profile_image));
       }
-     }
+    }
 
     public function reportBug()
     {

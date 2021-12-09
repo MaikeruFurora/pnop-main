@@ -15,6 +15,7 @@
                         <select id="myFormat" class="form-control">
                             <option value=".xlsx">XLSX</option>
                             <option value=".xls">XLS</option>
+                            <option value=".csv">CSV ( Infocast template )</option>
                             {{-- <option value=".csv">CSV</option> --}}
                         </select>
                     </div>

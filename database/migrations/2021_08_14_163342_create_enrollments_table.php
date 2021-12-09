@@ -25,6 +25,8 @@ class CreateEnrollmentsTable extends Migration
             $table->string("curriculum")->nullable();
             $table->string("student_type")->nullable();
             $table->text("last_school_attended")->nullable();
+            $table->string('last_schoolyear_attended')->nullable();
+            $table->string('isbalik_aral')->default('No');
             $table->string("date_of_enroll");
             $table->string("enroll_status")->default('Pending');
             $table->string("action_taken")->nullable();

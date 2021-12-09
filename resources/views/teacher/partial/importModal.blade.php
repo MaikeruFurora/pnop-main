@@ -12,7 +12,7 @@
         <div class="modal-body pb-1">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                  <button class="btn btn-outline-secondary" type="button" id="button-addon1">CSV Format</button>
+                  <button class="btn btn-outline-secondary" type="button" id="button-addon1">Excel Format</button>
                 </div>
                 <div class="custom-file">
                     <input type="file" name="file" class="custom-file-input" id="inputGroupFile02">

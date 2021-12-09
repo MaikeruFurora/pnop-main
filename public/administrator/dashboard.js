@@ -31,7 +31,7 @@ let loadData = () => {
         })
         .fail(function (jqxHR, textStatus, errorThrown) {
             console.log(jqxHR, textStatus, errorThrown);
-            getToast("error", "Eror", errorThrown);
+            // getToast("error", "Eror", errorThrown);
         });
 };
 loadData();
@@ -70,7 +70,7 @@ let loadDataSex = () => {
         })
         .fail(function (jqxHR, textStatus, errorThrown) {
             console.log(jqxHR, textStatus, errorThrown);
-            getToast("error", "Eror", errorThrown);
+            // getToast("error", "Eror", errorThrown);
         });
 };
 loadDataSex();
@@ -114,7 +114,7 @@ let loadDataCurriculum = () => {
         })
         .fail(function (jqxHR, textStatus, errorThrown) {
             console.log(jqxHR, textStatus, errorThrown);
-            getToast("error", "Eror", errorThrown);
+            // getToast("error", "Eror", errorThrown);
         });
 };
 loadDataCurriculum();

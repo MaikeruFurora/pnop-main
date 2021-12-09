@@ -57,6 +57,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @if (!empty($recordSeven))
                                     @foreach ($recordSeven as $item)
                                     <tr>
                                         <th>{{ $item->descriptive_title }}</th>
@@ -78,6 +79,7 @@
                                         <th></th>
                                         <th colspan="1"></th>
                                     </tr>
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
@@ -140,7 +142,6 @@
                                         <th></th>
                                         <th colspan="1"></th>
                                     </tr>
-                                    @else
 
                                     @endif
                                 </tbody>

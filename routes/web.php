@@ -111,18 +111,23 @@ Route::middleware(['auth:web', 'preventBackHistory'])->name('admin.')->prefix('a
     Route::get('appointment/list/selected/{selectedDate}', [AppointmentController::class, 'selectedDate']);
     Route::get('appointment/print/report/{dateSelected}', [AppointmentController::class, 'printReport']);
     Route::post('appointment/send/email', [AppointmentController::class, 'sendEmailNotify']);
+    Route::get('appointment/export/number/{date}', [ExportController::class, 'exportNumber']);
 
     // teacher-route
     Route::get('teacher', [AdminController::class, 'teacher'])->name('teacher');
     Route::get('teacher/list', [TeacherController::class, 'list']);
     Route::post('teacher/store', [TeacherController::class, 'store']);
+    Route::post('teacher/import', [ImportController::class, 'importTeacher']);
+    Route::get('teacher/import/template', [ImportController::class, 'importTeacherTemplate'])->name('download.template.teacher');
     Route::get('teacher/edit/{teacher}', [TeacherController::class, 'edit']);
     Route::delete('teacher/delete/{id}', [TeacherController::class, 'delete']);
 
     // student-route
     Route::get('student', [AdminController::class, 'student'])->name('student');
     Route::post('student/save', [StudentController::class, 'store']);
+    Route::post('student/import', [ImportController::class, 'importStudent']);
     Route::get('student/list', [StudentController::class, 'list']);
+    Route::get('student/import/template', [ImportController::class, 'importStudentTemplate'])->name('download.template.student');
     Route::delete('student/delete/{student}', [StudentController::class, 'destroy']);
     Route::get('student/edit/{student}', [StudentController::class, 'edit']);
     Route::get('student/view/record/{student}', [StudentController::class, 'viewRecord']);
@@ -240,6 +245,10 @@ Route::middleware(['auth:teacher', 'preventBackHistory'])->name('teacher.')->pre
     Route::get('section/edit/{section}', [ChairmanController::class, 'sectionEdit']);
     Route::delete('section/delete/{section}', [ChairmanController::class, 'sectionDestroy']);
     Route::post('section/check-section', [ChairmanController::class, 'checkSection']);
+
+    //enrollment form
+    Route::get('enrollmentForm', [ChairmanController::class, 'enrollmentForm'])->name('enrollmentForm');
+
     // chairman-manage-enroll-route
 
     // STEM route
@@ -278,6 +287,7 @@ Route::middleware(['auth:teacher', 'preventBackHistory'])->name('teacher.')->pre
     Route::get('class/monitor', [TeacherController::class, 'classMonitor'])->name('class.monitor');
     Route::get('class/monitor/list', [EnrollmentController::class, 'myClass']);
     Route::post('class/monitor/dropped/{enrollment}', [EnrollmentController::class, 'dropped']);
+    Route::get('class/report/card/{id}', [TeacherController::class, 'reportCard']);
     Route::get('grading', [TeacherController::class, 'grading'])->name('grading');
 
     //assign subject
@@ -323,6 +333,15 @@ Route::middleware(['auth:student', 'preventBackHistory'])->name('student.')->pre
     Route::post('self/enroll', [StudentController::class, 'selfEnroll']);
     Route::get('report', [StudentController::class, 'reportBug'])->name('report');
     Route::get('appointment', [StudentController::class, 'appointment'])->name('appointment');
+    Route::get('notification', [StudentController::class, 'notificationStudent'])->name('notificationStudent');
+    Route::get('markAsRead',function(){
+        auth()->user()->unreadNotifications->markAsRead();
+        return redirect()->back();
+    })->name('markAsRead');
+    Route::get('deleteNotification',function(){
+        auth()->user()->notifications()->delete();
+        return redirect()->back();
+    })->name('deleteNotification');
 });
 
 Route::get('/clear', function () { //-> tawagin mo to url sa browser -> 127.0.0.1:8000/clear
@@ -334,3 +353,4 @@ Route::get('/clear', function () { //-> tawagin mo to url sa browser -> 127.0.0.
     Artisan::call('cache:clear'); //   -> Flush the application cache
     return back();
 });
+

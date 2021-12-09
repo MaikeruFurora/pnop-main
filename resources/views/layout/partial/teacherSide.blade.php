@@ -7,7 +7,7 @@
             href="{{ route('teacher.profile') }}"><i class="fas fa-user"></i><span>My Profile</span></a>
     </li>
     @if (Auth::user()->section()->where('school_year_id', $activeAY->id)->exists())
-    <li class="menu-header">Adviser Setting</li>
+    <li class="menu-header">Adviser Setting <span class="badge badge-info pt-0 pb-0 pl-1 pr-1" style="font-size: 10px">{{ Auth::user()->section->section_name }}</span></li>
     <li class="{{ request()->is('teacher/my/class/monitor')?'active':'' }}">
         <a class="nav-link" href="{{ route('teacher.class.monitor') }}">
             <i class="fas fa-puzzle-piece"></i><span>
@@ -30,6 +30,11 @@
     <li class="{{ request()->is('teacher/my/section')?'active':'' }}">
         <a class="nav-link" href="{{ route('teacher.section') }}">
             <i class="fas fa-border-all"></i><span>Manage Section</span>
+        </a>
+    </li>
+    <li class="{{ request()->is('teacher/my/enrollmentForm')?'active':'' }}">
+        <a class="nav-link" href="{{ route('teacher.enrollmentForm') }}">
+            <i class="fas fa-user-tie"></i><span>Enrollment Form</span>
         </a>
     </li>
     <li

@@ -133,9 +133,9 @@ $("input[name='roll_no']").on("blur", function () {
                     $(".btnSaveEnroll").attr("disabled", false);
                     if (data.student) {
                         console.log(data.student);
-                        $("select[name='curriculum']").val(
-                            data.student.curriculum
-                        );
+                        // $("select[name='curriculum']").val(
+                        //     data.student.curriculum
+                        // );
                         $('input[name="last_school_attended"]').val(
                             data.student.last_school_attended
                         );

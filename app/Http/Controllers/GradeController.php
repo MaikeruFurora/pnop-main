@@ -8,7 +8,10 @@ use App\Models\BackSubject;
 use App\Models\Enrollment;
 use App\Models\Grade;
 use App\Models\Section;
+use App\Models\Student;
 use App\Models\Subject;
+use App\Models\Teacher;
+use App\Notifications\NotifyUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -56,6 +59,9 @@ class GradeController extends Controller
                     break;
             }
         } else {
+           if (Teacher::whereId(auth()->user()->id)->exists()) {
+            $this->partialNotify($request->grade_id);
+           }
             switch ($request->columnIn) {
                 case '1st':
                     return Grade::where('id', $request->grade_id)->update([
@@ -103,6 +109,23 @@ class GradeController extends Controller
                     break;
             }
         }
+    }
+
+    public function partialNotify($id){
+
+        $data1 = Grade::select('subjects.descriptive_title','grades.created_at','student_id')
+        ->join('students','grades.student_id','students.id')
+        ->join('subjects','grades.subject_id','subjects.id')
+        ->where('grades.id',$id)
+        ->first();
+    
+       $data['title']=$data1->descriptive_title;
+       $data['bodyMessage']=auth()->user()->fullname." is posted grade in ".$data1->descriptive_title;
+       $data['type']='grade';
+       $data['icon']='fa-check';
+       $data['created_at']=$data1->created_at;
+       $student=Student::whereId($data1->student_id)->first(); 
+       $student->notify(new NotifyUser($data));
     }
 
     public function searchBySection($grade_level)

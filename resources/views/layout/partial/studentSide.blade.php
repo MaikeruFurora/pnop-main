@@ -10,12 +10,12 @@
     <li class="{{ request()->is('student/my/grade')?'active':'' }}"><a class="nav-link"
             href="{{ route('student.grade') }}"><i class="fas fa-book-reader"></i><span>Grade</span></a>
     </li>
-    @if (Auth::user()->backsubject()->exists())
+    @if (Auth::user()->grade()->where('avg','<','75')->whereNull('remarks')->where('is_retained','No')->exists())
     <li class="{{ request()->is('student/my/backsubject')?'active':'' }}"><a class="nav-link"
             href="{{ route('student.backsubject') }}"><i class="fas fa-reply-all"></i><span>Back Subject
-                @if (Auth::user()->backsubject()->where('back_subjects.remarks','none')->get()->count()!=0)
+                @if(Auth::user()->grade()->where('avg','<','75')->whereNull('remarks')->where('is_retained','No')->get()->count()!=0)
                 <small class="badge badge-danger badge-sm" style="font-size: 10px">
-                    {{ Auth::user()->backsubject()->where('back_subjects.remarks','none')->get()->count() }}
+                        {{ Auth::user()->grade()->where('avg','<','75')->whereNull('remarks')->where('is_retained','No')->get()->count() }}
                 </small>
                 @endif
             </span>

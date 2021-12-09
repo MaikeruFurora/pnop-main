@@ -36,17 +36,19 @@
                 <div class="col-lg-5 col-md-8">
                     <h2 class="section-title">Grading</h2> 
                 </div>
+                @if (!$data->grade_status)
                 <div class="col-lg-2 col-md-2 mt-3">
                     <div class="float-right">
-
+    
                         <form class="form-inline ">
                             <label class="my-1 mr-2" for="filterLabel">Sections</label>
                             <select name="filterMyLoadSection" class="custom-select my-1 mr-sm-2" id="filterLabel">
                             </select>
                         </form>
-
+    
                     </div>
                 </div>
+                @endif
             </div>
         </div>
        @if ($data->grade_status)

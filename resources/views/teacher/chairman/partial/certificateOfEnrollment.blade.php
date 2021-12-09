@@ -15,7 +15,7 @@
 
         <table style="width: 100%" class="mt-5">
             <tr>
-                <td class="text-right"> <img src="{{ asset('image/logo/logo.png') }}" alt="" width="130px"></td>
+                <td class="text-right   "> <img src="{{ asset('image/logo/logo.png') }}" alt="" width="130px"></td>
                 <td class="text-center">
                     <p style="line-height: 0.5;font-size: 23px;font-family:'times new roman'" class="mt-3">Republic of the Philippines</p>
                     <p style="line-height: 0.5;font-size: 23px;font-family:'times new roman'">Department of Education</p>
@@ -24,7 +24,7 @@
                     <h4 style="font-family:'times new roman'">PILI NATIONAL HIGH SCHOOL</h4>
                     <p style="line-height: 0.5;font-size: 23px;font-family:'times new roman'">Lapaz Pawili, Pili Camarines Sur</p>
                 </td>
-                <td class="text-left"> <img src="{{ asset('image/logo/deped.png') }}" alt="" width="190px"></td>
+                <td class="text-left"> <img src="{{ asset('image/logo/deped.png') }}" alt="" width="180px"></td>
             </tr>
             <tr>
                 <td colspan="3" style="padding-left:15%;padding-right:15%">

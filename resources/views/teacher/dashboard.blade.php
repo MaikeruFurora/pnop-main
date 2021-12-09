@@ -70,7 +70,7 @@
 </section>
 @endsection
 @section('moreJs')
-@if ( Auth::user()->chairman()->where('school_year_id', session('sessionAY')->id)->exists())
+@if ( Auth::user()->chairman()->where('school_year_id', $activeAY->id)->exists())
 <script src="{{ asset('teacher/chairman/dashMonitor.js') }}"></script>
 @endif
 @endsection

@@ -18,6 +18,9 @@
                     <button type="button" class="btn btn-icon icon-left btn-primary mr-3" id="btnSendEmail">
                         <i class="fa fa-paper-plane"></i> Send Email
                     </button>
+                    <button type="button" class="btn btn-icon icon-left btn-primary mr-3" id="btnExportNumber">
+                        <i class="fa fa-phone-alt"></i>&nbsp; Mobile Number
+                    </button>
                 </div>
                 <table class="table table-striped" id="appointedTable" style="font-size: 12px;width:100%">
                     <thead>
@@ -25,6 +28,7 @@
                             {{-- <th></th> --}}
                             <th width="13%">Transaction No.</th>
                             <th width="15%">Name</th>
+                            <th width="5%">Age</th>
                             <th width="15%">Contact</th>
                             <th width="10%">Email</th>
                             <th width="25%">Address</th>

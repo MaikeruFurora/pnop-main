@@ -6,11 +6,28 @@
         <div class="col-lg-4">
             <form action="{{ route('appoint.save') }}" method="POST">@csrf
                 <div class="card shadow card-info">
-                   
+                    <div class="card-header">
+                        <h4>Register</h4>
+                    </div>
                     <div class="card-body pb-0">
-                        <div class="form-group">
-                            <label>Full name</label>
-                            <input type="text" class="form-control" name="fullname" required readonly value="{{auth()->user()->fullname}}">
+                        @if (session()->has('msg'))
+                        <div class="alert alert-warning alert-has-icon">
+                            <div class="alert-icon"><i class="far fa-lightbulb"></i></div>
+                            <div class="alert-body">
+                              <div class="alert-title">Warning</div>
+                              {{  session()->get('msg') }}
+                            </div>
+                          </div>
+                        @endif
+                        <div class="form-row">
+                            <div class="form-group col-md-9">
+                                <label>Full name</label>
+                                <input type="text" class="form-control" name="fullname" required readonly value="{{auth()->user()->fullname}}">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Age</label>
+                                <input type="number" class="form-control" name="age" required onkeypress="return numberOnly(event)">
+                            </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">

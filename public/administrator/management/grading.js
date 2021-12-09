@@ -70,7 +70,6 @@ let myGradePerGrading=(val)=>{
 }
 
 let loadstudent = (section, subject) => {
-    console.log(section, subject);
     let htmlGradeHold = '';
     $.ajax({
         url: `grading/load/all/student/${section}/${subject}`,
@@ -89,96 +88,108 @@ let loadstudent = (section, subject) => {
             );
         },
     }).done(function (data) {
-        $(".show_subject").text(data[0].descriptive_title)
-        console.log(data);
-        data.forEach((val) => {
-            htmlGradeHold += `
-                    <tr style="background-color:${
-                        val.avg < 75 && val.avg != null ? "#ffe6e6" : ""
-                    }">
-                    <td>
-                        ${val.fullname}
-                    </td>
-                    <td>
-                        <input type="text"
-                        pattern="^[0-9]{3}$"
-                        onkeypress="return numberOnly(event)"
-                        maxlength="3"
-                        name="inGrade"
-                        class="noborder text-center"
-                        value="${myGradePerGrading(val.first) }"
-                        data-column="1st"
-                        data-grade_id="${val.gid}"
-                        data-subject_id="${val.subject_id}"
-                        data-student_id="${ val.sid }"
-                        id="1st_${ val.sid}"
-                        >
+        if (data.length!=0) {
+            $(".show_subject").text(data[0].descriptive_title)
+            data.forEach((val) => {
+                htmlGradeHold += `
+                        <tr style="background-color:${
+                            val.avg < 75 && val.avg != null ? "#ffe6e6" : ""
+                        }">
+                        <td>
+                            ${val.fullname}
                         </td>
-                    <td>
-                        <input type="text"
-                        pattern="^[0-9]{3}$"
-                        onkeypress="return numberOnly(event)" 
-                        maxlength="3"
-                        name="inGrade"
-                        class="noborder text-center"
-                        value="${ myGradePerGrading(val.second) }"
-                        data-column="2nd"
-                        data-grade_id="${val.gid}"
-                        data-subject_id="${ val.subject_id }"
-                        data-student_id="${ val.sid }"
-                        id="2nd_${ val.sid}"
-                        >
-                    </td>
-                    <td>
-                        <input type="text"
-                        pattern="^[0-9]{3}$" 
-                        onkeypress="return numberOnly(event)"
-                        maxlength="3"
-                        name="inGrade"
-                        class="noborder text-center"
-                        value="${ myGradePerGrading(val.third) }"
-                        data-column="3rd"
-                        data-grade_id="${val.gid}"
-                        data-subject_id="${ val.subject_id }"
-                        data-student_id="${ val.sid }"
-                        id="3rd_${ val.sid}"
-                        >
-                    </td>
-                    <td>
-                        <input type="text"
-                        pattern="^[0-9]{3}$" 
-                        onkeypress="return numberOnly(event)"
-                        maxlength="3"
-                        name="inGrade"
-                        class="noborder text-center"
-                        value="${ myGradePerGrading(val.fourth) }"
-                        ${disbaledFourthQuarter(val.first,val.second,val.third)}
-                        data-column="4th"
-                        data-grade_id="${val.gid}"
-                        data-subject_id="${ val.subject_id }"
-                        data-student_id="${ val.sid }"
-                        id="4th_${ val.sid}"
-                        >
-                    </td>
-                    <td>
-                        <input type="text" disabled
-                        pattern="^[0-9]{3}$" 
-                        onkeypress="return numberOnly(event)"
-                        maxlength="3"
-                        name="inGrade"
-                        class="noborder text-center"
-                        value="${ myGradePerGrading(val.avg) }"
-                        data-column="avg"
-                        data-grade_id="${val.gid}"
-                        data-subject_id="${ val.subject_id }"
-                        data-student_id="${ val.sid }"
-                        > 
-                   </td>
-                </tr>
-            `;
-
+                        <td>
+                            <input type="text"
+                            pattern="^[0-9]{3}$"
+                            onkeypress="return numberOnly(event)"
+                            maxlength="3"
+                            name="inGrade"
+                            class="noborder text-center"
+                            value="${myGradePerGrading(val.first) }"
+                            data-column="1st"
+                            data-grade_id="${val.gid}"
+                            data-subject_id="${val.subject_id}"
+                            data-student_id="${ val.sid }"
+                            id="1st_${ val.sid}"
+                            >
+                            </td>
+                        <td>
+                            <input type="text"
+                            pattern="^[0-9]{3}$"
+                            onkeypress="return numberOnly(event)" 
+                            maxlength="3"
+                            name="inGrade"
+                            class="noborder text-center"
+                            value="${ myGradePerGrading(val.second) }"
+                            data-column="2nd"
+                            data-grade_id="${val.gid}"
+                            data-subject_id="${ val.subject_id }"
+                            data-student_id="${ val.sid }"
+                            id="2nd_${ val.sid}"
+                            >
+                        </td>
+                        <td>
+                            <input type="text"
+                            pattern="^[0-9]{3}$" 
+                            onkeypress="return numberOnly(event)"
+                            maxlength="3"
+                            name="inGrade"
+                            class="noborder text-center"
+                            value="${ myGradePerGrading(val.third) }"
+                            data-column="3rd"
+                            data-grade_id="${val.gid}"
+                            data-subject_id="${ val.subject_id }"
+                            data-student_id="${ val.sid }"
+                            id="3rd_${ val.sid}"
+                            >
+                        </td>
+                        <td>
+                            <input type="text"
+                            pattern="^[0-9]{3}$" 
+                            onkeypress="return numberOnly(event)"
+                            maxlength="3"
+                            name="inGrade"
+                            class="noborder text-center"
+                            value="${ myGradePerGrading(val.fourth) }"
+                            ${disbaledFourthQuarter(val.first,val.second,val.third)}
+                            data-column="4th"
+                            data-grade_id="${val.gid}"
+                            data-subject_id="${ val.subject_id }"
+                            data-student_id="${ val.sid }"
+                            id="4th_${ val.sid}"
+                            >
+                        </td>
+                        <td>
+                            <input type="text" disabled
+                            pattern="^[0-9]{3}$" 
+                            onkeypress="return numberOnly(event)"
+                            maxlength="3"
+                            name="inGrade"
+                            class="noborder text-center"
+                            value="${ myGradePerGrading(val.avg) }"
+                            data-column="avg"
+                            data-grade_id="${val.gid}"
+                            data-subject_id="${ val.subject_id }"
+                            data-student_id="${ val.sid }"
+                            > 
+                       </td>
+                    </tr>
+                `;
+    
+                
+            });
             $("#loadstudent").html(htmlGradeHold)
-        });
+        } else {
+            $("#loadstudent").html(
+                `<tr>
+                        <td colspan="6" class="text-center">
+                            No data
+                        </td>
+                    </tr>
+                    `
+            );
+        }
+       
     })
     .fail(function (jqxHR, textStatus, errorThrown) {
         console.log(jqxHR, textStatus, errorThrown);

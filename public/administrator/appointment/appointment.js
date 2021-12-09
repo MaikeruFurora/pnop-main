@@ -262,6 +262,7 @@ $('.deleteYes').on('click', function () {
         // { data: "email" },
         { data: "appoint_no", orderable: false },
         { data: "fullname", orderable: false },
+        { data: "age", orderable: false },
         { data: "contact_no", orderable: false },
         { data: "email", orderable: false },
         { data: "address", orderable: false },
@@ -275,7 +276,28 @@ let showListOfAppointed = (selected) => {
     $("#appointedModal").modal("show");
     $("#appointedModalLabel").text(selected);
     $('input[name="selectedDateNow"]').val(selected);
+    $("#btnExportNumber").val(selected)
 };
+
+
+$("#btnExportNumber").on('click', function () {
+    window.open("appointment/export/number/"+$(this).val())
+    // $.ajax({
+    //     url: ",
+    //     type: "GET",
+    //     beforeSend: function (data) {
+    //         $("#btnExportNumber").html( `Exporting.. <div class="spinner-border spinner-border-sm" role="status">
+    //         <span class="sr-only">Loading...</span>
+    //     </div>`).attr("disabled", true);
+    //     }
+    // }).done(function () {
+        
+    //     $("#btnExportNumber").html(`<i class="fa fa-phone-alt"></i>&nbsp; Export Number`)
+    // }).fail(function (jqxHR, textStatus, errorThrown) {
+    //     console.log(jqxHR, textStatus, errorThrown);
+    //     getToast("error", "Eror", errorThrown);
+    // });
+})
 
 $("#btnSendEmail").on("click", function () {
     $("#emailDiv").toggle(1000);

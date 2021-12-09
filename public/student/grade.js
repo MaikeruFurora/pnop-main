@@ -128,10 +128,9 @@ let filterGradeLevel = () => {
         dataType: "json",
     })
         .done(function (data) {
-            $(".txtSectionName").text(data[0].section_name);
+            // $(".txtSectionName").text(data[0].section_name);
             filterGradeLevelHTML+='<option value="">Choose Grade Level</option>';
             data.forEach((val) => {
-                console.log(val.status);
                 // filterGradeLevelHTML += `<option ${
                 //     val.status == "1" ? "selected" : ""
                 // } value="${val.grade_level}_${val.section_id}">Grade - ${
@@ -139,7 +138,7 @@ let filterGradeLevel = () => {
                 // }</option>`;
                 filterGradeLevelHTML += `<option value="${val.grade_level}_${val.section_id}">Grade - ${
                     val.grade_level
-                } ${val.status == "1" ? "(current)" : ""}</option>`;
+                } ${val.status == "1" ? "(current)" : val.from +"-"+ val.to }</option>`;
             });
             $("select[name='filterGradeLevel']").html(filterGradeLevelHTML);
         })

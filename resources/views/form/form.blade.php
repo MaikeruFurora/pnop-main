@@ -20,7 +20,25 @@
 
 <body>
   <div id="app">
-
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title lead" id="staticBackdropLabel">Warning</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <h5 class="txt"></h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
       <section class="section">
           <div class="container mt-5">
               <div class="row">
@@ -115,7 +133,7 @@
                         </div>
                         <div class="form-group col-8">
                             <label>Last school attended</label>
-                            <input name="last_school_attended" type="text" class="form-control" required>
+                            <input name="last_school_attended" type="text" class="form-control" required style="text-transform: uppercase">
                         </div>
                     </div>
 
@@ -150,9 +168,9 @@
                                         </select>
                                     </div>
                                     <div class="form-group col-lg-4">
-                                        <label>Student Contact No.</label>
+                                        <label>Student Contact No.(eg. +639)</label>
                                         <input type="text" class="form-control" name="student_contact"
-                                            onkeypress="return numberOnly(event)" maxlength="11">
+                                            onkeypress="return numberOnly(event)" maxlength="12" placeholder="eg. 6390700000">
                                     </div>
                                 </div>
                                 {{-- end personalinformation --}}
@@ -205,9 +223,9 @@
                                 <input type="text" class="form-control" name="father_name">
                             </div>
                             <div class="form-group col-lg-4">
-                                <label>Contact No.</label>
+                                <label>Contact No.(eg. +639)</label>
                                 <input type="text" class="form-control" name="father_contact_no"
-                                    onkeypress="return numberOnly(event)" maxlength="11">
+                                    onkeypress="return numberOnly(event)" maxlength="12" placeholder="eg. 6390700000">
                             </div>
                         </div>
                         <div class="form-row">
@@ -216,9 +234,9 @@
                                 <input type="text" class="form-control" name="mother_name">
                             </div>
                             <div class="form-group col-lg-4">
-                                <label>Contact No.</label>
+                                <label>Contact No.(eg. +639)</label>
                                 <input type="text" class="form-control" name="mother_contact_no"
-                                    onkeypress="return numberOnly(event)" maxlength="11">
+                                    onkeypress="return numberOnly(event)" maxlength="12" placeholder="eg. 6390700000">
                             </div>
                         </div>
                         <div class="form-row">
@@ -227,10 +245,10 @@
                                 <input type="text" class="form-control" name="guardian_name">
                             </div>
                             <div class="form-group col-lg-4">
-                                <label>Contact No.</label>
+                                <label>Contact No.(eg. +639)</label>
                                 <input type="text" class="form-control"
                                     name="guardian_contact_no"
-                                    onkeypress="return numberOnly(event)" maxlength="11">
+                                    onkeypress="return numberOnly(event)" maxlength="12" placeholder="eg. 6390700000">
                             </div>
 
                         </div>

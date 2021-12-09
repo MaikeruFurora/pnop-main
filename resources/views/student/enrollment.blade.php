@@ -21,6 +21,7 @@
 <section class="section">
     <div class="section-body">
         <div class="col-md-12 mt-5">
+            @if (auth()->user()->completer=='No')     
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card card-warning">
@@ -71,7 +72,7 @@
                                     </div>
                                 </div>
                                 {{--  --}}
-                                @if(Auth::user()->grade()->where('avg','<','75')->whereNull('remarks')->get()->count()!=0)
+                                @if(Auth::user()->grade()->where('avg','<','75')->whereNull('remarks')->where('is_retained','No')->get()->count()!=0)
                                 <div class="col-md-6 col-lg-6">
                                     <div class="card card-info">
                                         <div class="card-header">
@@ -82,7 +83,7 @@
                                             <p>
                                                 Back Subject:
                                                 <span class="badge badge-danger">
-                                                    {{ Auth::user()->grade()->where('avg','<','75')->whereNull('remarks')->get()->count() }}
+                                                    {{ Auth::user()->grade()->where('avg','<','75')->whereNull('remarks')->where('is_retained','No')->get()->count() }}
                                                 </span><br>
                                                 <small>* Note
                                                     <em> Must enroll in remedial classes for learning areas with
@@ -208,10 +209,24 @@
                     </div>
                 </div>
             </div>
+            @else
+            <div class="card">
+                <div class="card-body">
+                <div class="empty-state" data-height="200">
+                    {{-- <div class="empty-state-icon bg-danger"> --}}
+                    <i class="fas fa-check-circle" style="font-size: 30px"></i>
+                    {{-- </div> --}}
+                    <h2>You are Grade 10 Completer</h2>
+                </div>
+                </div>
+            </div>
+            @endif
         </div>
     </div>
 </section>
 @endsection
 @section('moreJs')
+@if (auth()->user()->completer=='No')
 <script src="{{ asset('student/enrollment.js') }}"></script>
+@endif
 @endsection

@@ -39,7 +39,7 @@
                   <h3 class="mt-3">Online Pre-Enrollment was successful</h3>
                 </div> --}}
     
-                <div class="card card-hero">
+                <div class="card card-hero shadow">
                   <div class="card-header pb-3">
                     <div class="card-icon">
                         <i class="far fa-question-circle"></i>
@@ -76,9 +76,9 @@
                       
                     </div>
                 </div>
-                <a href="{{ route('done.download',$data) }}" class="ticket-item ticket-more btn btn-icon icon-left btn-primary btn-block p-3">
+                {{-- <a href="{{ route('done.download',$data) }}" class="ticket-item ticket-more btn btn-icon icon-left btn-primary btn-block p-3">
                     <i class="fas fa-download"></i> Download Form
-                </a>
+                </a> --}}
                 </div>
                 <div class="simple-footer">
                   Copyright &copy; Stisla 2018

@@ -27,23 +27,12 @@
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade show active mt-3" id="nav-home">
                                 {{-- start student details here --}}
-                                <div class="form-row ">
-                                    <div class="form-group col-md-6">
+                               
+                                    <div class="form-group">
                                         <label>Learning Reference Number</label>
                                         <input type="text" name="roll_no" required class="form-control"
                                             pattern="^[0-9]{12}$" onkeypress="return numberOnly(event)" maxlength="12">
                                     </div>
-                                    <div class="form-group col-md-6">
-                                        <label>Curriculum</label>
-                                        <select name="curriculum" class="custom-select" required>
-                                            <option value="STEM">STEM - Science Technology Engineering and Mathematics
-                                            </option>
-                                            <option value="BEC">BEC - Basic Education Curriculum</option>
-                                            <option value="SPA">SPA - Special Program Art</option>
-                                            <option value="SPJ">SPJ - Special Program Journalism</option>
-                                        </select>
-                                    </div>
-                                </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label>First name</label>
@@ -118,7 +107,7 @@
                                     <div class="form-group col-md-4">
                                         <label>Contact No.</label>
                                         <input type="text" class="form-control" name="student_contact"
-                                            pattern="^[0-9]{11}$" onkeypress="return numberOnly(event)" maxlength="11">
+                                            pattern="^[0-9]{12}$" onkeypress="return numberOnly(event)" maxlength="12">
                                     </div>
                                 </div>
 
@@ -150,7 +139,7 @@
                                     <div class="form-group col-md-4">
                                         <label>Contact No.</label>
                                         <input type="text" class="form-control" name="father_contact_no"
-                                            pattern="^[0-9]{11}$" onkeypress="return numberOnly(event)" maxlength="11">
+                                            pattern="^[0-9]{12}$" onkeypress="return numberOnly(event)" maxlength="12">
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -161,7 +150,7 @@
                                     <div class="form-group col-md-4">
                                         <label>Contact No.</label>
                                         <input type="text" class="form-control" name="mother_contact_no"
-                                            pattern="^[0-9]{11}$" onkeypress="return numberOnly(event)" maxlength="11">
+                                            pattern="^[0-9]{12}$" onkeypress="return numberOnly(event)" maxlength="12">
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -172,7 +161,7 @@
                                     <div class="form-group col-md-4">
                                         <label>Contact No.</label>
                                         <input type="text" class="form-control" name="guardian_contact_no"
-                                            pattern="^[0-9]{11}$" onkeypress="return numberOnly(event)" maxlength="11">
+                                            pattern="^[0-9]{12}$" onkeypress="return numberOnly(event)" maxlength="12">
                                     </div>
                                 </div>
                                 {{-- end parent details here --}}

@@ -67,7 +67,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Subject Code</label>
-                                <input type="text" class="form-control" name="subject_code" required>
+                                <input type="text" class="form-control" name="subject_code" required style="text-transform: uppercase">
                             </div>
                             <div class="form-group">
                                 <label>Descriptive Title</label>

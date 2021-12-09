@@ -68,7 +68,7 @@ $(document).on("click", ".sdelete", function () {
             $(".btnDelete_" + id)
                 .html("Delete")
                 .attr("disabled", false);
-            getToast("error", "Eror", errorThrown);
+            getToast("warning", "Warning", "You can't delete this student record!");
         });
 });
 

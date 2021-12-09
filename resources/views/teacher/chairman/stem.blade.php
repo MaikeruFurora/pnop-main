@@ -23,7 +23,7 @@
         <div class="col-12">
             <div class="row justify-content-between">
                 <div class="col-lg-5 col-md-8">
-                    <h2 class="section-title">Enrolle's Today [ Grade {{ Auth::user()->chairman->grade_level }} | STEM
+                    <h2 class="section-title">Enrolle's Today [ Grade {{ Auth::user()->chairman_info->grade_level }} | STEM
                         Student
                         ]
                     </h2>
@@ -33,9 +33,9 @@
                         <button type="button" class="btn btn-primary" id="btnModalExport"><i
                                 class="fas fa-file-export"></i>&nbsp;Export
                         </button>
-                        <button type="button" class="btn btn-primary" id="btnModalStudent"><i
+                        {{-- <button type="button" class="btn btn-primary" id="btnModalStudent"><i
                                 class="fas fa-plus-circle"></i>&nbsp;Student
-                        </button>
+                        </button> --}}
                     </div>
                 </div>
             </div>

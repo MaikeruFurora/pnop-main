@@ -28,6 +28,8 @@
                        
                         <form id="studentForm">@csrf
                             <input type="hidden" name="id" value="{{ auth()->user()->id }}">
+                            <input type="hidden" name="roll_no" value="{{ auth()->user()->roll_no }}">
+                            <input type="hidden" name="completer" value="{{ auth()->user()->completer }}">
                                 <div class="form-row">
                                     <div class="form-group col-lg-4">
                                         <label>First name</label>
@@ -61,10 +63,10 @@
     
     
                                     <div class="form-group col-lg-4">
-                                        <label>Contact No.</label>
+                                        <label>Contact No.(eg. +639)</label>
                                         <input type="text" class="form-control" name="student_contact"
-                                            onkeypress="return numberOnly(event)"
-                                            value="{{ auth()->user()->student_contact }}" >
+                                            onkeypress="return numberOnly(event)" maxlength="12"
+                                            value="{{ auth()->user()->student_contact }}" placeholder="(eg. +639)">
                                     </div>
                                 </div>
     
@@ -98,10 +100,10 @@
                                             value="{{ auth()->user()->mother_name }}" readonly>
                                     </div>
                                     <div class="form-group col-lg-4">
-                                        <label>Contact No.</label>
-                                        <input type="text" class="form-control" name="mother_contact_no"
+                                        <label>Contact No.(eg. +639)</label>
+                                        <input type="text" class="form-control" name="mother_contact_no" placeholder="(eg. +639)"
                                             value="{{ auth()->user()->mother_contact_no }}"
-                                            onkeypress="return numberOnly(event)">
+                                            onkeypress="return numberOnly(event)" maxlength="12">
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -111,10 +113,10 @@
                                             value="{{ auth()->user()->father_name }}" readonly>
                                     </div>
                                     <div class="form-group col-lg-4">
-                                        <label>Contact No.</label>
-                                        <input type="text" class="form-control" name="father_contact_no"
+                                        <label>Contact No.(eg. +639)</label>
+                                        <input type="text" class="form-control" name="father_contact_no" placeholder="(eg. +639)"
                                             value="{{ auth()->user()->father_contact_no }}"
-                                            onkeypress="return numberOnly(event)">
+                                            onkeypress="return numberOnly(event)" maxlength="12">
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -124,10 +126,10 @@
                                             value="{{ auth()->user()->guardian_name }}" readonly>
                                     </div>
                                     <div class="form-group col-lg-4">
-                                        <label>Contact No.</label>
-                                        <input type="text" class="form-control" name="guardian_contact_no"
+                                        <label>Contact No.(eg. +639)</label>
+                                        <input type="text" class="form-control" name="guardian_contact_no" placeholder="(eg. +639)"
                                             value="{{ auth()->user()->guardian_contact_no }}"
-                                            onkeypress="return numberOnly(event)">
+                                            onkeypress="return numberOnly(event)" maxlength="12">
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-lg btn-round btn-primary float-right btnSave mb-4">

@@ -26,6 +26,12 @@ const studentTable = $("#studentTable").DataTable({
         },
         { data: "gender" },
         { data: "student_contact" },
+        {
+            data: null,
+            render: function (data) {
+             return data.completer=='No'? `<span class="badge badge-info pt-1 pb-1">No</span>`: `<span class="badge badge-success pt-1 pb-1">Completer</span>`;
+            }
+        },
         { data: "username" },
         { data: "orig_password" },
         {
@@ -107,12 +113,20 @@ $("#studentForm").submit(function (e) {
 
 $(document).on("click", ".sdelete", function () {
     let id = $(this).attr("id");
+    $("#teacherDeleteModal").modal("show")
+    $(".deleteYes").val(id)
+    
+});
+
+
+$(".deleteYes").on('click', function () {
+
     $.ajax({
-        url: "student/delete/" + id,
+        url: "student/delete/" + $(this).val(),
         type: "DELETE",
         data: { _token: $('input[name="_token"]').val() },
         beforeSend: function () {
-            $(".btnDelete_" + id)
+            $(".deleteYes")
                 .html(
                     `
             <div class="spinner-border spinner-border-sm" role="status">
@@ -123,21 +137,22 @@ $(document).on("click", ".sdelete", function () {
         },
     })
         .done(function (response) {
-            $(".btnDelete_" + id)
-                .html("Delete")
+            $(".deleteYes")
+                .html("Yes")
                 .attr("disabled", false);
+                $("#teacherDeleteModal").modal("hide")
             getToast("success", "Success", "deleted one record");
             $("#studentForm")[0].reset();
             studentTable.ajax.reload();
         })
         .fail(function (jqxHR, textStatus, errorThrown) {
             console.log(jqxHR, textStatus, errorThrown);
-            $(".btnDelete_" + id)
-                .html("Delete")
+            $(".deleteYes")
+                .html("Yes")
                 .attr("disabled", false);
             getToast("error", "Eror", errorThrown);
         });
-});
+})
 
 /**
  *
@@ -210,3 +225,35 @@ $(document).on("click", ".sedit", function () {
             getToast("error", "Eror", errorThrown);
         });
 });
+
+$("#btnModalExport").on('click', function () {
+    $("#importModal").modal("show")
+})
+
+$("#importForm").submit(function (e) {
+    e.preventDefault()
+  
+    $.ajax({
+        url: "student/import",
+        type: "POST",
+        data: new FormData(this),
+        processData: false,
+        contentType: false,
+        cache: false,
+        beforeSend: function () {
+            $(".btnImportNow").html(
+                `Importing...  <div class="spinner-border spinner-border-sm" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+                    `
+            );
+        },
+    }).done(function (data) {
+        $('input[name="file"]').val("")
+        $(".btnImportNow").html('Import')
+        studentTable.ajax.reload();
+    }).fail(function (jqxHR, textStatus, errorThrown) {
+         $(".btnImportNow").html('Import')
+        console.log(jqxHR, textStatus, errorThrown);
+    });
+})

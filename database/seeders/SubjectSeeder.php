@@ -61,7 +61,7 @@ class SubjectSeeder extends Seeder
                 'grade_level' => 7,
                 'subject_code' => 'MAPEH-07',
                 'descriptive_title' => 'Music, Arts, Physical Education, and Health',
-                'subject_for' => 'GENRAL'
+                'subject_for' => 'GENERAL'
             ],
             [
                 'grade_level' => 7,
@@ -116,7 +116,7 @@ class SubjectSeeder extends Seeder
                 'grade_level' => 8,
                 'subject_code' => 'MAPEH-08',
                 'descriptive_title' => 'Music, Arts, Physical Education, and Health',
-                'subject_for' => 'GENRAL'
+                'subject_for' => 'GENERAL'
             ],
             [
                 'grade_level' => 8,
@@ -172,7 +172,7 @@ class SubjectSeeder extends Seeder
                 'grade_level' => 9,
                 'subject_code' => 'MAPEH-09',
                 'descriptive_title' => 'Music, Arts, Physical Education, and Health',
-                'subject_for' => 'GENRAL'
+                'subject_for' => 'GENERAL'
             ],
             [
                 'grade_level' => 9,
@@ -229,7 +229,7 @@ class SubjectSeeder extends Seeder
                 'grade_level' => 10,
                 'subject_code' => 'MAPEH-10',
                 'descriptive_title' => 'Music, Arts, Physical Education, and Health',
-                'subject_for' => 'GENRAL'
+                'subject_for' => 'GENERAL'
             ],
             [
                 'grade_level' => 10,

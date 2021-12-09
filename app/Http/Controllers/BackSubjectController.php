@@ -18,6 +18,7 @@ class BackSubjectController extends Controller
             ->join('students','grades.student_id','students.id')
             ->join('subjects','grades.subject_id','subjects.id')
             ->where('grades.avg','<',75)
+            ->where('grades.is_retained','No')
             ->where('students.id', auth()->user()->id)
             ->get()
         );
@@ -32,6 +33,7 @@ class BackSubjectController extends Controller
             // ->whereNull('grades.avg')
             // ->whereIn('grades.remarks',[null,'Passed'])
             ->where('grades.avg','<',75)
+            ->where('grades.is_retained','No')
             // ->whereNull('grades.avg','<',75)
             ->groupBy('grades.student_id', 'students.roll_no', 'fullname')
             ->get()
@@ -46,6 +48,7 @@ class BackSubjectController extends Controller
             ->join('subjects','grades.subject_id','subjects.id')
             ->where('grades.avg','<',75)
             ->where('students.id', $id)
+            ->where('grades.is_retained','No')
             // ->whereIn('grades.remarks',[null,'Passed'])
             // ->orWhereIn('grades.remarks',[null,'Passed'])
             ->get()

@@ -13,36 +13,56 @@
 <body style="background: white" onload="window.print()">
     <div class="container">
         <div class="row">
-            <div class="col-1 text-center">
-                <img src="{{ asset('image/logo/logo.png') }}" class="" width="120%">
-            </div>
-            <div class="col-4 my-3">
-                <h6 class="mb-0">PILI NATIONAL HIGH SCHOOL</h6>
-                <small>List of student</small>
+            <div class="col-md-6 offset-md-3 text-center mt-3">
+              <div class="row">
+                <div class="col-md-3">
+                    <img src="{{ asset('image/logo/logo.png') }}" class="mt-3" width="70%">
+                </div>
+                <div class="col-md-6">
+                    <small>Republic of the Philippine</small><br>
+                    <small style="font-size: 14px">Region V - Bicol</small><br>
+                    <small style="font-size: 14px">Division  of Camarines Sur</small><br>
+                    <small style="font-size: 15px"><b>PILI NATIONAL HIGH SCHOOL</b></small><br>
+                    <small style="font-size: 14px">Pawili, Camarines Sur</small>
+                </div>
+                <div class="col-md-3">
+                    <img src="{{ asset('image/logo/deped.png') }}" class="mt-4" width="90%">
+                </div>
+              </div>
             </div>
         </div><br>
-        <p class="mb-0">Section: {{ $section }}</p>
-        <small>Total Student: {{ $total->mtotal+$total->ftotal }}</small>&nbsp;&nbsp;
-        <small>Male: {{ $total->mtotal }}</small>&nbsp;&nbsp;
-        <small>Female: {{ $total->ftotal }}</small>
+        <h6 class="text-center">Class List</h6>
+        <hr>
+        @if (count($dataNow)>0)
+        <p class="mb-0">Section: <b>{{ $section }}</b></p>
+        <p class="mb-0">Adviser: <b>{{ $dataNow[0]->tfullname }}</b></p>
+        {{-- <p class="mb-0"><b>Total Student:</b> {{ $total->mtotal+$total->ftotal }}</p>
+        <p class="mb-0"><b>Male:</b> {{ $total->mtotal }}</p>
+        <p class="mb-0"><b>Female:</b> {{ $total->ftotal }}</p> --}}
         <table class="table table-bordered table-sm mt-2">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Student Name</th>
-                    <th>Gender</th>
+                    <th>LRN</th>
+                    <th>Fullname</th>
+                    <th>Sex</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($dataNow as $key =>$student)
                 <tr>
                     <td>{{  ++$key }}</td>
-                    <td>{{  $student->fullname }}</td>
+                    <td>{{  $student->roll_no }}</td>
+                    <td>{{  Str::upper($student->fullname) }}</td>
                     <td>{{  $student->gender }}</td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
+        @else
+            
+        @endif
+        
     </div>
 </body>
 

@@ -38,21 +38,28 @@ class ChartController extends Controller
 
     public function populationByCurriculum()
     {
-        //  $curriculum = Student::select(
-        //     DB::raw("COUNT(if (curriculum='STEM',1,NULL)) as stem"),
-        //     DB::raw("COUNT(if (curriculum='BEC',1,NULL)) as bec"),
-        //     DB::raw("COUNT(if (curriculum='SPA',1,NULL)) as spa"),
-        //     DB::raw("COUNT(if (curriculum='SPJ',1,NULL)) as spj")
-        // )
-        //     ->orderBy('curriculum', 'asc')
-        //     // ->groupBy('curriculum')
-        //     ->get();
-        $array = array();
-        $stem = Student::select(DB::raw("COUNT(if (curriculum='STEM',1,NULL)) as stem"))->pluck('stem');
-        $bec = Student::select(DB::raw("COUNT(if (curriculum='BEC',1,NULL)) as bec"))->pluck('bec');
-        $spa = Student::select(DB::raw("COUNT(if (curriculum='SPA',1,NULL)) as spa"))->pluck('spa');
-        $spj = Student::select(DB::raw("COUNT(if (curriculum='SPJ',1,NULL)) as spj"))->pluck('spj');
-        array_push($array, ['stem' => $stem[0], 'bec' => $bec[0], 'spa' => $spa[0], 'spj' => $spj[0]]);
-        return response()->json($array);
+        if (Enrollment::count() > 0) {
+            $array = array();
+            $stem = Enrollment::select(DB::raw("COUNT(if (curriculum='STEM',1,NULL)) as stem"))
+                ->where('enroll_status', 'Enrolled')
+                ->where('school_year_id', Config::get('activeAY')->id)
+                ->pluck('stem');
+            $bec = Enrollment::select(DB::raw("COUNT(if (curriculum='BEC',1,NULL)) as bec"))
+                ->where('enroll_status', 'Enrolled')
+                ->where('school_year_id', Config::get('activeAY')->id)
+                ->pluck('bec');
+            $spa = Enrollment::select(DB::raw("COUNT(if (curriculum='SPA',1,NULL)) as spa"))
+                ->where('enroll_status', 'Enrolled')
+                ->where('school_year_id', Config::get('activeAY')->id)
+                ->pluck('spa');
+            $spj = Enrollment::select(DB::raw("COUNT(if (curriculum='SPJ',1,NULL)) as spj"))
+                ->where('enroll_status', 'Enrolled')
+                ->where('school_year_id', Config::get('activeAY')->id)
+                ->pluck('spj');
+            array_push($array, ['stem' => $stem[0], 'bec' => $bec[0], 'spa' => $spa[0], 'spj' => $spj[0]]);
+            return response()->json($array);
+        } else {
+            return false;
+        }
     }
 }

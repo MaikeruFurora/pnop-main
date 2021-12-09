@@ -29,6 +29,9 @@ let myClassTable = $("#myClassTable").DataTable({
                 if (data.enroll_status != "Dropped") {
                     return `<button type="button" class="btn btn-sm btn-warning dropped btnDropped_${data.id}  pt-0 pb-0 pl-2 pr-2" id="${data.id}" data-student="${data.enroll_status}">
                     <i class="fas fa-user-times"></i> Drop
+                    </button>&nbsp;
+                    <button type="button" class="btn btn-sm btn-info reportCard pt-0 pb-0 pl-2 pr-2" value="${data.student_id}">
+                    <i class="far fa-id-card"></i> Report Card
                     </button>
                     `;
                 } else {
@@ -72,4 +75,13 @@ $(".confirmYes").on('click', function () {
             console.log(jqxHR, textStatus, errorThrown);
             getToast("error", "Eror", errorThrown);
         });
+})
+
+$(document).on('click','.reportCard', function () {
+    popupCenter({
+        url: "report/card/" + $(this).val(),
+        title: "Report Card",
+        w: 1400,
+        h: 800,
+    });
 })

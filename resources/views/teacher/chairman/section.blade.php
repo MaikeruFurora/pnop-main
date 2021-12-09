@@ -6,7 +6,7 @@
 @include('teacher/chairman/partial/deleteModal')
 <section class="section">
     <div class="section-body">
-        <h2 class="section-title">Manage Section | Grade {{ auth()->user()->chairman->grade_level }} Chairman</h2>
+        <h2 class="section-title">Manage Section | Grade {{ auth()->user()->chairman_info->grade_level }} Chairman</h2>
         <div class="row">
             <div class="col-lg-8 col-md-8 col-sm-12">
                 <div class="card card-info">
@@ -19,12 +19,13 @@
                                         <th>Section name</th>
                                         <th>Curiculum</th>
                                         <th>Adviser</th>
+                                        <th>Class list</th>
                                         <th width="10%">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody id="sectionTable">
                                     <tr>
-                                        <td colspan="5" class="text-center">No available data</td>
+                                        <td colspan="6" class="text-center">No available data</td>
                                     </tr>
                                 </tbody>
                             </table>

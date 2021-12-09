@@ -54,7 +54,6 @@ class FormController extends Controller
         } else {
             $student = Student::create([
                 'roll_no' => $request->roll_no,
-                'curriculum' => $request->curriculum,
                 'student_firstname' => Str::title($request->student_firstname),
                 'student_middlename' => Str::title($request->student_middlename),
                 'student_lastname' => Str::title($request->student_lastname),
@@ -65,9 +64,6 @@ class FormController extends Controller
                 'province' => $request->province,
                 'city' => $request->city,
                 'barangay' => $request->barangay,
-                //'last_school_attended' => $request->last_school_attended,
-                'last_schoolyear_attended' => $request->last_schoolyear_attended,
-                'isbalik_aral' => !empty($request->last_schoolyear_attended) ? 'Yes' : 'No',
                 'mother_name' => Str::title($request->mother_name),
                 'mother_contact_no' => $request->mother_contact_no,
                 'father_name' => Str::title($request->father_name),
@@ -88,6 +84,8 @@ class FormController extends Controller
                 'school_year_id' => Helper::activeAY()->id,
                 'date_of_enroll' => date("d/m/Y"),
                 'last_school_attended' => $request->last_school_attended,
+                'last_schoolyear_attended' => $request->last_schoolyear_attended,
+                'isbalik_aral' => !empty($request->last_schoolyear_attended) ? 'Yes' : 'No',
                 'enroll_status' => 'Pending',
                 'curriculum' => $request->curriculum,
                 'student_type' => (intval($request->grade_level) > 10) ? 'SHS' : 'JHS',

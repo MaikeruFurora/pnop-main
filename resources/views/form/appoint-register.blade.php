@@ -74,16 +74,32 @@
                                     <h4>Appointment Form</h4>
                                 </div>
                                 <div class="card-body pb-0">
-                                    <div class="form-group">
-                                        <label>Full name</label>
-                                        <input type="text" class="form-control" name="fullname" required>
+                                    @if (session()->has('msg'))
+                                    <div class="alert alert-warning alert-has-icon">
+                                        <div class="alert-icon"><i class="far fa-lightbulb"></i></div>
+                                        <div class="alert-body">
+                                          <div class="alert-title">Warning</div>
+                                          {{  session()->get('msg') }}
+                                        </div>
+                                      </div>
+                                    @endif
+                                    <div class="form-row">
+                                        <div class="form-group col-md-9">
+                                            <label>Full name</label>
+                                            <input type="text" class="form-control" name="fullname" required>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label>Age</label>
+                                            <input type="number" class="form-control" name="age" required onkeypress="return numberOnly(event)">
+                                        </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label>Contact no.</label>
-                                            <input type="text" class="form-control" placeholder="Contact no."
+                                            <label>Contact no. (eg. 639)</label>
+                                            <input type="text" class="form-control" placeholder="eg. +6392370000"
                                                 name="contact_no" required onkeypress="return numberOnly(event)"
-                                                maxlength="11">
+                                                title="Example mobile number format 6392370000"
+                                                maxlength="12">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Email</label>
@@ -92,7 +108,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Address</label>
-                                        <input type="text" class="form-control" name="address" required>
+                                        <input type="text" class="form-control" name="address" required style="text-transform: uppercase">
                                     </div>
                                     <div class="form-group">
                                         <label>Select Date</label>

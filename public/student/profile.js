@@ -21,7 +21,7 @@ $("#studentForm").submit(function (e) {
         .done(function (data) {
             getToast("info", "Save", "Successfully saved!");
             $(".btnSave").html("Save").attr("disabled", false);
-            document.getElementById("studentForm").reset();
+            // document.getElementById("studentForm").reset();
         })
         .fail(function (jqxHR, textStatus, errorThrown) {
             getToast("error", "Eror", errorThrown);

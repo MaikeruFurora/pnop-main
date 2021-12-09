@@ -66,11 +66,12 @@
                                             <a href="#">
                                                 {{-- <img class=" width=" 50" src="{{ asset('image/avatar-1.png') }}" alt="product">
                                                 --}}
-                                                <i class="mr-3 rounded fas fa-user mr-4 my-2" style="font-size: 23px"></i>
+                                                <i class="mr-3 rounded fas fa-user mr-4 " style="font-size: 23px"></i>
                                             </a>
                                             <div class="media-body">
-                                                <div class="media-right my-2" style="font-size: 25px">
-                                                  
+                                                <div class="media-right " style="font-size: 25px">
+                                                    <div class="media-title">{{$appointment->age }} years old</div>
+                                                    <div class="text-muted text-small">Age</div>
                                                 </div>
                                                 <div class="media-title">{{$appointment->fullname }}</div>
                                                 <div class="text-muted text-small">Fullname</div>
@@ -78,10 +79,13 @@
                                         </li>
                                         <li class="media">
                                             <a href="#">
-                                                <i class="mr-3 rounded fas fa-location-arrow mr-4 my-2" style="font-size: 23px"></i>
+                                                <i class="mr-3 rounded fas fa-location-arrow mr-4 " style="font-size: 23px"></i>
                                             </a>
                                             <div class="media-body">
-                                                <div class="media-right my-2" style="font-size: 25px"></div>
+                                                <div class="media-right " style="font-size: 25px">
+                                                    <div class="media-title">{{$appointment->set_date }}</div>
+                                                    <div class="text-muted text-small">Date</div>
+                                                </div>
                                                 <div class="media-title">{{$appointment->address }}</div>
                                                 <div class="text-muted text-small">Address
                                                 </div>
@@ -89,21 +93,10 @@
                                         </li>
                                         <li class="media">
                                             <a href="#">
-                                                <i class="mr-3 rounded fas fa-calendar mr-4 my-2" style="font-size: 23px"></i>
+                                                <i class="mr-3 rounded fas fa-star mr-4 " style="font-size: 23px"></i>
                                             </a>
                                             <div class="media-body">
-                                                <div class="media-right my-2" style="font-size: 25px"></div>
-                                                <div class="media-title">{{$appointment->set_date }}</div>
-                                                <div class="text-muted text-small">Date
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="media">
-                                            <a href="#">
-                                                <i class="mr-3 rounded fas fa-star mr-4 my-2" style="font-size: 23px"></i>
-                                            </a>
-                                            <div class="media-body">
-                                                <div class="media-right my-2" style="font-size: 25px"></div>
+                                                <div class="media-right " style="font-size: 25px"></div>
                                                 <div class="media-title">{{$appointment->purpose }}</div>
                                                 <div class="text-muted text-small">Purpose
                                                 </div>

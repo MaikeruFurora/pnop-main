@@ -16,7 +16,7 @@ class CreateStudentsTable extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->id();
             $table->string('roll_no', 45)->unique();
-            $table->string('curriculum', 45)->nullable();
+            // $table->string('curriculum', 45)->nullable();
             $table->string('student_firstname')->nullable();
             $table->string('student_middlename')->nullable();
             $table->string('student_lastname')->nullable();
@@ -27,9 +27,9 @@ class CreateStudentsTable extends Migration
             $table->string('province')->nullable();
             $table->string('city')->nullable();
             $table->string('barangay')->nullable();
-            $table->string('last_school_attended')->nullable();
-            $table->string('last_schoolyear_attended')->nullable();
-            $table->string('isbalik_aral')->default('No');
+            // $table->string('last_school_attended')->nullable();
+            // $table->string('last_schoolyear_attended')->nullable();
+            // $table->string('isbalik_aral')->default('No');
             $table->string('mother_name')->nullable();
             $table->string('mother_contact_no')->nullable();
             $table->string('father_name')->nullable();

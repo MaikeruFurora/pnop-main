@@ -10,6 +10,7 @@
             </div>
             <div class="modal-body pb-3">
                 @csrf
+               <div class="table-responsive">
                 <table class="table table-striped text-center">
                     <thead>
                         <tr>
@@ -24,6 +25,7 @@
                     </thead>
                     <tbody id="viewTable"></tbody>
                 </table>
+               </div>
             </div>
             <div class="modal-footer pt-0">
                 <button type="button" class="btn btn-warning pl-2 pr-2" data-dismiss="modal">Close</button>

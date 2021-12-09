@@ -30,6 +30,7 @@ class CreateGradesTable extends Migration
             $table->string('remarks',10)->nullable();
             $table->string('conducted_from',20)->nullable();
             $table->string('conducted_to',20)->nullable();
+            $table->string('is_retained',5)->default('No');
             $table->timestamps();
         });
     }

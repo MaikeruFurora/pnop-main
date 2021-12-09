@@ -99,6 +99,10 @@ class ChairmanController extends Controller
     }
 
 
+    public function enrollmentForm(){
+        return view('teacher/chairman/enrollmentForm');
+    }
+
     public function sectionList()
     {
         if (empty(Helper::activeAY())) {
@@ -381,11 +385,14 @@ class ChairmanController extends Controller
 
         $dataNow = Enrollment::select(
             "enrollments.id",
+            "students.roll_no",
             "students.gender",
-            DB::raw("CONCAT(student_lastname,', ',student_firstname,' ', student_middlename) AS fullname")
+            DB::raw("CONCAT(student_lastname,', ',student_firstname,' ', student_middlename) AS fullname"),
+            DB::raw("CONCAT(teacher_lastname,', ',teacher_firstname,' ', teacher_middlename) AS tfullname")
         )
             ->join('students', 'enrollments.student_id', 'students.id')
             ->leftjoin('sections', 'enrollments.section_id', 'sections.id')
+            ->join('teachers', 'sections.teacher_id', 'teachers.id')
             ->where('sections.section_name', $section)
             ->where('enrollments.grade_level', auth()->user()->chairman_info->grade_level)
             ->where('enrollments.school_year_id', Helper::activeAY()->id)

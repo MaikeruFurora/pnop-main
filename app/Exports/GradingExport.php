@@ -71,6 +71,7 @@ class GradingExport extends DefaultValueBinder implements  FromView,ShouldAutoSi
                 ->where('enrollments.school_year_id', Helper::activeAY()->id)
                 ->where('subjects.id', $this->subject)
                 ->where('sections.id', $this->section)
+                ->where('is_retained','No')
                 ->get();
             return view('teacher/partial/gradingExport',compact('data'));
       

@@ -10,7 +10,7 @@ const sectionTable = () => {
         beforeSend: function () {
             $("#sectionTable").html(
                 `<tr>
-                        <td colspan="5" class="text-center">
+                        <td colspan="6" class="text-center">
                             <div class="spinner-border spinner-border-sm" role="status">
                                 <span class="sr-only">Loading...</span>
                             </div>
@@ -40,6 +40,10 @@ const sectionTable = () => {
                                 ${val.teacher.teacher_middlename}
                             </td>
                             <td>
+                            <button type="button" style="font-size:9px" class="btn btn-sm btn-primary pl-3 pr-3 printBtn" value='${val.section_name}'>
+                            <i class="fas fa-users"></i> Print</button>
+                            </td>
+                            <td>
                                 <div class="btn-group" role="group" aria-label="Basic example">
                                     <button type="button" style="font-size:9px" class="btn btn-sm btn-info pl-3 pr-3 editSection editSec_${
                                         val.id
@@ -55,7 +59,7 @@ const sectionTable = () => {
             } else {
                 htmlHold = `
                             <tr>
-                                <td colspan="5" class="text-center">No available data</td>
+                                <td colspan="6" class="text-center">No available data</td>
                             </tr>`;
             }
             $("#sectionTable").html(htmlHold);
@@ -210,4 +214,14 @@ $(document).on("click", ".editSection", function () {
             console.log(jqxHR, textStatus, errorThrown);
             getToast("error", "Eror", errorThrown);
         });
+});
+
+
+$(document).on("click", ".printBtn", function () {
+    popupCenter({
+        url: "print/report/" + $(this).val(),
+        title: "report",
+        w: 1200,
+        h: 800,
+    });
 });

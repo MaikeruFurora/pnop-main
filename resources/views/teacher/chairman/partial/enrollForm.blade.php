@@ -1,4 +1,4 @@
-<input type="hidden" name="current_glc" value="{{ Auth::user()->chairman->grade_level }}">
+<input type="hidden" name="current_glc" value="{{ Auth::user()->chairman_info->grade_level }}">
 <form id="enrollForm" method="POST">@csrf
     <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -14,7 +14,7 @@
                     <input type="hidden" name="id">
                     <div class="form-row">
 
-                        @if (Auth::user()->chairman->grade_level==7)
+                        @if (Auth::user()->chairman_info->grade_level==7)
                         <div class="form-group col-lg-6">
                             <label>LRN (Learning Reference Number)</label>
                             <input type="text" class="form-control" name="roll_no" pattern="^[0-9]{12}$"
@@ -25,7 +25,7 @@
                             <select name="status" class="form-control" required>
                                 <option value="nothing"></option>
                                 <option value="new">Incomming grade 7</option>
-                                <option value="transferee">Transferee</option>
+                                <option value="transferee">New/Transferee</option>
                             </select>
                         </div>
                         @else
@@ -34,7 +34,7 @@
                             <select name="status" class="form-control" required>
                                 <option value="nothing"></option>
                                 <option value="upperclass">Upper Class</option>
-                                <option value="transferee">Transferee</option>
+                                <option value="transferee">New/Transferee</option>
                             </select>
                         </div>
                         <div class="form-group col-lg-6">
@@ -96,13 +96,13 @@
                             </select>
                         </div>
                         <div class="form-group col-lg-3">
-                            <label>Contact No.</label>
-                            <input type="text" class="form-control" name="student_contact" pattern="^[0-9]{11}$"
-                                onkeypress="return numberOnly(event)" maxlength="11" required>
+                            <label>Contact No.(eg. +639)</label>
+                            <input type="text" class="form-control" name="student_contact" pattern="^[0-9]{12}$"
+                                onkeypress="return numberOnly(event)" maxlength="12" placeholder="(eg. +639)" >
                         </div>
                         <div class="form-group col-lg-3">
                             <label>Section</label>
-                            <select name="section_id" class="form-control">
+                            <select name="section_id" class="form-control" required>
                             </select>
                         </div>
                     </div>
@@ -147,9 +147,9 @@
                             <input type="text" class="form-control" name="father_name">
                         </div>
                         <div class="form-group col-lg-4">
-                            <label>Contact No.</label>
-                            <input type="text" class="form-control" name="father_contact_no" pattern="^[0-9]{11}$"
-                                onkeypress="return numberOnly(event)" maxlength="11">
+                            <label>Contact No.(eg. +639)</label>
+                            <input type="text" class="form-control" name="father_contact_no" pattern="^[0-9]{12}$"
+                                onkeypress="return numberOnly(event)" maxlength="12" placeholder="(eg. +639)">
                         </div>
                     </div>
                     <div class="form-row">
@@ -158,9 +158,9 @@
                             <input type="text" class="form-control" name="mother_name">
                         </div>
                         <div class="form-group col-lg-4">
-                            <label>Contact No.</label>
-                            <input type="text" class="form-control" name="mother_contact_no" pattern="^[0-9]{11}$"
-                                onkeypress="return numberOnly(event)" maxlength="11">
+                            <label>Contact No.(eg. +639)</label>
+                            <input type="text" class="form-control" name="mother_contact_no" pattern="^[0-9]{12}$"
+                                onkeypress="return numberOnly(event)" maxlength="12" placeholder="(eg. +639)">
                         </div>
                     </div>
                     <div class="form-row">
@@ -169,9 +169,9 @@
                             <input type="text" class="form-control" name="guardian_name">
                         </div>
                         <div class="form-group col-lg-4">
-                            <label>Contact No.</label>
-                            <input type="text" class="form-control" name="guardian_contact_no" pattern="^[0-9]{11}$"
-                                onkeypress="return numberOnly(event)" maxlength="11">
+                            <label>Contact No.(eg. +639)</label>
+                            <input type="text" class="form-control" name="guardian_contact_no" pattern="^[0-9]{12}$"
+                                onkeypress="return numberOnly(event)" maxlength="12" placeholder="(eg. +639)">
                         </div>
 
                     </div>

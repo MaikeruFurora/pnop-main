@@ -97,16 +97,17 @@ $(".deleteYes").on('click', function () {
     })
         .done(function (response) {
             $(".deleteYes")
-                .html(`<i class="fas fa-user-times"></i>`)
+                .html(`Yes`)
                 .attr("disabled", false);
             getToast("success", "Success", "deleted one record");
             $("#teacherForm")[0].reset();
             table_teacher.ajax.reload();
+            $("#teacherDeleteModal").modal("hide")
         })
         .fail(function (jqxHR, textStatus, errorThrown) {
             console.log(jqxHR, textStatus, errorThrown);
             $(".deleteYes")
-                .html(`<i class="fas fa-user-times"></i>`)
+                .html(`Yes`)
                 .attr("disabled", false);
             getToast("error", "Eror", errorThrown);
         });
@@ -146,3 +147,36 @@ $("#btnMidalTeacher").on("click", function () {
     $("#teacherForm")[0].reset();
     $("#staticBackdrop").modal("show");
 });
+
+
+$("#btnModalExport").on('click', function () {
+    $("#importModal").modal("show")
+})
+
+$("#importForm").submit(function (e) {
+    e.preventDefault()
+  
+    $.ajax({
+        url: "teacher/import",
+        type: "POST",
+        data: new FormData(this),
+        processData: false,
+        contentType: false,
+        cache: false,
+        beforeSend: function () {
+            $(".btnImportNow").html(
+                `Importing...  <div class="spinner-border spinner-border-sm" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+                    `
+            );
+        },
+    }).done(function (data) {
+        $('input[name="file"]').val("")
+        $(".btnImportNow").html('Import')
+        table_teacher.ajax.reload();
+    }).fail(function (jqxHR, textStatus, errorThrown) {
+         $(".btnImportNow").html('Import')
+        console.log(jqxHR, textStatus, errorThrown);
+    });
+})

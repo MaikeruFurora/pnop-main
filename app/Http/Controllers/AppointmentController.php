@@ -63,9 +63,19 @@ class AppointmentController extends Controller
 
     public function appointSave(Request $request)
     {
-        $request['appoint_no'] = rand(99, 1000) . '-' . rand(99, 1000);
-        $data =  Appointment::create($request->all());
-        return redirect('appoint/success/' . $data->id);
+          $exists = Appointment::orWhere('fullname',$request->fullname)->orWhere('contact_no',$request->contact_no)->where('set_date',$request->set_date)->first();
+        if ($exists) {
+            return redirect()->back()->with('msg',"You already appointment this day");
+        } else {
+            $request['appoint_no'] = rand(99, 1000) . '-' . rand(99, 1000);
+            // $request['contact_no']=("63".substr($request['contact_no'],1));
+            $request['address']=str_replace(",","",$request['address']);
+            $request['fullname']=str_replace(",","",$request['fullname']);
+            $data =  Appointment::create($request->all());
+            return redirect('appoint/success/' . $data->id);
+        }
+        
+       
     }
 
 
@@ -138,7 +148,7 @@ class AppointmentController extends Controller
 
     public function sendEmailNotify(Request $request){
         $formatedDate = date("m/d/Y", strtotime(strtr($request->dateSelected, '-', '/')));
-        $emails = Appointment::select('email')->where('set_date', strval($formatedDate))->pluck('email');
+        $emails = Appointment::select('email')->whereNotNull('email')->where('set_date', strval($formatedDate))->pluck('email');
         $data = [
             'title'=>'PNHS APPOINTMENT STATUS',
             'body'=>$request->body
@@ -147,7 +157,9 @@ class AppointmentController extends Controller
             $email_array=$request->array_selected;
             Mail::to($email_array)->send(new MailNotify($data));
         } else {
-            Mail::to($emails)->send(new MailNotify($data));
+            if (count($emails)!=0) {
+                Mail::to($emails)->send(new MailNotify($data));
+            }
             // Mail::send('emails.welcome', [], function($message) use ($emails)
             // {    
             //     $message->to($emails)->subject('This is test e-mail');    

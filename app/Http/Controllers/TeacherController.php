@@ -9,6 +9,8 @@ use App\Models\Assign;
 use App\Models\Enrollment;
 use App\Models\Grade;
 use App\Models\SchoolProfile;
+use App\Models\SchoolYear;
+use App\Models\Section;
 use App\Models\Subject;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
@@ -17,6 +19,7 @@ use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use App\Notifications\NotifyUser;
 
 class TeacherController extends Controller
 {
@@ -28,7 +31,41 @@ class TeacherController extends Controller
 
     public function classMonitor()
     {
-        return (Auth::user()->section) ?  view('teacher/classMonitor') : abort(403);
+        $infoTeacher =  Section::where('teacher_id',auth()->user()->id)->where('school_year_id',  Helper::activeAY()->id)->first();
+        if ($infoTeacher) {
+ 
+            $total = Enrollment::select('sections.section_name', DB::raw('count(if(gender="Female",1,NULL)) as ftotal'), DB::raw('count(if(gender="Male",1,NULL)) as mtotal'))
+            ->join('students', 'enrollments.student_id', 'students.id')
+            ->join('sections', 'enrollments.section_id', 'sections.id')
+            ->where('sections.id', $infoTeacher->id)
+            ->where('enrollments.school_year_id', Helper::activeAY()->id)
+            ->groupBy('sections.section_name')->first();
+            $repeaterF=Enrollment::join('students', 'enrollments.student_id', 'students.id')
+                                        ->where('section_id',$infoTeacher->id)
+                                        ->where('action_taken','Retained')
+                                        ->where('enrollments.school_year_id', Helper::activeAY()->id)
+                                        ->where('students.gender','Female')
+                                        ->count();
+            $repeaterM=Enrollment::join('students', 'enrollments.student_id', 'students.id')
+                                        ->where('section_id',$infoTeacher->id)
+                                        ->where('action_taken','Retained')
+                                        ->where('enrollments.school_year_id', Helper::activeAY()->id)
+                                        ->where('students.gender','Male')
+                                        ->count();
+                        
+             $transferIn=Enrollment::select( DB::raw('count(if(gender="Female",1,NULL)) as ftotal'), DB::raw('count(if(gender="Male",1,NULL)) as mtotal'))
+            ->join('students', 'enrollments.student_id', 'students.id')
+            ->where('enrollments.school_year_id', Helper::activeAY()->id)
+            ->where('enrollments.section_id',$infoTeacher->id)
+            ->orWhere('action_taken','Promoted')
+            ->whereNull('action_taken')
+            ->first();
+            //  $transferInM=Enrollment::join('students', 'enrollments.student_id', 'students.id')->where('action_taken','Prommoted')->where('students.gender','Male')->where('section_id',auth()->user()->section->id)->count();
+            return view('teacher/classMonitor',compact('total','repeaterF','repeaterM','transferIn'));
+        } else {
+            return redirect()->route('teacher.dashboard');
+        }
+        
     }
     public function grading()
     {
@@ -40,6 +77,38 @@ class TeacherController extends Controller
     public function profile()
     {
         return view('teacher/profile');
+    }
+
+    public function reportCard($id){
+
+        $getData = Enrollment::where('student_id',$id)
+                                ->where('school_year_id',  Helper::activeAY()->id)
+                                ->where('grade_level',Auth::user()->section->grade_level)
+                                ->where('enroll_status','Enrolled')
+                                ->first();
+            $sy=SchoolYear::where('status',1)->first();
+            $data =  Grade::select(
+                "first",
+                'second',
+                'third',
+                'fourth',
+                'avg',
+                'students.roll_no',
+                'sections.section_name',
+                'subjects.descriptive_title',
+                'subjects.grade_level',
+                'gender',
+                DB::raw("CONCAT(teachers.teacher_lastname,', ',teachers.teacher_firstname,' ',teachers.teacher_middlename) as fullname")
+            )
+                ->join("students", "grades.student_id", "students.id")
+                ->join('subjects', 'grades.subject_id', 'subjects.id')
+                ->join('sections', 'grades.section_id', 'sections.id')
+                ->join('teachers', 'sections.teacher_id', 'teachers.id')
+                ->where('students.id', $getData->student_id)
+                ->where('subjects.grade_level', $getData->grade_level)
+                ->where('sections.id', $getData->section_id)
+                ->get();
+        return view('teacher/partial/reportCard',compact('data','sy'));
     }
 
     public function profileUpdate(Request $request){
@@ -58,7 +127,11 @@ class TeacherController extends Controller
             'confirm_password' => 'required'
         ]);
         Teacher::whereId(auth()->user()->id)
-            ->update(['password'=>Hash::make($request->password)]);
+            ->update([
+                'username'=>$request->username,
+                'orig_password'=>Crypt::encrypt($request->password),
+                'password'=>Hash::make($request->password)
+            ]);
             return redirect()->back();
     }
 
@@ -124,6 +197,7 @@ class TeacherController extends Controller
                 ->where('enrollments.enroll_status', "Enrolled")
                 ->where('subjects.id', $subject)
                 ->where('sections.id', $section)
+                ->where('is_retained','No')
                 ->get()
         ]);
     }
@@ -186,11 +260,17 @@ class TeacherController extends Controller
 
     public function assign()
     {
-        $subjects = Subject::where('grade_level', Auth::user()->section->grade_level)
-            ->whereIn('subject_for', [Auth::user()->section->class_type, 'GENERAL'])
+          $infoTeacher =  Section::where('teacher_id',auth()->user()->id)->where('school_year_id',  Helper::activeAY()->id)->first();
+        if(auth()->user()->section->where('school_year_id',  Helper::activeAY()->id)->exists()){
+            $subjects = Subject::where('grade_level', $infoTeacher->grade_level)
+            ->whereIn('subject_for', [$infoTeacher->class_type, 'GENERAL'])
             ->get();
-        $teachers = Teacher::select('id', DB::raw("CONCAT(teachers.teacher_lastname,', ',teachers.teacher_firstname,' ',teachers.teacher_middlename) as teacher_name"))->get();
-        return view('teacher/assign', compact('subjects', 'teachers'));
+            $teachers = Teacher::select('id', DB::raw("CONCAT(teachers.teacher_lastname,', ',teachers.teacher_firstname,' ',teachers.teacher_middlename) as teacher_name"))->get();
+            return view('teacher/assign', compact('subjects', 'teachers','infoTeacher'));
+        }else{
+            return redirect()->route('teacher.dashboard');
+        }
+        
     }
 
     public function assignList($section)

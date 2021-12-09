@@ -8,6 +8,7 @@
 <section class="section">
     <div class="section-body">
         <h2 class="section-title">My Class [ {{ Auth::user()->section->section_name }} ]</h2>
+        
         <div class="card card-info">
             <div class="card-body pb-1">
 
@@ -21,7 +22,7 @@
                                 <th>Gender</th>
                                 <th>Contact No.</th>
                                 <th>Status</th>
-                                <th width="8%">Action</th>
+                                <th width="15%">Action</th>
                             </tr>
                         </thead>
                         <tbody>
