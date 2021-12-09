@@ -95,9 +95,22 @@ let tableCurriculum = $("#tableCurriculum").DataTable({
             data: null,
             render: function (data) {
                 if (data.action_taken == null || data.action_taken == "") {
-                    return `--- Nothing ---`;
+                    return `-- Nothing --`;
                 } else {
-                    return data.action_taken;
+                    switch (data.action_taken) {
+                        case 'Promoted':
+                            return `<span class="badge badge-success">${data.action_taken}</span>`;
+                            break;
+                        case 'Partially Promoted':
+                            return `<span class="badge badge-warning">${data.action_taken}</span>`;
+                            break;
+                        case 'Retained':
+                            return `<span class="badge badge-danger">${data.action_taken}</span>`;
+                            break;
+                        default:
+                            return false;
+                            break;
+                    }
                 }
             },
         },

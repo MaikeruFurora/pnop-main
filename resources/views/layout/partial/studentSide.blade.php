@@ -10,7 +10,7 @@
     <li class="{{ request()->is('student/my/grade')?'active':'' }}"><a class="nav-link"
             href="{{ route('student.grade') }}"><i class="fas fa-book-reader"></i><span>Grade</span></a>
     </li>
-    @if (Auth::user()->grade()->where('avg','<','75')->whereNull('remarks')->where('is_retained','No')->exists())
+    @if (Auth::user()->grade()->where('avg','<','75')->orWhere('remarks','Passed')->whereNull('remarks')->where('is_retained','No')->exists())
     <li class="{{ request()->is('student/my/backsubject')?'active':'' }}"><a class="nav-link"
             href="{{ route('student.backsubject') }}"><i class="fas fa-reply-all"></i><span>Back Subject
                 @if(Auth::user()->grade()->where('avg','<','75')->whereNull('remarks')->where('is_retained','No')->get()->count()!=0)

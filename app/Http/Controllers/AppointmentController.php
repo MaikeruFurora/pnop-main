@@ -148,7 +148,9 @@ class AppointmentController extends Controller
 
     public function sendEmailNotify(Request $request){
         $formatedDate = date("m/d/Y", strtotime(strtr($request->dateSelected, '-', '/')));
-        $emails = Appointment::select('email')->whereNotNull('email')->where('set_date', strval($formatedDate))->pluck('email');
+       return $emails = Appointment::select('email')->whereNotNull('email')->where('set_date', strval($formatedDate))
+        ->groupBy('email')
+        ->pluck('email');
         $data = [
             'title'=>'PNHS APPOINTMENT STATUS',
             'body'=>$request->body

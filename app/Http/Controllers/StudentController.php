@@ -200,7 +200,8 @@ class StudentController extends Controller
             $dataArr['action_taken'] = 'None';
         }
         $eStatus = $this->enrollStatus();
-        return view('student/enrollment', compact('eStatus', 'dataArr'));
+        $enrollmentStatus = SchoolProfile::select('school_enrollment_url')->first();
+        return view('student/enrollment', compact('eStatus', 'dataArr','enrollmentStatus'));
     }
     
     public function checkSubjectBalance(Student $student)

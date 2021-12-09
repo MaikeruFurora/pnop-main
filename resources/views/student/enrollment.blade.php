@@ -24,6 +24,11 @@
             @if (auth()->user()->completer=='No')     
             <div class="row">
                 <div class="col-lg-12">
+                    @if (!$enrollmentStatus->school_enrollment_url)    
+                    <div class="alert alert-primary" role="alert">
+                        <div class="alert-icon"><i class="far fa-lightbulb"></i> Enrollmnest was ended please try to communicate to your grade level chairman for enrollment process</div>
+                    </div>
+                    @endif
                     <div class="card card-warning">
                         <div class="card-body">
 
