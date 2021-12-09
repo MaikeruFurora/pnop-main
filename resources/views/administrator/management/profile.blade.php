@@ -151,7 +151,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                {{-- <div class="row">
                  <div class="col-12">
                     <div class="card card-primary">
                         <div class="card-header">
@@ -190,7 +190,7 @@
                         </div>
                     </div>
                  </div>
-                </div>
+                </div> --}}
             </div>
 
         </div>
