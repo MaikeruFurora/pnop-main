@@ -38,7 +38,7 @@
                   <img src="{{ asset('image/logo/logo.png') }}" alt="logo" width="100" class="shadow-light rounded-circle">
                   <h3 class="mt-3">Online Pre-Enrollment was successful</h3>
                 </div> --}}
-    
+                <div id="capture">
                 <div class="card card-hero shadow">
                   <div class="card-header pb-3">
                     <div class="card-icon">
@@ -73,8 +73,12 @@
                             <div><i class="fa fa-map-marker-alt"></i> Zone 2, Lapaz Pawili, Pili Camarines Sur</div>
                           </div>
                         </a>
-                      
+                        <button id="btn" class="btn-block btn btn-icon icon-left btn-primary">
+                          <i class="fas fa-download"></i> Download Image
+                        </button>
                     </div>
+                   
+                </div>
                 </div>
                 {{-- <a href="{{ route('done.download',$data) }}" class="ticket-item ticket-more btn btn-icon icon-left btn-primary btn-block p-3">
                     <i class="fas fa-download"></i> Download Form
@@ -104,8 +108,26 @@
     <!-- Template JS File -->
     <script src="{{ asset('js/scripts.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
-
+    <script src="{{ asset('js/html2canvas/html2canvas.js') }}"></script>
     <!-- Page Specific JS File -->
+    <script>
+      $("#btn").on('click',function(){
+          $(".card-hero").removeClass('shadow-lg')
+          $(this).hide();
+        setTimeout(() => {
+          $(".card-body").addClass("bg-white")
+          html2canvas(document.getElementById("capture")).then(function (canvas) {
+        //  console.log(canvas.toDataURL("image/jpeg", 0.9));
+          var a=document.createElement('a');
+                  a.href = canvas.toDataURL("image/png");
+                  a.download = "appointment-slip.png";
+                  a.click();
+       });
+       $(".card-hero").addClass('shadow-lg')
+       $(this).show();   
+        }, 1500);
+      })
+      </script>
 </body>
 
 </html>

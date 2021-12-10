@@ -23,6 +23,7 @@ class AdminController extends Controller
 {
     public function dashboard()
     {
+    //   return date('m/d/Y');
         $appointies = Appointment::select('fullname', 'address', 'purpose','created_at')
             ->where('set_date', date('m/d/Y'))->limit(5)->orderBy('fullname')->get();
         $data = response()->json(
