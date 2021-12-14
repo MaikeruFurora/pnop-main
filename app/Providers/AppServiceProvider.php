@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\SchoolProfile;
 use App\Models\SchoolYear;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\View;
@@ -31,7 +32,9 @@ class AppServiceProvider extends ServiceProvider
             URL::forceScheme('https');
         }
         $aydb = SchoolYear::where('status', 1)->first();
+        $sprofile = SchoolProfile::find(1);
         Config::set('activeAY', $aydb);
         View::share('activeAY', $aydb);
+        View::share('sprofile', $sprofile);
     }
 }

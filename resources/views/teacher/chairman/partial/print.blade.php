@@ -16,14 +16,14 @@
             <div class="col-md-6 offset-md-3 text-center mt-3">
               <div class="row">
                 <div class="col-md-3">
-                    <img src="{{ asset('image/logo/logo.png') }}" class="mt-3" width="70%">
+                    <img src="{{ asset('image/logo/'.$sprofile->school_logo) }}" class="mt-3" width="70%">
                 </div>
                 <div class="col-md-6">
                     <small>Republic of the Philippine</small><br>
                     <small style="font-size: 14px">Region V - Bicol</small><br>
                     <small style="font-size: 14px">Division  of Camarines Sur</small><br>
-                    <small style="font-size: 15px"><b>PILI NATIONAL HIGH SCHOOL</b></small><br>
-                    <small style="font-size: 14px">Pawili, Camarines Sur</small>
+                    <small style="font-size: 15px"><b>{{ $sprofile->school_name }}</b></small><br>
+                    <small style="font-size: 14px;text-transform:capitalize">{{ ucwords(strtolower($sprofile->school_address)) }}</small>
                 </div>
                 <div class="col-md-3">
                     <img src="{{ asset('image/logo/deped.png') }}" class="mt-4" width="90%">

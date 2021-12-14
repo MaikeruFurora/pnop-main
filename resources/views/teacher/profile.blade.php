@@ -19,20 +19,20 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">First name</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1"
+                                <input type="text" readonly class="form-control" id="exampleInputEmail1"
                                     value="{{ auth()->user()->teacher_firstname }}" name="teacher_firstname">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Middle name</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1"
+                                <input type="text" readonly class="form-control" id="exampleInputEmail1"
                                     value="{{ auth()->user()->teacher_middlename }}" name="teacher_middlename">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Last name</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1"
+                                <input type="text" readonly class="form-control" id="exampleInputEmail1"
                                     value="{{ auth()->user()->teacher_lastname }}" name="teacher_lastname">
                             </div>
-                            <button type="submit" class="btn btn-primary" >Update Profile</button>
+                            {{-- <button type="submit" class="btn btn-primary" >Update Profile</button> --}}
                         </div>
                     </form>
                 </div>

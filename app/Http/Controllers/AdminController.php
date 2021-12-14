@@ -190,8 +190,9 @@ class AdminController extends Controller
         ]);
 
         if ($request->hasFile('school_logo')) {
+            $this->deleteOldImage();
             $image = $request->file('school_logo');
-            $imageName = SupportStr::of($request->school_name)->slug('-') . '.' . $image->getClientOriginalExtension();
+            $imageName = SupportStr::of($request->school_name)->slug('-').rand(100,1000) . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('image/logo'), $imageName);
             $data["school_logo"] = $imageName;
         } else {
@@ -311,5 +312,14 @@ class AdminController extends Controller
         ]);
 
         return response($request->active);
+    }
+
+    protected function deleteOldImage()
+    {
+        $sprofile = SchoolProfile::find(1);
+        if (!empty($sprofile->school_logo)) {
+            return unlink(public_path('image/logo/'.$sprofile->school_logo));
+        }
+      
     }
 }

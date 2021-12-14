@@ -33,7 +33,7 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-7">
+            <div class="col-lg-7 col-md-7 col-sm-12">
                 <div class="card card-primary">
                     <div class="card-body">
                         <div class="row">
@@ -46,7 +46,18 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5">
+            <div class="col-lg-5 col-md-5 col-sm-12">
+                <div class="card card-primary mb-2">
+                    <div class="card-header"><h4>Monitoring Legend Colors</h4>
+                        <div class="card-header-action">
+                            <div class="btn-group" role="group" aria-label="Button group">
+                                <span class="btn btn-sm btn-success">&nbsp;&nbsp;&nbsp;Not Full&nbsp;&nbsp;&nbsp;</span>
+                                <span class="btn btn-sm btn-primary">Holiday or Event</span>
+                                <span class="btn btn-sm" style="background: #ffa366;color:white">Full Client</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="card card-primary">
                     <div class="card-body">
                         <div class="table-responsive">

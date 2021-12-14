@@ -50,7 +50,7 @@
                                             <h4>Login</h4>
                                         </div>
                                         <div class=" float-right">
-                                            <img class="img-fluid m-0 p-0" src="{{ asset('image/logo/logo.png') }}"
+                                            <img class="img-fluid m-0 p-0" src="{{ asset('image/logo/'.$sprofile->school_logo) }}"
                                                 alt="PNHS LOGO" width="50px">
                                         </div>
                                     </div>

@@ -110,7 +110,7 @@
                 </ul>
                 <!-- Button -->
                 <a href="{{ route("auth.login") }}"  class="navbar-btn btn btn-sm btn-primary d-none d-lg-inline-block ml-3 text-white" >
-                   Login
+                    @auth  My Dashboard @else Login @endauth
                 </a>
               
             </div>

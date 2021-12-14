@@ -94,7 +94,9 @@ $(".btnCancelHoliday").on("click", function () {
 });
 
 let tableHoliday = $("#tableHoliday").DataTable({
-    lengthChange: false,
+    pageLength: 5,
+    lengthMenu: [ 5,10, 25, 50, 75, 100 ],
+    // lengthChange: false,
     processing: true,
     language: {
         processing: `

@@ -15,14 +15,14 @@
 
         <table style="width: 100%" class="mt-5">
             <tr>
-                <td class="text-right   "> <img src="{{ asset('image/logo/logo.png') }}" alt="" width="130px"></td>
+                <td class="text-right   "> <img src="{{ asset('image/logo/'.$sprofile->school_logo) }}" alt="" width="130px"></td>
                 <td class="text-center">
                     <p style="line-height: 0.5;font-size: 23px;font-family:'times new roman'" class="mt-3">Republic of the Philippines</p>
                     <p style="line-height: 0.5;font-size: 23px;font-family:'times new roman'">Department of Education</p>
                     <p style="line-height: 0.5;font-size: 23px;font-family:'times new roman'">Region V</p>
                     <p style="line-height: 0.1;font-size: 23px;font-family:'times new roman'">Division of Camarines Sur</p>
-                    <h4 style="font-family:'times new roman'">PILI NATIONAL HIGH SCHOOL</h4>
-                    <p style="line-height: 0.5;font-size: 23px;font-family:'times new roman'">Lapaz Pawili, Pili Camarines Sur</p>
+                    <h4 style="font-family:'times new roman'">{{ $sprofile->school_name }}</h4>
+                    <p style="line-height: 0.5;font-size: 23px;font-family:'times new roman'">{{ ucwords(strtolower($sprofile->school_address)) }}</p>
                 </td>
                 <td class="text-left"> <img src="{{ asset('image/logo/deped.png') }}" alt="" width="180px"></td>
             </tr>

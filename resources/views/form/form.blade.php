@@ -45,8 +45,8 @@
           <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
             <div class="login-brand">
                 {{-- <img src="{{ asset('image/requirements/163427306253077945_grade.png') }}" alt=""> --}}
-              <img src="{{ asset('image/logo/logo.png') }}" alt="logo" width="100" class="shadow-light rounded-circle">
-              <p class="mt-2">PILI NATIONAL HIGH SCHOOL</p>
+              <img src="{{ asset('image/logo/'.$sprofile->school_logo) }}" alt="logo" width="100" class="shadow-light rounded-circle">
+              <p class="mt-2">{{ $sprofile->school_name }}</p>
               <h6 style="margin-top: -8px">ONLINE PRE-ENROLLMENT</h6>
             </div>
 
