@@ -126,13 +126,20 @@ class TeacherController extends Controller
             'password' => 'required|required_with:confirm_password|same:confirm_password',
             'confirm_password' => 'required'
         ]);
-        Teacher::whereId(auth()->user()->id)
+        if ($request->current_password===Crypt::decrypt(auth()->user()->orig_password)) {
+            Teacher::whereId(auth()->user()->id)
             ->update([
                 'username'=>$request->username,
                 'orig_password'=>Crypt::encrypt($request->password),
                 'password'=>Hash::make($request->password)
             ]);
-            return redirect()->back();
+            return redirect()->back()->with('success',"Successfuly update");
+        } else {
+            return redirect()->back()->with('msg',"Current password didn't match");
+        }
+        
+       
+           
     }
 
     public function loadMySection()

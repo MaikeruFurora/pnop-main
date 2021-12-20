@@ -58,7 +58,7 @@
                                 <div class="col-lg-3">
                                     <div class="form-row">
                                         <div class="form-group col-md-4">
-                                            <label class="col-form-label ">School Logo</label>
+                                            <label class="col-form-label ">Place your logo here</label>
                                             <div id="image-preview" class="image-preview">
                                                 <label for="image-upload" id="image-label">Choose File</label>
                                                 <input type="file" name="school_logo" id="image-upload" />

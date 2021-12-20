@@ -9,14 +9,11 @@
 @include('administrator/management/partial/confirmation')
 <section class="section">
     <div class="section-body">
-        <h2 class="section-title">Activity Log</h2>
+        <h2 class="section-title">System Log</h2>
         <div class="row">
             <div class="col-lg-12 col-ms-12 col-sm-12">
                 <div class="card">
-                    <div class="card-header">
-                        <h4>Monitor</h4>
-                        
-                    </div>
+                   
                     <div class="card-body">
                       <form action="" id="dateForm">
                         <div class="input-group mb-4">
@@ -35,7 +32,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Log Activity</th>
+                                    <th>Log</th>
                                     <th>Duration</th>
                                 </tr>
                             </thead>

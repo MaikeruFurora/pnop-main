@@ -99,7 +99,7 @@
                 <div class="col-lg-5 col-md-8">
                     <h2 class="section-title">Teacher Masterlist</h2>
                 </div>
-                <div class="col-lg-2 col-md-2  my-4">
+                <div class="col-lg-3 col-md-3  my-4">
                     <div class="btn-group float-right" role="group" aria-label="Basic example">
                         <button class="btn float-right btn-warning" id="btnModalExport">
                             <i class="fas fa-file-export"></i>&nbsp;Import Excel

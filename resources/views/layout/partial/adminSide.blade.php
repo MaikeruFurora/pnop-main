@@ -91,7 +91,7 @@
             </li>
             <li class="{{ request()->is('admin/my/activity')?'active':'' }}">
                 <a class="nav-link" href="{{ route('admin.log') }}">
-                    <i class="fas fa-cog"></i><span>Activity Log</span></a>
+                    <i class="fas fa-fingerprint"></i><span>System Log</span></a>
             </li>
         </ul>
     </li>

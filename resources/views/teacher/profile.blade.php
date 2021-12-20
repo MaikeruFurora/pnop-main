@@ -43,6 +43,24 @@
                         <h4>Account</h4>
                     </div>
                     <div class="card-body">
+                        @if (session()->has('msg'))
+                        <div class="alert alert-danger alert-has-icon">
+                            <div class="alert-icon"><i class="far fa-lightbulb"></i></div>
+                            <div class="alert-body">
+                              <div class="alert-title">Warning</div>
+                              {{  session()->get('msg') }}
+                            </div>
+                          </div>
+                        @endif
+                        @if (session()->has('success'))
+                        <div class="alert alert-info alert-has-icon">
+                            <div class="alert-icon"><i class="far fa-lightbulb"></i></div>
+                            <div class="alert-body">
+                              <div class="alert-title">Done</div>
+                              {{  session()->get('success') }}
+                            </div>
+                          </div>
+                        @endif
                     <form action="{{ route('teacher.profile.account') }}" method="POST">@csrf
                             <div class="form-group">
                                 <label>Username</label>
@@ -50,7 +68,11 @@
                                 @error('username') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                             <div class="form-group">
-                                <label>Password</label>
+                                <label>Current Password</label>
+                                <input type="password" class="form-control" name="current_password">
+                            </div>
+                            <div class="form-group">
+                                <label>New Password</label>
                                 <input type="password" class="form-control" name="password">
                                 @error('password') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
