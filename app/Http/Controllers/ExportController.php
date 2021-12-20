@@ -8,6 +8,7 @@ use App\Exports\EnrollmentMasterList;
 use App\Exports\FormExport;
 use App\Exports\GradingExport;
 use App\Exports\InfoCastExport;
+use App\Helpers\Helper;
 use App\Models\Section;
 use App\Models\Subject;
 use Illuminate\Http\Request;
@@ -25,12 +26,11 @@ class ExportController extends Controller
             } else {
                return Excel::download(new EnrollmentExport($status, $curriculum, $grade_level), strtoupper($curriculum) . '-' . date("F_d_Y") . $format);
             }
-            
-           
         }
     }
     
     public function exportMasterList($schoolyear,$level){
+        Helper::myLog('export','enrollee masterlist',$schoolyear);
         return Excel::download(new EnrollmentMasterList($schoolyear,$level), 'Enrollment-Masterlist-'.date("F_d_Y").'.xlsx');
     }
 

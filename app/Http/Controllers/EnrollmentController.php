@@ -71,6 +71,8 @@ class EnrollmentController extends Controller
             ->join('students', 'enrollments.student_id', 'students.id')
             ->where('enrollments.id', $enrolled)
             ->where('school_year_id', Helper::activeAY()->id)->first();
+
+            
         $subjects = Subject::where('grade_level', $enrolledSubject->grade_level)->whereIn('subject_for', [$enrolledSubject->curriculum, 'GENERAL'])->get();
 
         if ($enrolledSubject->grade_level == 7) { //if grade 7

@@ -210,7 +210,9 @@ $('.deleteYes').on('click', function () {
                 .html(`<i class="far fa-trash-alt"></i>`)
                 .attr("disabled", false);
             tableHoliday.ajax.reload();
+            $("#teacherDeleteModal").modal("hide")
             window.location.reload()
+            
         })
         .fail(function (jqxHR, textStatus, errorThrown) {
             $(".deleteYes")

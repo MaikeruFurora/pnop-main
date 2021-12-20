@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Announcement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Helpers\Helper;
 
 class AnnouncementController extends Controller
 {
@@ -15,6 +16,8 @@ class AnnouncementController extends Controller
             'content_body'=>$request->content_body,
             'visible_by'=>$request->visible_by
         ]);
+
+        Helper::myLog((empty($request->id)?'create':'update'),'announcement',$request->headline);
     }
 
     public function list(){
@@ -28,6 +31,7 @@ class AnnouncementController extends Controller
     }
 
     public function destroy(Announcement $announcement){
+        Helper::myLog('delete','announcement',$announcement->headline);
         return $announcement->delete();
     }
 }

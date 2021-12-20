@@ -25,7 +25,7 @@
                         <form enctype="multipart/form-data" id="schooProfileForm">@csrf
                             <input type="hidden" name="id" value="{{ $data->id ?? '' }}">
                             <div class="row">
-                                <div class="col-lg-9">
+                                <div class="col-lg-7">
                                     <div class="form-group">
                                         <label for="inputSchoolName">School Name</label>
                                         <input type="text" class="form-control" name="school_name"
@@ -65,6 +65,10 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col-lg-2 p-0">
+                                    <label class="col-form-label "><b>Current Logo</b></label>
+                                    <img class="img-thumbnail" width="500%" src="{{ !empty($data->school_logo)? asset("image/logo/".$data->school_logo) :'' }}" alt="">
                                 </div>
 
                             </div>

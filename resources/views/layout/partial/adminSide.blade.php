@@ -73,7 +73,7 @@
 
     <li class="menu-header">Settings</li>
     <li
-        class="nav-item dropdown {{ request()->is('admin/my/profile') || request()->is('admin/my/academic-year') || request()->is('admin/my/user')?'active':''  }}">
+        class="nav-item dropdown {{ request()->is('admin/my/profile') || request()->is('admin/my/academic-year') || request()->is('admin/my/user') || request()->is('admin/my/activity')?'active':''  }}">
         <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
                 class="fas fa-cog"></i><span>Settings</span></a>
         <ul class="dropdown-menu">
@@ -88,6 +88,10 @@
             <li class="{{ request()->is('admin/my/user')?'active':'' }}">
                 <a class="nav-link" href="{{ route('admin.user') }}">
                     <i class="fas fa-users"></i><span>Manage Users</span></a>
+            </li>
+            <li class="{{ request()->is('admin/my/activity')?'active':'' }}">
+                <a class="nav-link" href="{{ route('admin.log') }}">
+                    <i class="fas fa-cog"></i><span>Activity Log</span></a>
             </li>
         </ul>
     </li>

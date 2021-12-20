@@ -154,6 +154,8 @@ $(".deleteYes").on('click', function () {
             $(".deleteYes").html("Delete").attr('disabled',false);
             getToast("success", "Success", "deleted one record");
             post_announcement()
+            $("#teacherDeleteModal").modal("hide")
+            $(".deleteYes").val('')
         })
         .fail(function (jqxHR, textStatus, errorThrown) {
             getToast("error", "Eror", errorThrown);

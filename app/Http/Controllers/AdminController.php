@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Helper;
+use App\Models\ActivityLog;
 use App\Models\Appointment;
 use App\Models\Assign;
 use App\Models\Chairman;
@@ -14,7 +15,9 @@ use App\Models\Student;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str as SupportStr;
@@ -46,6 +49,38 @@ class AdminController extends Controller
             ->get()
             ->count();
         return view('administrator/dashboard', compact('enrollTotal', 'studentTotal', 'teacherTotal', 'ectionTotal', 'data', 'appointies'));
+    }
+
+    public function resetPassword($id,$type){
+        $passwordNow=rand(99,1000).'-'.rand(99,1000);
+        if ($type==="student") {
+            $student = Student::whereId($id)
+            ->update([
+                'password'=>Hash::make($passwordNow),
+                'orig_password'=>Crypt::encrypt($passwordNow),
+            ]);
+            if ($student) {
+                $query = Student::select("orig_password")->whereId($id)->first();
+                Helper::myLog('reset','student password',$query->student_firstname);
+                return Crypt::decrypt($query->orig_password);
+            } else {
+                return response()->json(['msg'=>'Sorry student not found']);
+            }
+            
+        } else {
+            $teacher = Teacher::whereId($id)
+            ->update([
+                'password'=>Hash::make($passwordNow),
+                'orig_password'=>Crypt::encrypt($passwordNow),
+            ]);
+            if ($teacher) {
+                $query = Teacher::select("orig_password")->whereId($id)->first();
+                Helper::myLog('reset','teacher password',$query->teacher_firstname);
+                return Crypt::decrypt($query->orig_password);
+            } else {
+                return response()->json(['msg'=>'Sorry teacher not found']);
+            }
+        }
     }
 
     public function announcement()
@@ -177,6 +212,46 @@ class AdminController extends Controller
         return view('administrator/management/adminUser');
     }
 
+    public function activityLog()
+    {
+        return view('administrator/management/activityLog');
+    }
+
+    public function searchByDate($from,$to){
+
+        $data = array();
+        if ($from=='null') {
+            
+            $sqlData = ActivityLog::get();
+            foreach ($sqlData as $key => $value) {
+                $arr = array();
+                $arr['id'] = ++$key;
+                $arr['log'] = $value->log;
+                $arr['date'] = $value->created_at->diffForHumans();
+                $data[] = $arr;
+            }
+            return response()->json(
+               [ "data"=>$data]
+            );
+        } else {
+            $startDate = date('Y-m-d', strtotime($from));
+            $endDate = date('Y-m-d', strtotime($to));
+            $sqlData = ActivityLog::whereDate('created_at', '>=', $startDate)->whereDate('created_at', '<=', $endDate)->get();
+            foreach ($sqlData as $key => $value) {
+                $arr = array();
+                $arr['id'] = ++$key;
+                $arr['log'] = $value->log;
+                $arr['date'] = $value->created_at->diffForHumans();
+                $data[] = $arr;
+            }
+            return response()->json(
+                ["data"=>$data]
+            );
+        }
+        
+       
+    }
+
 
     public function storeProfile(Request $request)
     {
@@ -294,9 +369,11 @@ class AdminController extends Controller
     {
         switch ($type) {
             case 'student':
+                Helper::myLog('restore','student');
                 return Student::where('id', $id)->withTrashed()->first()->restore();
                 break;
             case 'teacher':
+                Helper::myLog('restore','teacher');
                 return Teacher::where('id', $id)->withTrashed()->first()->restore();
                 break;
             default:

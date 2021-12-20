@@ -42,6 +42,7 @@ class StudentController extends Controller
         if (isset($request->id)) {
             $dataret = Student::findOrFail($request->id);
         }
+        Helper::myLog((empty($request->id)?'create':'update'),'student',$request->student_firstname);
         return Student::updateOrCreate(['id' => $request->id], [
             'roll_no' => $request->roll_no,
             'student_firstname' => $request->student_firstname,
@@ -97,6 +98,7 @@ class StudentController extends Controller
 
     public function destroy(Student $student)
     {
+        Helper::myLog('archive','student',$student->student_firstname);
         return $student->delete();
     }
 

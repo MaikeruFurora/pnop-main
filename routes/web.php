@@ -51,12 +51,12 @@ Route::middleware(['guest:web', 'guest:teacher', 'guest:student', 'preventBackHi
 
 //logout
 Route::post('logout', [AuthController::class, 'logout'])->name('auth.logout');
-//pre enrollment
-Route::get('welcome', [FormController::class, 'welcome'])->name('welcome');
-Route::get('done/{tracking}', [FormController::class, 'done'])->name('done');
-Route::get('form', [FormController::class, 'form'])->name('form');
-Route::post('form/save', [FormController::class, 'store']);
-Route::get('form/check/lrn/{lrn}', [FormController::class, 'checkLRN']);
+    //pre enrollment
+    Route::get('welcome', [FormController::class, 'welcome'])->name('welcome');
+    Route::get('done/{tracking}', [FormController::class, 'done'])->name('done');
+    Route::get('form', [FormController::class, 'form'])->name('form');
+    Route::post('form/save', [FormController::class, 'store']);
+    Route::get('form/check/lrn/{lrn}', [FormController::class, 'checkLRN']);
 Route::get('done/download/form/{tracking_no}', [ExportController::class, 'exportEnrollmentForm'])->name('done.download');
 
 
@@ -68,9 +68,9 @@ Route::get('done/download/form/{tracking_no}', [ExportController::class, 'export
 
 //appointment
 Route::get('appoint/register', [AppointmentController::class, 'appoint'])->name('appoint');
-Route::get('appoint/holiday/list', [AppointmentController::class, 'showHolidayList']);
-Route::post('appoint/save', [AppointmentController::class, 'appointSave'])->name('appoint.save');
-Route::get('appoint/success/{appointment}', [AppointmentController::class, 'showSucccess']);
+    Route::get('appoint/holiday/list', [AppointmentController::class, 'showHolidayList']);
+    Route::post('appoint/save', [AppointmentController::class, 'appointSave'])->name('appoint.save');
+    Route::get('appoint/success/{appointment}', [AppointmentController::class, 'showSucccess']);
 Route::get('appoint/list', [AppointmentController::class, 'showAppointList']);
 
 
@@ -78,6 +78,10 @@ Route::middleware(['auth:web', 'preventBackHistory'])->name('admin.')->prefix('a
 
     // dashboard route
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+
+
+    //reset password
+    Route::get('reset/password/{id}/{type}', [AdminController::class, 'resetPassword']);
 
    // announcement route
    Route::get('announcement', [AdminController::class, 'announcement'])->name('announcement');
@@ -219,6 +223,10 @@ Route::middleware(['auth:web', 'preventBackHistory'])->name('admin.')->prefix('a
     Route::get('user/list', [UserController::class, 'list']);
     Route::delete('user/delete/{user}', [UserController::class, 'destroy']);
     Route::get('user/edit/{user}', [UserController::class, 'edit']);
+
+    //activity log
+    Route::get('activity', [AdminController::class, 'activityLog'])->name('log');
+    Route::get('activity/log/{from}/{to}', [AdminController::class, 'searchByDate']);
 
     Route::get('backup/run', function () {
         Artisan::call('backup:run');

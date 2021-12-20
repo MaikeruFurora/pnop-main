@@ -237,6 +237,7 @@ class TeacherController extends Controller
             $dataret = Teacher::findOrFail($request->id);
         }
         $dataPass = Helper::create_password(7);
+        Helper::myLog((empty($request->id)?'create':'update'),'teacher',$request->firstname);
         return Teacher::updateorcreate(['id' => $request->id], [
             'teacher_firstname' => Str::title($request->firstname),
             'teacher_middlename' => Str::title($request->middlename),
@@ -249,9 +250,10 @@ class TeacherController extends Controller
         ]);
     }
 
-    public function delete($id)
+    public function delete(Teacher $teacher)
     {
-        return Teacher::findOrFail($id)->delete();
+        Helper::myLog('archive','teacher',$teacher->teacher_firstname);
+        return $teacher->delete();
     }
     public function edit(Teacher $teacher)
     {

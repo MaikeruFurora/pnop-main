@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Helper;
 use App\Mail\MailNotify;
 use App\Models\Appointment;
 use App\Models\Holiday;
@@ -18,6 +19,7 @@ class AppointmentController extends Controller
 
     public function holidaySave(Request $request)
     {
+        Helper::myLog((empty($request->id)?'create':'update'),'event or holiday',$request->description);
         return Holiday::updateorcreate(['id' => $request->id], $request->all());
     }
 
@@ -34,6 +36,7 @@ class AppointmentController extends Controller
 
     public function holidayDelete(Holiday $holiday)
     {
+        Helper::myLog('delete','announcement',$holiday->description);
         return $holiday->delete();
     }
 

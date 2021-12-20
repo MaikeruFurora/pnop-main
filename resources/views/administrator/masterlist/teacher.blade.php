@@ -5,6 +5,7 @@
 @endsection
 @section('content')
 @include('administrator/masterlist/partial/deleteModal')
+@include('administrator/masterlist/partial/resetModal')
 <!-- Modal -->
 <form id="teacherForm" method="POST">@csrf
     <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
@@ -123,8 +124,8 @@
                                 <th>Fullname</th>
                                 <th>Gender</th>
                                 <th>Username</th>
-                                <th>Password</th>
-                                <th width="8%">Action</th>
+                                {{-- <th>Password</th> --}}
+                                <th width="10%">Action</th>
                             </tr>
                         </thead>
                         <tbody></tbody>

@@ -18,9 +18,8 @@ let archiveTable = (type) => {
             {
                 data: null,
                 render: function (data) {
-                    return `<button type="button" class="btn btn-sm btn-danger sdelete btnDelete_${data.id}  pt-0 pb-0 pl-2 pr-2" id="${data.id}">
-                    <i class="fas fa-trash"></i> <span>Delete</span>
-                    </button>&nbsp;&nbsp;
+                    return `
+                   
                     <button type="button" class="btn btn-sm btn-primary srestore btnRestore_${data.id} pt-0 pb-0 " id="${data.id}">
                     <i class="fas fa-save"></i> <span>Restore</span>
                     </button>
@@ -30,6 +29,12 @@ let archiveTable = (type) => {
         ],
     });
 };
+
+/* 
+<button type="button" class="btn btn-sm btn-danger sdelete btnDelete_${data.id}  pt-0 pb-0 pl-2 pr-2" id="${data.id}">
+<i class="fas fa-trash"></i> <span>Delete</span>
+</button >& nbsp;& nbsp; 
+*/
 
 /**
  *

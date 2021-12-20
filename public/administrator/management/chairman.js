@@ -43,13 +43,14 @@ const chairmanTable = () => {
                                         <button type="button" style="font-size:9px" class="btn btn-sm btn-info pl-3 pr-3 editchairman editCha_${
                                             val.id
                                         }" id="${val.id}"><i class="far fa-edit"></i></button>
-                                        <button type="button" style="font-size:9px" class="btn btn-sm btn-danger pl-3 pr-3 deletechairman deleteCha_${
-                                            val.id
-                                        }" id="${val.id}"><i class="far fa-trash-alt"></i></button>
+                                     
                                     </div>
                                 </td>
                             </tr>
                         `;
+                        // <button type="button" style="font-size:9px" class="btn btn-sm btn-danger pl-3 pr-3 deletechairman deleteCha_${
+                        //     val.id
+                        // }" id="${val.id}"><i class="far fa-trash-alt"></i></button>
                     });
                 } else {
                     htmlHold = `

@@ -22,6 +22,7 @@ class ChairmanController extends Controller
             return response()->json(['error' => 'No Academic Year Active']);
         } else {
             if (isset($request->id)) {
+                Helper::myLog('update','grade level chairman');
                 $currentTeacherID =  DB::table('chairmen')
                     ->where([['school_year_id', Helper::activeAY()->id], ['id', $request->id]])
                     ->pluck('teacher_id')->toArray();
@@ -49,6 +50,7 @@ class ChairmanController extends Controller
                 if (in_array($request->grade_level, $d2) || in_array($request->teacher_id, $d1)) {
                     return response()->json(['error' => 'Teacher or Grade level are already assign']);
                 } else {
+                    Helper::myLog('create','grade level chairman');
                     return Chairman::create([
                         'grade_level' => $request->grade_level,
                         'teacher_id' => $request->teacher_id,

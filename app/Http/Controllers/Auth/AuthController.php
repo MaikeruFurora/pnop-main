@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\SchoolYear;
 use App\Models\User;
@@ -39,6 +40,7 @@ class AuthController extends Controller
     public function logout()
     {
         if (Auth::guard('web')->check()) {
+            Helper::myLog('logout');
             Auth::guard('web')->logout();
         }
         if (Auth::guard('teacher')->check()) {
@@ -64,6 +66,7 @@ class AuthController extends Controller
 
         if ($fieldType == 'username') {
             if (Auth::guard('web')->attempt($credits)) {
+                Helper::myLog('login');
                 return redirect()->route('admin.dashboard'); //if admin
             } else {
                 return $this->partofIt($credits);

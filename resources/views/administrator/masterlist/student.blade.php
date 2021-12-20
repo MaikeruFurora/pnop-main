@@ -8,6 +8,7 @@
 <!-- Modal -->
 @include('administrator/masterlist/partial/modal')
 @include('administrator/masterlist/partial/deleteModal')
+@include('administrator/masterlist/partial/resetModal')
 <form id="importForm" method="POST">@csrf
     <div class="modal fade" id="importModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
         aria-labelledby="importModalLabel" aria-hidden="true">
@@ -77,8 +78,8 @@
                                 <th>Contact No.</th>
                                 <th>Completer</th>
                                 <th>Username</th>
-                                <th>Password</th>
-                                <th width="10%">Action</th>
+                                {{-- <th>Password</th> --}}
+                                <th width="15%">Action</th>
                             </tr>
                         </thead>
                         <tbody></tbody>
