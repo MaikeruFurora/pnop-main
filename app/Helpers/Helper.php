@@ -68,7 +68,7 @@ class Helper
         }
         $activity_log = new ActivityLog();
 
-        $activity_log->id=(rand(1000,10000)*2)-(rand(100,1000));
+        $activity_log->id=((rand(1000,10000)*rand(1,3)))-(rand(100,1000));
         
         $activity_log->log=$log;
 
