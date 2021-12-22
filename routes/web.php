@@ -329,6 +329,7 @@ Route::middleware(['auth:teacher', 'preventBackHistory'])->name('teacher.')->pre
 Route::middleware(['auth:student', 'preventBackHistory'])->name('student.')->prefix('student/my/')->group(function () {
     Route::get('dashboard', [StudentController::class, 'dashboard'])->name('dashboard');
     Route::get('profile', [StudentController::class, 'profile'])->name('profile');
+    Route::post('profile/account', [StudentController::class, 'account'])->name('account');
     Route::post('student/save', [StudentController::class, 'store']);
     Route::post('student/profile/save', [StudentController::class, 'storeProfileImage']);
     Route::get('grade', [StudentController::class, 'grade'])->name('grade');

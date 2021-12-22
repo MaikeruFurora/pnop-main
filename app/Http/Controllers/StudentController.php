@@ -69,6 +69,26 @@ class StudentController extends Controller
         ]);
     }
 
+    public function account(Request $request){
+
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required|required_with:confirm_password|same:confirm_password',
+            'confirm_password' => 'required'
+        ]);
+        if ($request->current_password===Crypt::decrypt(auth()->user()->orig_password)) {
+            Student::whereId(auth()->user()->id)
+            ->update([
+                'username'=>$request->username,
+                'orig_password'=>Crypt::encrypt($request->password),
+                'password'=>Hash::make($request->password)
+            ]);
+            return redirect()->back()->with('success',"Successfuly update");
+        } else {
+            return redirect()->back()->with('msg',"Current password didn't match");
+        }
+    }
+
     public function edit(Student $student)
     {
         return response()->json($student);

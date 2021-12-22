@@ -67,7 +67,7 @@ class Helper
                 break;
         }
         return ActivityLog::create([
-            'log'=>$log,
+            'log' => $log,
         ]);
     }
 }

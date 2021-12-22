@@ -148,18 +148,42 @@
                         Account
                     </div>
                     <div class="card-body">
-                        <form>
+                        @if (session()->has('msg'))
+                        <div class="alert alert-danger alert-has-icon">
+                            <div class="alert-icon"><i class="far fa-lightbulb"></i></div>
+                            <div class="alert-body">
+                              <div class="alert-title">Warning</div>
+                              {{  session()->get('msg') }}
+                            </div>
+                        </div>
+                        @endif
+                        @if (session()->has('success'))
+                        <div class="alert alert-info alert-has-icon">
+                            <div class="alert-icon"><i class="far fa-lightbulb"></i></div>
+                            <div class="alert-body">
+                              <div class="alert-title">Done</div>
+                              {{  session()->get('success') }}
+                            </div>
+                        </div>
+                        @endif
+                        <form method="POST" action="{{ route('student.account') }}">@csrf
                             <div class="form-group">
                                 <label>Username</label>
                                 <input type="text" class="form-control" value="{{ auth()->user()->username }}">
                             </div>
                             <div class="form-group">
+                                <label>Current Password</label>
+                                <input type="password" class="form-control" name="current_password">
+                            </div>
+                            <div class="form-group">
                                 <label>Password</label>
-                                <input type="password" class="form-control">
+                                <input type="password" class="form-control" name="password">
+                                @error('password') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                             <div class="form-group">
                                 <label>Confirm Password</label>
-                                <input type="password" class="form-control">
+                                <input type="password" class="form-control" name="confirm_password">
+                                @error('confirm_password') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
 
                             <button type="submit" class="btn btn-primary btn-block">Submit</button>
