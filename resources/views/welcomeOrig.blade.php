@@ -7,6 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Webpixels">
     <title>PILI NATIONAL HIGH SCHOOL</title>
+    <link rel="shortcut icon" href="{{ asset('image/logo/'.$sprofile->school_logo) }}">
     <!-- Preloader -->
     <style>
         @keyframes hidePreloader {
