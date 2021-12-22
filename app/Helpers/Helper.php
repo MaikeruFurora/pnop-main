@@ -66,8 +66,11 @@ class Helper
                 return false;
                 break;
         }
-        return ActivityLog::create([
-            'log' => $log,
-        ]);
+        $activity_log = new ActivityLog();
+
+        $activity_log->log=$log;
+
+        $activity_log->save();
+        
     }
 }
