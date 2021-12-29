@@ -223,19 +223,20 @@
                     <div class="col-lg-6 order-lg-2">
                         <h5 class="h3">PNHS History</h5>
                         <p class="lead my-4">
-                            Pili National High School was founded in 1970 by former Municipal Mayor of Pili, Hon. Jose B. Velarde. It was then occupying the facilities of Marcos Stadium, now, the Freedom Sports Complex where the Division Office is located. The establishment of PNHS was very much different from other secondary schools. When PNHS was opened in 1970, all 52 enrollees were selected from the different barangays of Pili for this reason, it was dubbed as Pili Special Barrio High School. Likewise, the salaries of the teachers were defrayed by the local government of Pili. However, there were only 26 graduates in 1974. The Municipal Council of Pili continued the scholarship program until 1980 to the indigent residents of Pili. 
+                            Pili National High School was founded in 1970 by former Municipal Mayor of Pili, Hon. Jose B. Velarde. It was then occupying the facilities of Marcos Stadium, now, the Freedom Sports Complex where the Division Office is located. The establishment of PNHS was very much different from other secondary schools. When PNHS was opened in 1970, all 52 enrollees were selected from the different barangays of Pili for this reason, it was dubbed as Pili Special Barrio High School. Likewise, the salaries of the teachers were defrayed by the local government of Pili. However, there were only 26 graduates in 1974. 
                         </p>
                       
                     </div>
-                    <div class="col-lg-5 order-lg-1">
+                    <div class="col-lg-6 order-lg-1">
                         <div class="card mb-0">
                             <div class="card-body p-1">
-                                <img alt="Image placeholder" src="{{ asset('image/logo/10.webp')  }}" class="img-fluid shadow rounded">
+                                <img alt="Image placeholder" src="{{ asset('image/logo/10.webp')  }}" width="160%" class="img-fluid shadow rounded">
                             </div>
                         </div>
                     </div>
                 </div>
                 <p class="lead">
+                    The Municipal Council of Pili continued the scholarship program until 1980 to the indigent residents of Pili.
                     The first principal was Mr. Jose T. Malanyaon while the first teacher was Ms. Maria Busadre. Mr. Gregorio Ayen, Mrs. Catalina Malanyaon, and Mr. Domingo Vargas were the part time teachers. Due to the increase of enrolment, permanent teachers were hired. They were Mrs. Tecla V. Nano, Mrs. Editha T. Ballester-Secondary Head Teacher III, Mr. Romeo P. Permelona-Master Teacher II, and Ms. Francia V. Felizminio now Atty. Francia F. Apongol. In 1976, there were 20 teachers and due to this development, Mr Germites C. Dineros was assigned Principal I. The growth of the school prompted the government to shoulder the salaries of the teachers and other financial matters.
                     As the number of the enrollees build up, the available classrooms can no longer accommodate students. Mr. Dineros worked for the procurement of the new site in El Rosario Village IV (La Paz), Pawili, Pili, Camarines Sur. The present PNHS site is 1.5 hectares which was donated by Mr. Conrado Colarina, through the efforts of Supt. Jose Malanyaon, thru thereafter, the construction of the buildings started.
                     During the school year 1980-81 the first and second year students were transferred to the new site leaving the third and fourth year students at the Marcos Stadium. Mrs. Esther V. Velasco was the teacher-in-charge in PNHS new campus, while the principal, Ms. Josefa S. Priela took charged of PNHS at Marcos Stadium.There was a rapid influx of the enrollment thus, a night and summer classes were opened.

@@ -30,7 +30,7 @@
                          </div>
                        @empty
                        @endforelse
-                   </table>
+                   {{-- </table> --}}
                </div>
            </div>
         </div>

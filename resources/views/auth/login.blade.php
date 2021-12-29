@@ -89,8 +89,15 @@
                                 <div class="text-center mt-4 mb-3">
                                     <div class="text-job text-black">-- OR --</div>
                                 </div>
+                                <div class="row text-center">
+                                    <div class="col-12">
+                                        <a href="/" class=" btn btn-block text-black">
+                                            <span class="fas fa-home"></span><br> Home Page
+                                        </a>
+                                    </div>
+                                </div>
                                 <div class="row">
-                                    <div class="col-6 /appoint/register">
+                                    <div class="col-6">
                                         <a href="/appoint/register" class="btn btn-block text-black">
                                             <span class="fas fa-calendar-check"></span><br> Get Appointment
                                         </a>
