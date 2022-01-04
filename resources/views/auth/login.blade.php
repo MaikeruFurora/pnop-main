@@ -42,12 +42,12 @@
                             {{ session('msg') }}
                         </div>
                         @endif
-                        <div class="card card-primary shadow-sm">
+                        <div class="card card-primary shadow">
                             <div class="card-header pt-1 pb-0">
                                 <div class="col-12">
                                     <div class="row mt-0 mb-0 justify-content-between">
                                         <div class="py-2">
-                                            <h4>Login</h4>
+                                            <h4>Sign In</h4>
                                         </div>
                                         <div class=" float-right">
                                             <img class="img-fluid m-0 p-0" src="{{ asset('image/logo/'.$sprofile->school_logo) }}"
@@ -87,8 +87,9 @@
                                     </div>
                                 </form>
                                 <div class="text-center mt-4 mb-3">
-                                    <div class="text-job text-black">-- OR --</div>
+                                    <div class="text-job text-black">-- Other option --</div>
                                 </div>
+                               
                                 <div class="row text-center">
                                     <div class="col-12">
                                         <a href="/" class=" btn btn-block text-black">
