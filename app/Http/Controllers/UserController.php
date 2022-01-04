@@ -31,4 +31,31 @@ class UserController extends Controller
     {
         return response()->json($user);
     }
+
+    public function updateProfile(Request $request,User $user){
+        // return Hash::make($request->update_password);
+        if (Hash::check($request->update_password,$user->password)) {
+            $user->name=$request->update_name;
+            $user->username=$request->update_username;
+          return  $user->save();
+        } else {
+            return response()->json([
+                'msg'=>'Invalid Credentials'
+            ]);
+        }
+        
+    }
+
+    public function changePassword(Request $request){
+        $user=User::find(auth()->user()->id);
+        if (Hash::check($request->current_password,$user->password)) {
+            $user->password=Hash::make($request->change_new_password);
+            return $user->save();
+        } else {
+            return response()->json([
+                'msg'=>'Invalid Credentials'
+            ]);
+        }
+        
+    }
 }

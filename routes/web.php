@@ -223,6 +223,8 @@ Route::middleware(['auth:web', 'preventBackHistory'])->name('admin.')->prefix('a
     Route::get('user/list', [UserController::class, 'list']);
     Route::delete('user/delete/{user}', [UserController::class, 'destroy']);
     Route::get('user/edit/{user}', [UserController::class, 'edit']);
+    Route::post('user/update/profile/{user}',[UserController::class,'updateProfile']);
+    Route::post('user/change/password',[UserController::class,'changePassword']);
 
     //activity log
     Route::get('activity', [AdminController::class, 'activityLog'])->name('log');
