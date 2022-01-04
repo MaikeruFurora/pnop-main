@@ -42,7 +42,7 @@ const userTable = (level) => {
     let htmlHold = "";
     let i = 1;
     $.ajax({
-        url: `user/list/`,
+        url: `user/list`,
         type: "GET",
         dataType: "json",
         beforeSend: function () {
