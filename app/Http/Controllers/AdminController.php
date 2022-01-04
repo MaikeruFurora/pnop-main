@@ -222,7 +222,7 @@ class AdminController extends Controller
         $data = array();
         if ($from=='null') {
             
-            $sqlData = ActivityLog::get();
+            $sqlData = ActivityLog::latest()->get();
             foreach ($sqlData as $key => $value) {
                 $arr = array();
                 $arr['id'] = ++$key;

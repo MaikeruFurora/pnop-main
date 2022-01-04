@@ -120,7 +120,7 @@ class GradeController extends Controller
         ->first();
     
        $data['title']=$data1->descriptive_title;
-       $data['bodyMessage']=auth()->user()->fullname." is posted grade in ".$data1->descriptive_title;
+       $data['bodyMessage']=auth()->user()->fullname . " is posted grade in ".$data1->descriptive_title ?? "Admin" ." is posted grade in ".$data1->descriptive_title;
        $data['type']='grade';
        $data['icon']='fa-check';
        $data['created_at']=$data1->created_at;
