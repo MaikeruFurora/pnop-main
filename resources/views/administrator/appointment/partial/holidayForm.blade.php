@@ -1,7 +1,7 @@
 <form id="holidayForm">@csrf
     <div class="modal fade" id="holidayModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
         aria-labelledby="holidayModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
+        <div class="modal-dialog modal-md">
             <div class="modal-content pb-0">
                 <div class="modal-header">
                     <h5 class="modal-title" id="holidayModalLabel">Holiday</h5>
@@ -11,13 +11,15 @@
                 </div>
                 <div class="modal-body pb-0">
                     <input type="hidden" name="id">
-                    <div class="form-group">
-                        <label>Select date from</label>
-                        <input class="form-control datepicker1" name="holi_date_from" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Select date to</label>
-                        <input class="form-control datepicker2" name="holi_date_to">
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <label>Select date from</label>
+                            <input class="form-control datepicker1" name="holi_date_from" required>
+                        </div>
+                        <div class="form-group col-6">
+                            <label>Select date to</label>
+                            <input class="form-control datepicker2" name="holi_date_to">
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>Description</label>

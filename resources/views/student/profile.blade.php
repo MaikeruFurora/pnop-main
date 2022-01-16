@@ -64,7 +64,7 @@
     
                                     <div class="form-group col-lg-4">
                                         <label>Contact No.(eg. +639)</label>
-                                        <input type="text" class="form-control" name="student_contact"
+                                        <input type="text" class="form-control" name="student_contact" readonly
                                             onkeypress="return numberOnly(event)" maxlength="12"
                                             value="{{ auth()->user()->student_contact }}" placeholder="(eg. +639)">
                                     </div>
@@ -101,7 +101,7 @@
                                     </div>
                                     <div class="form-group col-lg-4">
                                         <label>Contact No.(eg. +639)</label>
-                                        <input type="text" class="form-control" name="mother_contact_no" placeholder="(eg. +639)"
+                                        <input type="text" class="form-control" name="mother_contact_no" readonly placeholder="(eg. +639)"
                                             value="{{ auth()->user()->mother_contact_no }}"
                                             onkeypress="return numberOnly(event)" maxlength="12">
                                     </div>
@@ -114,7 +114,7 @@
                                     </div>
                                     <div class="form-group col-lg-4">
                                         <label>Contact No.(eg. +639)</label>
-                                        <input type="text" class="form-control" name="father_contact_no" placeholder="(eg. +639)"
+                                        <input type="text" class="form-control" name="father_contact_no" readonly placeholder="(eg. +639)"
                                             value="{{ auth()->user()->father_contact_no }}"
                                             onkeypress="return numberOnly(event)" maxlength="12">
                                     </div>
@@ -127,14 +127,14 @@
                                     </div>
                                     <div class="form-group col-lg-4">
                                         <label>Contact No.(eg. +639)</label>
-                                        <input type="text" class="form-control" name="guardian_contact_no" placeholder="(eg. +639)"
+                                        <input type="text" class="form-control" name="guardian_contact_no" readonly placeholder="(eg. +639)"
                                             value="{{ auth()->user()->guardian_contact_no }}"
                                             onkeypress="return numberOnly(event)" maxlength="12">
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-lg btn-round btn-primary float-right btnSave mb-4">
+                                {{-- <button type="submit" class="btn btn-lg btn-round btn-primary float-right btnSave mb-4">
                                     Save
-                                </button>
+                                </button> --}}
                         </form>
 
                       </div><!-- profile-witdget-descipriton -->

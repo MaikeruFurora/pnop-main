@@ -291,6 +291,7 @@
                     </button>
                   </div>
                 </form>
+                <a href="/">Back Home</a>
               </div>
             </div>
             <div class="simple-footer">

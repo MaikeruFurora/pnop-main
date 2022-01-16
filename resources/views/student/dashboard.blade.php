@@ -57,7 +57,7 @@
             </div> --}}
         </div>
         <div class="col-12 mb-4">
-            <div class="hero text-white hero-bg-image"
+            {{-- <div class="hero text-white hero-bg-image"
                 style="background-image: url('assets/img/unsplash/eberhard-grossgasteiger-1207565-unsplash.jpg');">
                 <div class="hero-inner">
                     <h2>Welcome, {{ Auth::user()->fullname }}!</h2>
@@ -68,7 +68,7 @@
                             Setup Profile</a>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <h2 class="section-title">Annoucement </h2>
         </div>
           {{-- announcement --}}

@@ -6,7 +6,7 @@
         @if ( Auth::user()->chairman()->where('school_year_id', session('sessionAY')->id)->exists())
         <div class="row dashMonitor"></div>
         @endif
-        <div class="hero text-white hero-bg-image"
+        {{-- <div class="hero text-white hero-bg-image"
             style="background-image: url('assets/img/unsplash/eberhard-grossgasteiger-1207565-unsplash.jpg');">
             <div class="hero-inner">
                 <h2>Welcome, {{ Auth::user()->fullname }}!</h2>
@@ -16,7 +16,7 @@
                         Setup Profile</a>
                 </div>
             </div>
-        </div>
+        </div> --}}
         {{-- announcement --}}
         <h2 class="section-title">Annoucement </h2>
         <div class="row">

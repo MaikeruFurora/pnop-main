@@ -24,8 +24,8 @@
 
                     <form id="studentForm">@csrf
                         <input type="hidden" name="id">
-                        <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show active mt-3" id="nav-home">
+                        <div class="tab-content tab-bordered" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="nav-home">
                                 {{-- start student details here --}}
                                
                                     <div class="form-group">
@@ -129,7 +129,7 @@
                                 </div>
                                 {{-- end student details here --}}
                             </div>
-                            <div class="tab-pane fade mt-3" id="nav-profile">
+                            <div class="tab-pane fade " id="nav-profile">
                                 {{-- start parent details here --}}
                                 <div class="form-row">
                                     <div class="form-group col-md-8">
@@ -170,8 +170,8 @@
                     </form>
                 </div>
                 <div class="modal-footer pt-0">
-                    <button type="button" class="btn btn-warning pl-2 pr-2" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary pl-4 pr-4" id="btnSaveStudent">Save</button>
+                    <button type="button" class="btn btn-warning pl-4 pr-4" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary pl-5 pr-5" id="btnSaveStudent">Save</button>
                 </div>
             </div>
         </div>

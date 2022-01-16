@@ -123,8 +123,8 @@ let tableHoliday = $("#tableHoliday").DataTable({
             data: null,
             render: function (data) {
                 return `
-                    <button class="btn btn-sm btn-info btnEdit btnload_${data.id}" value="${data.id}"><i class="far fa-edit"></i></button>
-                    <button class="btn btn-sm btn-danger btnDelete btnDLoad_${data.id}" value="${data.id}"><i class="far fa-trash-alt"></i></button>
+                    <button class="btn btn-sm btn-info pr-3 pl-3 btnEdit btnload_${data.id}" value="${data.id}"><i class="far fa-edit"></i></button>
+                    <button class="btn btn-sm btn-danger pr-3 pl-3 btnDelete btnDLoad_${data.id}" value="${data.id}"><i class="far fa-trash-alt"></i></button>
                 `;
             },
         },

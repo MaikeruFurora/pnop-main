@@ -48,7 +48,7 @@
             </div>
             <div class="col-lg-5 col-md-5 col-sm-12">
                 <div class="card card-primary mb-2">
-                    <div class="card-header"><h4>Monitoring Color Legend</h4>
+                    <div class="card-header"><h4>Color Legend</h4>
                         <div class="card-header-action">
                             <div class="btn-group" role="group" aria-label="Button group">
                                 <span class="btn btn-sm btn-success">&nbsp;&nbsp;&nbsp;Not Full&nbsp;&nbsp;&nbsp;</span>
@@ -66,7 +66,7 @@
                                     <tr>
                                         <th>Date</th>
                                         <th>Description</th>
-                                        <th width="20%">Action</th>
+                                        <th width="25%">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>

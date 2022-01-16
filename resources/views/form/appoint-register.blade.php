@@ -124,6 +124,7 @@
                                 </div>
                                 <div class="card-footer">
                                     <button class="btn btn-primary">Submit</button>
+                                    <a href="/" class="btn btn-warning ml-1">Cancel</a>
                                 </div>
                             </div>
                         </form>

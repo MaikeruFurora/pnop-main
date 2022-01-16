@@ -104,7 +104,7 @@
                                         </a>
                                     </div>
                                     <div class="col-6">
-                                        <a href="/welcome" class="btn btn-block text-black ">
+                                        <a href="/form" class="btn btn-block text-black ">
                                             <span class="fab fa-wpforms"></span><br> Pre Enrollment
                                         </a>
                                     </div>

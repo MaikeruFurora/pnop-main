@@ -44,7 +44,6 @@ let post_announcement = () => {
     $.ajax({
         url: "announcement/list",
         type: "GET",
-        timeout:3000,
         // beforeSend: function () {
         //     $(".createMe")
         //         .html(
