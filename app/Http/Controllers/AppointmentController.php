@@ -66,7 +66,7 @@ class AppointmentController extends Controller
 
     public function appointSave(Request $request)
     {
-          $exists = Appointment::orWhere('fullname',$request->fullname)->orWhere('contact_no',$request->contact_no)->where('set_date',$request->set_date)->first();
+          $exists = Appointment::where('fullname',$request->fullname)->where('contact_no',$request->contact_no)->where('set_date',$request->set_date)->first();
         if ($exists) {
             return redirect()->back()->with('msg',"You already appointment this day");
         } else {
