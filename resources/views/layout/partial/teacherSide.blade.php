@@ -20,6 +20,12 @@
             <span>Assign Subject</span>
         </a>
     </li>
+    {{-- <li class="">
+        <a class="nav-link" href="">
+            <i class="fas fa-thumbtack"></i>
+            <span>Student Reminder</span>
+        </a>
+    </li> --}}
     @endif
     <li class="menu-header">Data Entry</li>
     <li class="{{ request()->is('teacher/my/grading')?'active':'' }}"><a class="nav-link"

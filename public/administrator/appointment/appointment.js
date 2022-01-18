@@ -23,7 +23,7 @@ let myAllAppointment = () => {
                     className: element.className,
                 });
             });
-            myEvent();
+            // myEvent();
         })
         .fail(function (a, b, c) {
             console.log(a, b, c);
@@ -78,7 +78,8 @@ $("#holidayForm").submit(function (e) {
             $('input[name="id"]').val("");
             tableHoliday.ajax.reload();
             myAllAppointment();
-            window.location.reload()
+            $('#myEvent').fullCalendar('refetchEvents');
+            // window.location.reload()
         })
         .fail(function (jqxHR, textStatus, errorThrown) {
             $(".btnSaveHoliday").html("Save").attr("disabled", false);
@@ -94,8 +95,8 @@ $(".btnCancelHoliday").on("click", function () {
 });
 
 let tableHoliday = $("#tableHoliday").DataTable({
-    pageLength: 5,
-    lengthMenu: [ 5,10, 25, 50, 75, 100 ],
+    pageLength: 10,
+    lengthMenu: [ 10, 25, 50, 75, 100 ],
     // lengthChange: false,
     processing: true,
     language: {
@@ -211,7 +212,8 @@ $('.deleteYes').on('click', function () {
                 .attr("disabled", false);
             tableHoliday.ajax.reload();
             $("#teacherDeleteModal").modal("hide")
-            window.location.reload()
+            // window.location.reload()
+            $('#myEvent').fullCalendar('refetchEvents');
             
         })
         .fail(function (jqxHR, textStatus, errorThrown) {
@@ -332,7 +334,7 @@ $(".sendCancel").on('click', function () {
 // });
 
 
-let myEvent = () => {
+// let myEvent = () => {
     $("#myEvent").fullCalendar({
         height: "auto",
         header: {
@@ -400,9 +402,9 @@ let myEvent = () => {
                     .prop("disabled", false);
             }
         },
-        events: eventList,
+        events: "appointment/list/" + numericMonth(month),
     });
-};
+// };
 
 
 $("#printAppointed").on("click", function () {
