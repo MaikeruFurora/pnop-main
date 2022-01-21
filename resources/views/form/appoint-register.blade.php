@@ -53,7 +53,7 @@
         <section class="section">
             <div class="container mt-2 center-screen">
                 <div class="row">
-                    <div class="col-lg">
+                    <div class="col-lg-6 col-sm-12">
                         <p style="font-size: 20px;line-height: 2.3;" class="mt-5">Dear user,</p>
                         <p style="font-size: 20px;line-height: 2.3;" class="mt-5">All of the information you provided will be secured and
                             restricted
@@ -65,11 +65,14 @@
                             school premises observing
                             the COVID-19 health protocols.</p>
                         <p style="font-size: 20px;line-height: 2.3;" class="mt-4">Thank you</p>
-                        <br><br>
+                        <br>
+                        <img src="{{ asset('image/logo/logo.png') }}" class="img-fluid" style="height: 50px;" alt="Illustration" />
+                        <img src="{{ asset('image/logo/deped.png') }}" class="img-fluid ml-2" style="height: 50px;" alt="Illustration" />
+                        <img src="{{ asset('image/logo/bida.png') }}" class="img-fluid ml-2" style="height: 50px;" alt="Illustration" />
                     </div>
-                    <div class="col-lg">
+                    <div class="col-lg-6 col-sm-12">
                         <form action="{{ route('appoint.save') }}" method="POST">@csrf
-                            <div class="card shadow card-info">
+                            <div class="card shadow card-info mt-3">
                                 <div class="card-header">
                                     <h4>Appointment Form</h4>
                                 </div>
