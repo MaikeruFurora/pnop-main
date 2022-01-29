@@ -33,6 +33,7 @@
                         </div>
                         </form>
                         <div class="table-responsive pb-0">
+                           <div class="table-responsive">
                             <table class="table table-striped" style="font-size: 13px">
                                 <thead>
                                     <tr>
@@ -49,6 +50,7 @@
                                     </tr>
                                 </tbody>
                             </table>
+                           </div>
                         </div>
                     </div>
                 </div>

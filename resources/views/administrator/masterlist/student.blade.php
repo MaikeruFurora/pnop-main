@@ -67,7 +67,7 @@
             <div class="card card-primary">
 
                 <div class="card-body mt-2">
-                    {{-- <div class="table-responsive"> --}}
+                    <div class="table-responsive">
                     {{-- dt-responsive nowrap --}}
                     <table class="table table-striped" id="studentTable">
                         <thead>
@@ -84,7 +84,7 @@
                         </thead>
                         <tbody></tbody>
                     </table>
-                    {{-- </div> --}}
+                    </div>
                 </div>
             </div>
         </div>

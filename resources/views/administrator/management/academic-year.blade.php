@@ -28,7 +28,7 @@
                             </div>
                         </div>
                     </form>
-                    {{-- <div class="table-responsive mt-1"> --}}
+                    <div class="table-responsive mt-1">
                     <table class="table table-bordered text-center mt-3" id="school_year_Table">
                         <thead>
                             <tr>
@@ -38,7 +38,7 @@
                             </tr>
                         </thead>
                     </table>
-                    {{-- </div> --}}
+                    </div>
                 </div>
             </div>
     </div>

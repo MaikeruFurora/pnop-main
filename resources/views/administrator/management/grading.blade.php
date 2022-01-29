@@ -29,6 +29,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
+                       <div class="table-responsive">
                         <table class="table table-stripped table-bordered">
                             <tr class="">
                                 <th class="  bg-dark text-white">SUBJECT</th>
@@ -52,6 +53,7 @@
                                 </tr>
                             </tbody>
                         </table>
+                       </div>
                     </div>
                 </div>
             </div>

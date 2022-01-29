@@ -77,6 +77,7 @@
                 <div class="card card-primary">
                     <div class="card-body">
                         <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                       <div class="table-responsive">
                         <table class="table">
                             <thead>
                                 <tr>
@@ -92,6 +93,7 @@
                                 </tr>
                             </tbody>
                         </table>
+                       </div>
                     </div>
                 </div>
             </div>

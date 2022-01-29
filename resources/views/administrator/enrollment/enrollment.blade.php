@@ -44,21 +44,23 @@
 
                 <div class="">
                     {{-- table-responsive--}}
-                    <table class="table table-striped" id="enrollmentTable" style="font-size: 13px">
-                        <thead>
-                            <tr>
-                                <th>LRN</th>
-                                <th>Student name</th>
-                                <th>Curriculum</th>
-                                <th>Section</th>
-                                <th>Status</th>
-                                <th>Balik Aral</th>
-                                <th>Enrolled Date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table table-striped" id="enrollmentTable" style="font-size: 13px">
+                            <thead>
+                                <tr>
+                                    <th>LRN</th>
+                                    <th>Student name</th>
+                                    <th>Curriculum</th>
+                                    <th>Section</th>
+                                    <th>Status</th>
+                                    <th>Balik Aral</th>
+                                    <th>Enrolled Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

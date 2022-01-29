@@ -16,7 +16,7 @@
             <div class="card card-primary">
 
                 <div class="card-body mt-2 pb-0 pt-1">
-                    {{-- <div class="table-responsive"> --}}
+                    <div class="table-responsive">
                     {{-- dt-responsive nowrap --}}
                     <table class="table table-striped" id="backsubjectTable">
                         <thead>
@@ -28,7 +28,7 @@
                         </thead>
                         <tbody></tbody>
                     </table>
-                    {{-- </div> --}}
+                    </div>
                 </div>
             </div>
         </div>

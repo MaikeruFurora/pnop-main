@@ -108,11 +108,14 @@
                     <li class="nav-item ">
                         <a class="nav-link" href="#pnhsHistory">History</a>
                     </li>
+                    <li class="nav-item ">
+                        <a href="{{ route("auth.login") }}"  class="btn btn-sm btn-primary  mt-2 text-white" >
+                            @auth  My Dashboard @else Login @endauth
+                        </a>
+                    </li>
                 </ul>
                 <!-- Button -->
-                <a href="{{ route("auth.login") }}"  class="navbar-btn btn btn-sm btn-primary d-none d-lg-inline-block ml-3 text-white" >
-                    @auth  My Dashboard @else Login @endauth
-                </a>
+               
               
             </div>
         </div>
@@ -140,11 +143,11 @@
                     </p>
                     <!-- Buttons -->
                     <div class="text-center text-md-left mt-5">
-                        <a href="{{ route('appoint') }}" class="btn btn-primary btn-icon">
+                        <a href="{{ route('appoint') }}" class="btn btn-primary  mt-2 btn-icon">
                             <span class="btn-inner--text">Get Appointment</span>
-                            <span class="btn-inner--icon"><i data-feather="chevron-right"></i></span>
+                            <span class="btn-inner--icon"><i data-feather="chevron-right"></i></span>&nbsp;&nbsp;
                         </a>
-                        <a href="{{ route('form') }}" class="btn btn-neutral btn-icon d-none d-lg-inline-block">Pre Enroll Online Now</a>
+                        <a href="{{ route('form') }}" class="btn btn-neutral btn-icon mt-2 d-lg-inline-block">Pre Enroll Online Now</a>
                     </div>
                 </div>
             </div>

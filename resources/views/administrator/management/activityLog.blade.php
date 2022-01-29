@@ -28,20 +28,22 @@
                             <button type="submit" class="btn btn-primary">Search&nbsp;&nbsp;<em>(filter)</em></button>
                           </div>
                       </form>
-                        <table class="table table-sm table-striped table-bordered" id="logTable">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Log</th>
-                                    <th>Duration</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td colspan="3" class="text-center">No data</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="table-responsive">
+                            <table class="table table-sm table-striped table-bordered" id="logTable">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Log</th>
+                                        <th>Duration</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="3" class="text-center">No data</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

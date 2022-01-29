@@ -14,21 +14,23 @@
                     <div class="card-body">
                       
                         <div class="table-responsive">
-                            <table class="table table-striped" style="font-size: 13px">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Grade Level</th>
-                                        <th>Chairman</th>
-                                        <th width="10%">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="chairmanTable">
-                                    <tr>
-                                        <td colspan="6" class="text-center">No available data</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="table-responsive">
+                                <table class="table table-striped" style="font-size: 13px">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Grade Level</th>
+                                            <th>Chairman</th>
+                                            <th width="10%">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="chairmanTable">
+                                        <tr>
+                                            <td colspan="6" class="text-center">No available data</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
