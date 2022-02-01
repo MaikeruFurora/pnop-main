@@ -284,7 +284,13 @@
                         {{-- tab three --}}
                     </div>
                   </div>
-               
+                  <div class="form-group mt-3">
+                    <div class="btn-group-toggle">
+                        {{-- <label class="btn btn-primary"> --}}
+                            <input type="checkbox" class="mr-2"> I agree to the Terms & Conditions, including the collection, use, and sharing of data to partners that I have provided to PNHS. I understand that the collection and use of these data, which may include personal information and sensitive personal information, shall be in accordance with the Data Privacy Act of 2012 and the Privacy Policy of PNHS.
+                        {{-- </label> --}}
+                    </div>
+                </div>
                   <div class="form-group mt-3">
                     <button type="submit" class="btn btn-primary btn-lg btn-block btnEnroll">
                       Register

@@ -11,6 +11,16 @@
 //     );
 // });
 
+$('.btnEnroll').prop("disabled",true);
+$('input[type="checkbox"]').on('click',function(){
+    if($(this).is(":checked")){
+        $(this).prop('checked',true)
+        $('.btnEnroll').prop("disabled", $(this).is(":checked"));
+   }
+   $('.btnEnroll').prop("disabled", !$(this).is(":checked"));
+})
+
+
 $("input[name='roll_no']").on("blur", function () {
     if ($(this).val() == "") {
         $(".btnEnroll").show();
