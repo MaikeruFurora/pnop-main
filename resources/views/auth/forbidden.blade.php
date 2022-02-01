@@ -42,7 +42,7 @@
                             <p><i class="fa fa-at"></i> pnhs@gmail.com</p>
                             <p><i class="fa fa-map-marker-alt"></i> Zone 2, Lapaz Pawili, Pili Camarines Sur</p>
                         </div>
-                        <button class="btn btn-primary mt-3">Back to Home</button>
+                        <a href="/" class="btn btn-primary mt-3">Back to Home</a>
                     </div>
                 </div>
                 <div class="simple-footer mt-5">
