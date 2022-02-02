@@ -124,3 +124,52 @@ $('input[name="grade_status"]').on('click', function () {
             console.log(jqxHR, textStatus, errorThrown);
         });
 })
+
+        let arrayCheckBoxes=[];
+        let getMyBoxes=()=>{
+            let hold='';
+            $.ajax({
+                url: "profile/quarter",
+                type: "GET",
+            }).done(function(data){
+                arrayCheckBoxes=data
+               data.forEach((val,i) => {
+                hold+=`<div class="form-check form-check-inline">
+                            <input class="form-check-input checkQuarter" type="checkbox" name="${val.name}" ${val.status} id="${val.sort}">
+                            <label class="form-check-label" >${val.name} Quarter</label>
+                        </div>`;
+               });
+                $(".showMyBoxes").html(hold);
+            }).fail(function (jqxHR, textStatus, errorThrown) {
+                console.log(jqxHR, textStatus, errorThrown);
+                getToast("error", "Eror", errorThrown);
+            });
+        }
+        getMyBoxes()
+        $(document).on('click',".checkQuarter",function(){
+            let newArr = arrayCheckBoxes.filter(val=>{
+                return val.name!=$(this).attr("name")
+            })
+             newArr.push({
+                "name":$(this).attr("name"),
+                "status":$(this).is(":checked")?"checked":'',
+                "sort":$(this).attr("id")
+            })
+            let sortedArr = newArr.sort((a,b)=>{
+                return a.sort-b.sort
+            });
+           
+            $.ajax({
+                url: "profile/quarter/status",
+                type: "POST",
+                data: {
+                    data:sortedArr,
+                    _token: $('input[name="_token"]').val(),
+                },
+            }).done(function(data){
+                getMyBoxes()
+            }).fail(function (jqxHR, textStatus, errorThrown) {
+                console.log(jqxHR, textStatus, errorThrown);
+                getToast("error", "Eror", errorThrown);
+            });
+        })

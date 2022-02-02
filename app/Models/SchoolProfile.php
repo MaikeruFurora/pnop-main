@@ -21,6 +21,8 @@ class SchoolProfile extends Model
 
     protected $casts=[
         'school_enrollment_url'=>'boolean',
-        'grade_status'=>'boolean'
+        'grade_status'=>'boolean',
+        'quarter'=>'json'
     ];
+
 }

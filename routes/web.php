@@ -151,6 +151,8 @@ Route::middleware(['auth:web', 'preventBackHistory'])->name('admin.')->prefix('a
     // profile-route
     Route::get('profile', [AdminController::class, 'profile'])->name('profile');
     Route::post('profile/save', [AdminController::class, 'storeProfile']);
+    Route::get('profile/quarter', [AdminController::class, 'quarter']);
+    Route::post('profile/quarter/status', [AdminController::class, 'quarterStatus']);
 
     //strand and track
     Route::get('strand', [AdminController::class, 'strandAndTrack'])->name('strand');
@@ -313,6 +315,7 @@ Route::middleware(['auth:teacher', 'preventBackHistory'])->name('teacher.')->pre
     Route::get('grading/load/subject', [TeacherController::class, 'loadMySection']);
     Route::get('grading/load/student/{section}/{subject}', [TeacherController::class, 'loadMyStudent']);
     Route::post('grade/student/now', [GradeController::class, 'gradeStudentNow']);
+    Route::get('grading/quarter/status', [AdminController::class, 'quarter']);
 
     //export subject teacher template class
     Route::get('export/grade/{section}/{subject}', [ExportController::class, 'exportMyTemplate']);

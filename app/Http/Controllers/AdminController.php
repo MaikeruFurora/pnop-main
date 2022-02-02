@@ -399,4 +399,17 @@ class AdminController extends Controller
         }
       
     }
+
+    public function quarterStatus(Request $request){
+        return SchoolProfile::whereId(1)->update([
+            'quarter'=>$request->data
+        ]);
+    }
+
+    public function quarter(){
+        $sprofile = SchoolProfile::find(1);
+        return response()->json(
+            $sprofile->quarter
+        );
+    }
 }

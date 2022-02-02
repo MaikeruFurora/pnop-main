@@ -20,9 +20,22 @@ let filterMyLoadSection = () => {
 };
 filterMyLoadSection();
 
+let arrayCheckBoxes=[];
+
+$.ajax({
+    url: "grading/quarter/status",
+    type: "GET",
+}).done(function(data){
+    arrayCheckBoxes=data
+}).fail(function (jqxHR, textStatus, errorThrown) {
+    console.log(jqxHR, textStatus, errorThrown);
+    getToast("error", "Eror", errorThrown);
+});
+
 let myClassTable = (section_id, subject_id) => {
     $("#myClassTable").dataTable().fnDestroy();
     $("#myClassTable").DataTable({
+        
         pageLenth: 50,
         processing: true,
         language: {
@@ -36,8 +49,16 @@ let myClassTable = (section_id, subject_id) => {
             {
                 $('td', row).css('background-color', '#ffe6e6');
             }
+
+            // arrayCheckBoxes.forEach(val, i => {
+            //     if (val.status=='checked') {
+            //         $('td', ++i).css('background-color', '#ffe6e6');
+            //     }
+            // });
      
         },
+
+        
         ajax: `grading/load/student/${section_id}/${subject_id}`,
         columns: [
             { data: "fullname" },
@@ -46,6 +67,9 @@ let myClassTable = (section_id, subject_id) => {
                 orderable: false,
                 render: function (data) {
                     return `<input type="text" ${grade_status?'disabled':''} pattern="^[0-9]{3}$" onkeypress="return numberOnly(event)" maxlength="3"  name="inGrade" class="noborder text-center"
+                        ${
+                            arrayCheckBoxes[0].status=='checked'?'disabled':''
+                        }
                         value="${
                             data.first == null
                                 ? ""
@@ -63,7 +87,12 @@ let myClassTable = (section_id, subject_id) => {
                 data: null,
                 orderable: false,
                 render: function (data) {
-                    return `<input type="text" ${grade_status?'disabled':''} pattern="^[0-9]{3}$" onkeypress="return numberOnly(event)" maxlength="3"  name="inGrade" class="noborder text-center"  value="${
+                    return `<input type="text" ${grade_status ? 'disabled' : ''} pattern="^[0-9]{3}$" onkeypress="return numberOnly(event)" maxlength="3"  name="inGrade" class="noborder text-center"  
+                    ${
+                        arrayCheckBoxes[1].status=='checked'?'disabled':''
+                    }
+                    
+                    value="${
                         data.second == null
                             ? ""
                             : data.second == 0
@@ -78,7 +107,11 @@ let myClassTable = (section_id, subject_id) => {
                 data: null,
                 orderable: false,
                 render: function (data) {
-                    return `<input type="text" ${grade_status?'disabled':''} pattern="^[0-9]{3}$" onkeypress="return numberOnly(event)" maxlength="3"  name="inGrade" class="noborder text-center" value="${
+                    return `<input type="text" ${grade_status ? 'disabled' : ''} pattern="^[0-9]{3}$" onkeypress="return numberOnly(event)" maxlength="3"  name="inGrade" class="noborder text-center" 
+                    ${
+                        arrayCheckBoxes[2].status=='checked'?'disabled':''
+                    }
+                    value="${
                         data.third == null
                             ? ""
                             : data.third == 0
@@ -93,7 +126,11 @@ let myClassTable = (section_id, subject_id) => {
                 data: null,
                 orderable: false,
                 render: function (data) {
-                    return `<input type="text" ${grade_status?'disabled':''} pattern="^[0-9]{3}$" onkeypress="return numberOnly(event)" maxlength="3"  name="inGrade" class="noborder text-center" value="${
+                    return `<input type="text" ${grade_status ? 'disabled' : ''} pattern="^[0-9]{3}$" onkeypress="return numberOnly(event)" maxlength="3"  name="inGrade" class="noborder text-center" 
+                    ${
+                        arrayCheckBoxes[3].status=='checked'?'disabled':''
+                    }
+                    value="${
                         data.fourth == null
                             ? ""
                             : data.fourth == 0

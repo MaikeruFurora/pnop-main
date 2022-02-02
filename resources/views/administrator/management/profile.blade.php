@@ -140,7 +140,7 @@
                                   </div>
                             </div>
                             <div class="card-body">
-                                <div class="form-row">
+                                <div class="form-row mb-0">
                                     <div class="form-group col-lg-9 col-md-9 col-sm-12">
                                         To protect the data from new changes, disable the teacher's grading sheet.
                                     </div>
@@ -150,6 +150,11 @@
                                             <span class="custom-switch-indicator"></span>
                                         </label>
                                     </div>
+                                </div>
+                                <hr>
+                                <div class="form-group">
+                                    <label class="d-block">Quartery Grade status (checked mean disabled)</label>
+                                    <div class="showMyBoxes"></div>
                                 </div>
                             </div>
                         </div>
