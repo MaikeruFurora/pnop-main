@@ -22,7 +22,7 @@
             flex-direction: column;
             justify-content: center;
             /* text-align: center; */
-            min-height: 100vh;
+            height: 80vh;
         }
     </style>
 </head>
@@ -90,25 +90,33 @@
                                     <div class="text-job text-black">-- Other option --</div>
                                 </div>
                                
-                                <div class="row text-center">
-                                    <div class="col-12">
-                                        <a href="/" class=" btn btn-block text-black">
-                                            <span class="fas fa-home"></span><br> Home Page
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="row">
+
+                                <div class="row sm-gutters">
                                     <div class="col-6">
-                                        <a href="/appoint/register" class="btn btn-block text-black">
-                                            <span class="fas fa-calendar-check"></span><br> Get Appointment
-                                        </a>
+                                        <a href="/form" class="btn btn-block btn-info text-white">
+                                            <span class="fab fa-wpforms"></span> Pre Enrollment
+                                          </a>  
                                     </div>
                                     <div class="col-6">
-                                        <a href="/form" class="btn btn-block text-black ">
-                                            <span class="fab fa-wpforms"></span><br> Pre Enrollment
-                                        </a>
+                                      <a href="/appoint/register" class="btn btn-block btn-info text-white">
+                                        <span class="fa fa-calendar-check"></span>Appointment
+                                      </a>                                
                                     </div>
-                                </div>
+                                  
+                                  </div>
+                                 <div class="row sm-gutters mt-2">
+                                    <div class="col-6">
+                                        <a href="/" class="btn btn-block btn-success text-white">
+                                            <span class="fas fa-home"></span> Home Page
+                                          </a>                              
+                                      </div>
+                                      <div class="col-6">
+                                        <a href="/" class="btn btn-block btn-success text-white">
+                                            <span class="fas fa-comment"></span> Contact Us
+                                          </a>                              
+                                      </div>
+                                 </div>
+
                             </div>
                         </div>
                         {{-- <div class="simple-footer mt-0">
