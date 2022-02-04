@@ -1,12 +1,12 @@
 <div class="main-sidebar">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <img class="img-fluid m-0 p-0" src="{{ asset('image/logo/'.$sprofile->school_logo ?? 'deped.png') }}"
+            <img class="img-fluid mb-1 p-0" src="{{ asset('image/logo/'.$sprofile->school_logo ?? 'deped.png') }}"
             alt="PNHS LOGO" width="30px">
-            <a href="{{ route('admin.dashboard') }}">
+            <a style="top: 50px" href="{{ route('admin.dashboard') }}">
                 PNOP
             </a>
-            <p style="font-size: 11px;margin-top:-10px">
+            <p style="font-size: 11px;margin-top:-15px">
                 {{ empty($activeAY)?'No active academic year':'S/Y '.$activeAY->from.'-'.$activeAY->to }}
             </p>
 
@@ -16,7 +16,7 @@
                 <img class="img-fluid m-0 p-0" src="{{ asset('image/logo/'.$sprofile->school_logo ?? 'deped.png') }}"
                 alt="PNHS LOGO" width="30px">
             </a>
-            <p style="font-size: 11px;margin-top:-10px">
+            <p style="font-size: 11px;margin-top:-15px">
                 @if (empty($activeAY))
                 No active
                 @else
