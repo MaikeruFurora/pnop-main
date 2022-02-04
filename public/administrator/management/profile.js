@@ -135,7 +135,7 @@ $('input[name="grade_status"]').on('click', function () {
                 arrayCheckBoxes=data
                data.forEach((val,i) => {
                 hold+=`<div class="form-check form-check-inline">
-                            <input class="form-check-input checkQuarter" type="checkbox" name="${val.name}" ${val.status} id="${val.sort}">
+                            <input class="checkQuarter form-check-input" type="checkbox" name="${val.name}" ${val.status} id="${val.sort}">
                             <label class="form-check-label" >${val.name} Quarter</label>
                         </div>`;
                });

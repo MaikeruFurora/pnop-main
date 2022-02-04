@@ -12,7 +12,7 @@
         <h2 class="section-title">System Log</h2>
         <div class="row">
             <div class="col-lg-12 col-ms-12 col-sm-12">
-                <div class="card">
+                <div class="card card-primary">
                    
                     <div class="card-body">
                       <form action="" id="dateForm">
@@ -34,7 +34,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Log</th>
-                                        <th>Duration</th>
+                                        <th>Time</th>
                                     </tr>
                                 </thead>
                                 <tbody>

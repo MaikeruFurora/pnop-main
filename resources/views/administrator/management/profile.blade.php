@@ -3,6 +3,17 @@
 {{-- <div class="section-header">
     <h1>sas</h1>
 </div> --}}
+<style>
+    .checkQuarter{
+        padding: 40px;
+        background-color: rgb(0, 0, 0);
+        width: 17px;
+        height: 17px;
+    }
+    input:checked ~ .checkQuarter{
+        background-color: rgb(255, 0, 0)
+    }
+</style>
 <div class="modal fade" id="endModalOnlineENrollment" data-backdrop="static" data-keyboard="false" tabindex="-1"
     aria-labelledby="fillGradeInPreviousLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered">
@@ -58,7 +69,7 @@
                                 <div class="col-lg-3">
                                     <div class="form-row">
                                         <div class="form-group col-md-4">
-                                            <label class="col-form-label ">Place your logo here</label>
+                                            <label class="col-form-label"><small>Place your logo here</small></label>
                                             <div id="image-preview" class="image-preview">
                                                 <label for="image-upload" id="image-label">Choose File</label>
                                                 <input type="file" name="school_logo" id="image-upload" />
@@ -67,7 +78,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-2 p-0">
-                                    <label class="col-form-label "><b>Current Logo</b></label>
+                                    <label class="col-form-label "><small>Current Logo</small></label>
                                     <img class="img-thumbnail" width="500%" src="{{ !empty($data->school_logo)? asset("image/logo/".$data->school_logo) :'' }}" alt="">
                                 </div>
 
