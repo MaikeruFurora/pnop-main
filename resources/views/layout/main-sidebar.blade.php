@@ -1,15 +1,22 @@
 <div class="main-sidebar">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="{{ route('admin.dashboard') }}">PNOP</a>
-            <p style="font-size: 11px;margin-top:-21px">
+            <img class="img-fluid m-0 p-0" src="{{ asset('image/logo/'.$sprofile->school_logo ?? 'deped.png') }}"
+            alt="PNHS LOGO" width="30px">
+            <a href="{{ route('admin.dashboard') }}">
+                PNOP
+            </a>
+            <p style="font-size: 11px;margin-top:-10px">
                 {{ empty($activeAY)?'No active academic year':'S/Y '.$activeAY->from.'-'.$activeAY->to }}
             </p>
 
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-            <a href="{{ route('admin.dashboard') }}">OP</a>
-            <p style="font-size: 11px;margin-top:-21px">
+            <a href="{{ route('admin.dashboard') }}">
+                <img class="img-fluid m-0 p-0" src="{{ asset('image/logo/'.$sprofile->school_logo ?? 'deped.png') }}"
+                alt="PNHS LOGO" width="30px">
+            </a>
+            <p style="font-size: 11px;margin-top:-10px">
                 @if (empty($activeAY))
                 No active
                 @else

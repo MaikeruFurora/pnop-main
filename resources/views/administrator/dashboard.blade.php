@@ -103,7 +103,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-4 col-md-12 col-12 col-sm-12">
+            <div class="col-lg-4 col-md-4 col-12 col-sm-12">
                 <div class="card">
                     <div class="card-header">
                         <h4>Appointment Today</h4>
